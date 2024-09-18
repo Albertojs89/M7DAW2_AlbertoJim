@@ -4,29 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="/practicas/pac1-primera-app/logofp.jpg" alt="">
+        <img class="logo" src="logofp.jpg" alt="">
         <h1>Módulo 1- Práctica 1. Mi primera aplicación en PHP</h1>
     </header>
     <main>
+        <article class="contenedor2">
         <div>
-            <img src="/practicas/pac1-primera-app/avatar.jpg" alt="">
+            <img class="avatar" src="avatar.jpg" alt="">
         </div>
-        <div>
+        <div class="contenidotxt">
             <p>
-                Function sayHello($name) es un método creado para saludar al nombre que el usuario ponga en la variable $name mediante la linea en la funcion de "echo "hello $name!;
-                
-                En el siguiente bloque 
+            -?php Este es el inicio del bloque PHP.
+            Define una función llamada sayHello que toma un parámetro $name.
             </p>
+            <p>
+            -echo "Hello $name!";
+            Imprime "Hello $name!" en la pantalla, donde $name es el valor pasado a la función.
+            </p>
+            <p>
+            -sayHello('remote world');
+            Llama a la función sayHello con el argumento 'remote world', imprimiendo "Hello remote world!".
+           </p>
+           <p>
+           -phpinfo();
+           Imprime información sobre la configuración actual de PHP.
+           </p>
+            
             
         </div>
+        </article>
     </main>
 
-    <footer>
-        <p>Alberto Jiménez Sánchez</p>
-        <data value="2024-09-16"></data>
+    <footer class="contenido">
+        <aside>
+            <span>Alberto Jiménez Sánchez </span>
+            <time datetime="2024-17-09">  2024/17/09</time>
+        </aside>
+       
+        
     </footer>
     
 
