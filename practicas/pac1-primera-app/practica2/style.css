@@ -1,7 +1,107 @@
 body{
     width: 1500px;
+    justify-content: center;
+    background-image: url('fondo.jpg');
+    background-repeat: no-repeat;
+    margin: auto;
+    color: rgb(52, 19, 82);
+}
+
+header{
+   text-align: center;
+   padding: 30px; 
+
+}
+
+h1{
+    text-align: center;
+}
+
+.contenido{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    border: solid 1px rgb(52, 19, 82);
+    background-color: rgb(52, 19, 82);
+    border-radius: 5px;
+    color: whitesmoke;
+
+}
+
+.container{
+    align-items: center;
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+    flex-wrap: wrap;
+}
+
+footer{
+    margin-top: 50px;
+}
+footer a{
+    list-style-type: none;
+    text-decoration: none;
+    font-size: 20px;
+    border: solid 1px rgb(52, 19, 82);
+    background-color: rgb(52, 19, 82);
+    border-radius: 5px;
+    color: orange;
+    padding: 20px;
+    
+}
+.enlaces{
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 50px;
+    
+}
+
+a{
+    text-decoration: none;
+   
+    color: black;
+}
+
+ul{
+    list-style-type: none;
+}
+
+/* ejercicio 2 */
+
+.contenido2{
     display: flex;
     justify-content: center;
-    
+    text-align: center;
+    align-items: center;
+}
 
+.tabla{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-size: 20px;
+    border: solid 1px rgb(52, 19, 82);
+    background-color: rgb(52, 19, 82);
+    border-radius: 5px;
+    color: whitesmoke;
+}
+
+/* ejercicio 3 */
+
+.contenido3{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    border: solid 1px rgb(52, 19, 82);
+    background-color: rgb(52, 19, 82);
+    border-radius: 5px;
+    color: whitesmoke;
 }

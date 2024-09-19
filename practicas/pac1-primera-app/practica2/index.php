@@ -19,15 +19,14 @@
             echo "<h1>Ejercicios:</h1>";
             echo "<br>";
 
-        ?>
-        <div>
+        ?> 
+        <div class="enlaces" >
             <ul>
-                <li><a target="_blank" href="ejercicio1">Ejercicio 1</a></li>
-                <li><a target="_blank" href="ejercicio2">Ejercicio 2</a></li>
-                <li><a target="_blank" href="ejercicio3">Ejercicio 3</a></li>
+                <li><a target="_blank" href="ejercicio1.php">Ejercicio 1</a></li>
+                <li><a target="_blank" href="ejercicio2.php">Ejercicio 2</a></li>
+                <li><a target="_blank" href="ejercicio3.php">Ejercicio 3</a></li>
             </ul>
         </div>
-            
         
     </main>
 </body>
