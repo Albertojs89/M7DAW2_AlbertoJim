@@ -5,16 +5,23 @@ body{
     background-repeat: no-repeat;
     margin: auto;
     color: rgb(52, 19, 82);
+    font-family: "Inria Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 header{
    text-align: center;
+   align-items: center;
+   margin: auto;
    padding: 30px; 
 
 }
 
 h1{
     text-align: center;
+    align-items: center;
+    font-size: 40px;
 }
 
 .contenido{
@@ -39,25 +46,37 @@ h1{
 
 footer{
     margin-top: 50px;
+    
 }
 footer a{
     list-style-type: none;
     text-decoration: none;
     font-size: 20px;
-    border: solid 1px rgb(52, 19, 82);
-    background-color: rgb(52, 19, 82);
+    padding: 15px;
+    border: solid 1px orange;
+    background-color: orange;
     border-radius: 5px;
-    color: orange;
-    padding: 20px;
+    color: rgb(52, 19, 82);
+    
     
 }
 .enlaces{
+    text-align: center;
+    align-items: center;
     list-style-type: none;
     text-decoration: none;
-    text-align: center;
+    
+    
+}
+
+.enlaces a{
     color: whitesmoke;
     font-size: 50px;
-    
+    transition: color 0.3s ease;
+}
+
+.enlaces a:hover{
+    color: rgb(216, 208, 93);
 }
 
 a{
@@ -104,4 +123,20 @@ ul{
     background-color: rgb(52, 19, 82);
     border-radius: 5px;
     color: whitesmoke;
+}
+
+.btnreinicio{
+    font-size: 20px;
+    color: rgb(52, 19, 82);
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 50px;
+}
+
+.contenidoparimpar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
 }

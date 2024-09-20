@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <body>
     <?php
-    echo "<div class='contenido2'>";
+    echo "<div class='contenidoparimpar'>";
         $num=rand(1,100);
         echo "<h1>";
         echo $num;
@@ -28,7 +28,7 @@
 
     ?>
 
-    <a href="ejercicio3.php">Reiniciar</a>
+    <a class="btnreinicio" href="ejercicio3.php">Reiniciar</a>
 </body>
 <footer>
         <a href="index.php">Inicio</a>
