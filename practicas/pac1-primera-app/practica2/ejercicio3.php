@@ -13,6 +13,7 @@
         echo "<h1>";
         echo $num;
         echo "</h1>";
+        
         $resultado=$num%2;
         echo "<div class='tabla'>";
         if($resultado==0){
