@@ -9,42 +9,47 @@
 <body>
     <?php
     
-     $num=rand(1,100);
-     echo "<div class='numero3'>";
-     echo "<h1>Número generado: $num</h1>";
-     echo "<h2>Divisores de $num</h2>";
-     echo "</div>";
-    echo "<div class='contenidoDivisor'>";
+     
        
+
+    //chivato para sacar divisores del numero generado
 
     $chiv=0;
-    for($i=2;$i<=$num;$i++){
-        $resultado=$num%$i;
-        echo "<div class='tabla'>";
-            if($resultado==0){
+    $res=0;
+
+    echo"<div='container'>";
+    $num=rand(1,100);
+    echo "<div class='numero3'>";
+    echo "<h1>Número generado: $num</h1>";
+    echo "<h2>Divisores de $num</h2>";
+    echo "</div>";
+   echo "<div class='contenidoDivisor'>";
+        for($i=1;$i<=$num;$i++){
+            $res=$num%$i;
+            if($res==0){
                 $chiv++;
-                echo $num;    
+                echo"<div class='tabla2'>";
+                    echo("$i");
+                echo"</div>";
             }
-        echo "</div>";
-
-       
-
+        }
         
-    };
-    echo "<div>";
-    if(chiv<3){
-        echo "Es primo";
-    }else{
-        echo "No es primo";
-    }
-    echo "</div>"; 
+    echo"</div>";
+    echo"<div class='primoNoprimo'>";
+            if($chiv<=2){
+                echo("$num Es número primo");
+            }else{
+                echo("$num No es número primo");
+            }
+    echo"</div>";
+
 
 
     ?>
 
-    <a class="btnreinicio" href="ejercicio3.php">Reiniciar</a>
+    <a class="btnreinicio" href="ejercicioExtra.php">Reiniciar</a>
 </body>
-<footer>
+<footer class="footer2">
         <a href="index.php">Inicio</a>
 </footer>
 </html>
