@@ -20,7 +20,7 @@
             <!-- array de frutas con su nombre -->
             <?php
                 $frutas=[
-                    ["nombre"=>"Manzana","estado"=>""],
+                    ["nombre"=>"Manzana","estado"=>"0"],
                     ["nombre"=>"Plátano"],
                     ["nombre"=>"Naranja"],
                     ["nombre"=>"Fresa"],
@@ -41,25 +41,33 @@
             </thead>
             <!-- php bucle -->
             <?php
-            foreach($frutas as $fruta){
+            
                 if(isset($_GET['nombre'])&&isset($_GET['estado'])){
                     $nombre=$_GET['nombre'];
                     $estado=$_GET['estado'];
                     if($estado==1){
                         echo '
                             <tr class="table-danger">
-                            <td>Manzana</td>
+                            <td>'.$nombre.'</td>
                             <td>Seleccionada</td>
+                            <td><a class="btn btn-primary" href="index.php?nombre=Manzana&estado=1">Seleccionar</a></td>
+                </tr>
+                        ';
+                    }else{
+                        echo '
+                            <tr class="table-danger">
+                            <td>'.$nombre.'</td>
+                            <td>✖ No seleccionada</td>
                             <td><a class="btn btn-primary" href="index.php?nombre=Manzana&estado=1">Seleccionar</a></td>
                 </tr>
                         ';
                     }
                     
                 }
-            }
+            
             ?>
 
-
+<!-- 
             <tbody>
                 <tr class="table-danger">
                     <td>Manzana</td>
@@ -87,7 +95,7 @@
                     <td><a class="btn btn-primary" href="">Seleccionar</a></td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
 
         <!-- Mostrar tarjeta de la fruta seleccionada (actualmente estatica, siempre hay una manzana) -->
         <div class="card mt-4 w-25 shadow-lg">
