@@ -36,10 +36,9 @@
                     <th>Acción</th>
                 </tr>
             </thead>
-            <tbody>
             <!-- php condicion -->
             <?php
-            //Con el isset getter cojemos el 'nombre'enviado desde el boton y lo guardamos en la variable nombre.
+                //Con el isset getter cojemos el 'nombre'enviado desde el boton y lo guardamos en la variable nombre.
                 if(isset($_GET['nombre'])){
                     $nombre=$_GET['nombre']; 
                     
@@ -51,25 +50,14 @@
 
                     foreach($frutas as $fruta){
                         if($fruta["nombre"]==$nombre){
-                            
                             echo '
                                 <tr class="casillaVerde">
                                 <td>'.$fruta['nombre'].'</td>
                                 <td>✔️Seleccionada</td>
                                 <td><a class="btn btn-primary" href="?nombre='.$fruta['nombre'].'">Seleccionar</a></td>
                                 </tr>
-                                
                             ';
-                            echo '
-                            <div class="card mt-4 w-25 shadow-lg">
-                                <img src="" class="card-img-top img-fluid" alt="'.$fruta['nombre'].'">
-                                <div class="card-body bg-warning">
-                                    <h5 class="card-title">'.$fruta['nombre'].'</h5>
-                                    <p class="card-text">¡Esta es tu fruta favorita!</p>
-                                </div>
-                            </div>
-                        ';
-                            
+                         
                         }else{
                             echo '
                                 <tr class="table-danger">
@@ -78,18 +66,15 @@
                                 <td><a class="btn btn-primary" href="?nombre='.$fruta['nombre'].'">Seleccionar</a></td>
                                 </tr>
                             ';
-                            
                         }
                         
                     }
-                    
-                    
                 }
             
             ?>
-
-
-
+            <tbody>
+            
+            
         </table>
                 <?php
                    
