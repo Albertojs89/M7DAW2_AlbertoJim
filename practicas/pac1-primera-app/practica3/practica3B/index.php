@@ -12,18 +12,12 @@
     }
 </style>
 <body>
+    
     <div class="container mt-5">
         
-            <!-- array de frutas con su nombre -->
-            <?php
-                $frutas=[
-                    ["nombre"=>"Manzana","imagen"=>"https://w7.pngwing.com/pngs/560/910/png-transparent-an-apple-green-apple-fruit-green.png"],
-                    ["nombre"=>"Plátano","imagen"=>"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Fvectores%2Fplatano-png&psig=AOvVaw2ppX8W9bF6-vbjoxieIJB0&ust=1727969288095000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiaj7GB8IgDFQAAAAAdAAAAABAE"],
-                    ["nombre"=>"Naranja","imagen"=>"https://static.vecteezy.com/system/resources/thumbnails/040/750/078/small_2x/ai-generated-orange-orange-isolated-refreshing-citrus-fruit-orange-slices-orange-top-view-orange-flat-lay-png.png"],
-                    ["nombre"=>"Fresa","imagen"=>"https://png.pngtree.com/png-clipart/20230410/original/pngtree-strawberry-realistic-fruit-png-image_9042320.png"],
-                    ["nombre"=>"Kiwi","imagen"=>"https://e7.pngegg.com/pngimages/166/911/png-clipart-kiwi-kiwi.png"],
-                ];
-            ?>
+            
+                
+            
 
 <div class="container mt-5">
         <h1 class="text-center">Selecciona tu fruta favorita</h1>
@@ -36,11 +30,20 @@
                     <th>Acción</th>
                 </tr>
             </thead>
+            <tbody>
             <!-- php condicion -->
             <?php
+                $frutas=[
+                    ["nombre"=>"Manzana","imagen"=>"https://comedelahuerta.com/wp-content/uploads/2019/09/MANZANA-ROYAL-GALA-ECOLOGICO-COMEDELAHUERTA-1.jpg"],
+                    ["nombre"=>"Plátano","imagen"=>"https://s2.ppllstatics.com/elcorreo/www/multimedia/202102/04/media/cortadas/salud5-kpVB-U130428513283nUH-1248x770@El%20Correo.jpg"],
+                    ["nombre"=>"Naranja","imagen"=>"https://static.vecteezy.com/system/resources/thumbnails/040/750/078/small_2x/ai-generated-orange-orange-isolated-refreshing-citrus-fruit-orange-slices-orange-top-view-orange-flat-lay-png.png"],
+                    ["nombre"=>"Fresa","imagen"=>"https://png.pngtree.com/png-clipart/20230410/original/pngtree-strawberry-realistic-fruit-png-image_9042320.png"],
+                    ["nombre"=>"Kiwi","imagen"=>"https://www.finedininglovers.com/es/sites/g/files/xknfdk1706/files/styles/article_1200_800_fallback/public/2021-11/kiwi%C2%A9iStock.jpg?itok=9zvUb-Vp"],
+                ];
+                
                 //Con el isset getter cojemos el 'nombre'enviado desde el boton y lo guardamos en la variable nombre.
-                if(isset($_GET['nombre'])){
-                    $nombre=$_GET['nombre']; 
+                
+                     
                     
                     
                     //EXPLICACION FOREACH-------------------------------------------------------------------------------
@@ -49,6 +52,7 @@
                     //Si coincide: imprimimos el html de la tabla con la posicion de la array fruta[nombre]
 
                     foreach($frutas as $fruta){
+                        $nombre=$_GET['nombre'];
                         if($fruta["nombre"]==$nombre){
                             echo '
                                 <tr class="casillaVerde">
@@ -69,24 +73,32 @@
                         }
                         
                     }
-                }
+                
             
             ?>
-            <tbody>
+            </tbody>
             
             
         </table>
+        <!-- php utilizando el getter del nombre para acceder a la imagen de la array -->
                 <?php
-                   
+                foreach($frutas as $fruta){
+                   $nombre=$_GET['nombre'];
+                   if($fruta["nombre"]==$nombre){
+                    echo '
+                        <div class="card mt-4 w-25 shadow-lg">
+                            <img src="'.$fruta['imagen'].'" class="card-img-top img-fluid" alt="Manzana">
+                            <div class="card-body bg-warning">
+                                <h5 class="card-title">'.$fruta['nombre'].'</h5>
+                                <p class="card-text">¡Esta es tu fruta favorita!</p>
+                             </div>
+                        </div>
+                    ';
+                   }
+                }
                 ?>
-        <!-- Mostrar tarjeta de la fruta seleccionada (actualmente estatica, siempre hay una manzana) -->
-        <div class="card mt-4 w-25 shadow-lg">
-            <img src="" class="card-img-top img-fluid" alt="Manzana">
-            <div class="card-body bg-warning">
-                <h5 class="card-title">Manzana</h5>
-                <p class="card-text">¡Esta es tu fruta favorita!</p>
-            </div>
-        </div>
+        
+        
 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
