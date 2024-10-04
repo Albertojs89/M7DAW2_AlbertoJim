@@ -8,7 +8,7 @@
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.72.0">
   <title>Tu Cine</title>
-
+  <link rel="stylesheet" href="style.css">
   <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/album/">
 
 
@@ -18,33 +18,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
-  <style>
-    body{
-      background-color: #5D4A66;
-      color: white;
-    }
-    div{
-      background-color: #5D4A66;
-    }
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      transition: transform 0.3s ease;
-    }
-    .bd-placeholder-img:hover{
-      transform: scale(1.05);
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+  
 
 
 </head>
@@ -121,7 +95,7 @@
                       <p class="card-text">'.$pelicula['sinopsi'].'</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <a href="trailer.php"><button type="button" class="btn btn-sm btn-outline-secondary">Ver trailer</button></a>
+                          <a href="trailer.php?nom='.$pelicula['nom'].'"><button type="button" class="btn btn-sm btn-outline-secondary">Ver trailer</button></a>
                           <a href="detall.php?nom='.$pelicula['nom'].'"><button type="button" class="btn btn-sm btn-outline-secondary">Más información</button></a>
                         </div>
                         <small class="text-muted">'.$pelicula['horaris'].'</small>

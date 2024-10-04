@@ -11,7 +11,7 @@ $peliculas = [
         'repartiment' => 'Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page',
         'qualificacio' => '+16',
         'genere' => 'Ciencia ficción, Acción',
-        'trailer_url' => '',
+        'trailer_url' => 'https://www.youtube.com/embed/RV9L7ui9Cn8?si=L9XFA611_YJZ7X_R',
         'estrelles' => 3
     ],
     [
