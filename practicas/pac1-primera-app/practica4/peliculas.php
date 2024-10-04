@@ -4,6 +4,9 @@ $peliculas = [
     [
         'nom' => 'Inception',
         'imatge' => 'https://i0.wp.com/imgs.hipertextual.com/wp-content/uploads/2020/07/hipertextual-diez-anos-inception-extrana-mirada-nolan-sobre-realidad-siguevigente-2020650351-scaled.jpg?fit=2560%2C1440&quality=50&strip=all&ssl=1',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/18:00/21:00',
         'sinopsi' => 'Un ladrón que roba secretos corporativos a través del uso de la tecnología de sueños compartidos es asignado a plantar una idea en la mente de un C.E.O.',
         'durada' => '148 min',
@@ -17,6 +20,9 @@ $peliculas = [
     [
         'nom' => 'The Matrix',
         'imatge' => 'https://purodiseno.lat/wp-content/uploads/2021/06/Matrix-1-828x621.jpg',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '14:00/17:30/20:00',
         'sinopsi' => 'Un hacker descubre que su realidad es una simulación creada por máquinas inteligentes.',
         'durada' => '136 min',
@@ -30,6 +36,9 @@ $peliculas = [
     [
         'nom' => 'Parasite',
         'imatge' => 'https://media.gq.com.mx/photos/5e163a93a3ee270008aa3501/16:9/w_2560%2Cc_limit/parasite-datos-de-la-pelicula-que-esta-ganando-todos-los-premios-dos.jpg',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/16:00/20:00',
         'sinopsi' => 'Una familia de bajos recursos se infiltra en la vida de una familia adinerada.',
         'durada' => '132 min',
@@ -43,6 +52,9 @@ $peliculas = [
     [
         'nom' => 'Joker',
         'imatge' => 'https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/e37195fe-c232-4ba0-bb9e-c4004279b6fa/4447958e-2d4f-4367-943d-0de4aaf38a82?host=wbd-images.prod-vod.h264.io&partner=beamcom',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/17:00/21:00',
         'sinopsi' => 'Un hombre mentalmente inestable se convierte en el villano más temido de Gotham City.',
         'durada' => '122 min',
@@ -56,6 +68,9 @@ $peliculas = [
     [
         'nom' => 'Interstellar',
         'imatge' => 'https://beam-images.warnermediacdn.com/BEAM_LWM_DELIVERABLES/aa5b9295-8f9c-44f5-809b-3f2b84badfbf/8a7dd34b09c9c25336a3d850d4c431455e1aaaf0.jpg?host=wbd-images.prod-vod.h264.io&partner=beamcom',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:00/18:00/22:00',
         'sinopsi' => 'Un grupo de astronautas viaja a través de un agujero de gusano en busca de un nuevo hogar para la humanidad.',
         'durada' => '169 min',
@@ -69,6 +84,9 @@ $peliculas = [
     [
         'nom' => 'La La Land',
         'imatge' => 'https://i0.wp.com/noisy.es/wp-content/uploads/2017/02/la-la-land-poster.jpeg?fit=945%2C532&ssl=1',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/18:10/21:30',
         'sinopsi' => 'Una historia de amor entre un músico de jazz y una aspirante a actriz en Los Ángeles.',
         'durada' => '128 min',
@@ -82,6 +100,9 @@ $peliculas = [
     [
         'nom' => 'Avengers: Endgame',
         'imatge' => 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/DB176BD1488D7E4822256EF1778C124FC17388FC1E7F0F6D89B38AFF5FB001F6/scale?width=1200&aspectRatio=1.78&format=webp',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:20/18:30/23:00',
         'sinopsi' => 'Los Vengadores restantes deben encontrar una manera de derrotar a Thanos y restaurar el universo.',
         'durada' => '181 min',
@@ -95,6 +116,9 @@ $peliculas = [
     [
         'nom' => 'The Godfather',
         'imatge' => 'https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/06/73/23/1c.jpg',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/18:00/21:00',
         'sinopsi' => 'La historia de la familia Corleone, una de las más poderosas dentro del crimen organizado en los EE.UU.',
         'durada' => '175 min',
@@ -108,6 +132,9 @@ $peliculas = [
     [
         'nom' => 'Fight Club',
         'imatge' => 'https://hips.hearstapps.com/hmg-prod/images/fight-club-1-1571084249.jpg?crop=1xw:0.7436194895591647xh;center,top&resize=1200:*',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/18:00/21:00',
         'sinopsi' => 'Un hombre insomne y un vendedor de jabón forman un club secreto de lucha.',
         'durada' => '139 min',
@@ -121,6 +148,9 @@ $peliculas = [
     [
         'nom' => 'Pulp Fiction',
         'imatge' => 'https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2023/07/pulp-fiction-3089782.jpg?tf=3840x',
+        'carrusel1'=>'',
+        'carrusel2'=>'',
+        'carrusel3'=>'',
         'horaris' => '15:30/18:00/21:00',
         'sinopsi' => 'La vida de dos mafiosos, un boxeador y una pareja de delincuentes se entrelazan en una serie de violentos incidentes.',
         'durada' => '154 min',
