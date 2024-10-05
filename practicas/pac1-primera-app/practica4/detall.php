@@ -12,7 +12,7 @@
 <style>
     body{
         margin-top: 50px;
-        
+        margin: auto;
         background: linear-gradient(to right, #1f2647, #465ea4);
     }
    
@@ -104,51 +104,48 @@
             
         }
     }
+    
+        foreach($peliculas as $pelicula){
+            if(isset($_GET['nom'])){
+                $nombre=$_GET['nom'];
+                
+            }
+            
+            if($pelicula["nom"]==$nombre){
+                echo'
+            <div>
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                    <img src="'.$pelicula['carrusel1'].'" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="'.$pelicula['carrusel2'].'" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                    <img src="'.$pelicula['carrusel3'].'" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    </div>
+                </div>
+            
+            
+            ';
+                }
+            }
+    
 ?>
 
 </div>
 
-
-<?php
-    foreach($peliculas as $pelicula){
-        if(isset($_GET['nom'])){
-            $nombre=$_GET['nom'];
-            
-        }
-        
-        if($pelicula["nom"]==$nombre){
-            echo'
-        <div class="imgCarrusel">
-            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                <img src="'.$pelicula['carrusel1'].'" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                <img src="'.$pelicula['carrusel2'].'" class="d-block w-100" alt="...">
-                </div>
-                <div class="carousel-item">
-                <img src="'.$pelicula['carrusel3'].'" class="d-block w-100" alt="...">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-            </div>
-        </div>
-    
-    
-    ';
-        }
-    }
-
-
-?>
 
 <div class="btnVolver">
     <a href="index.php">
