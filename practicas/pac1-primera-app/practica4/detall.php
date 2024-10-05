@@ -9,7 +9,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
-
+<style>
+    body{
+        margin-top: 50px;
+        
+        background: linear-gradient(to right, #1f2647, #465ea4);
+    }
+   
+    
+</style>
 
 
 
@@ -32,37 +40,40 @@
                     <div class="container">
                         <div class="imgDetalle">
                             <img src="'.$pelicula['imatge'].'">
-                            <a href="trailer.php?nom='.$pelicula['nom'].'"><button>Trailer</button></a>
+                            <a href="trailer.php?nom='.$pelicula['nom'].'"><button><i class="fa-solid fa-film"></i></button></a>
                         </div>
                         
                         <div class="infor">
                             <div>
+                                <p><strong>Sinopsis</strong></p>
                                 <p>'.$pelicula['sinopsi'].'</p>
                             </div>
                             <div>
+                                <p><strong>Duración</strong></p>
                                 <p>'.$pelicula['durada'].'</p>
                             </div>
                             <div>
+                                <p><strong>Directores</strong></p>
                                 <p>'.$pelicula['director'].'</p>
                             </div>
                             <div>
-                                <p>'.$pelicula['director'].'</p>
-                            </div>
-                            <div>
+                                <p><strong>Cualificación</strong></p>
                                 <p>'.$pelicula['qualificacio'].'</p>
                             </div>
                             <div>
+                                <p><strong>Género</strong></p>
                                 <p>'.$pelicula['genere'].'</p>
                             </div>
                             <div>
                                 <div>
+                                    <p><strong>Horarios</strong></p>
                                     <div class="cajaHoras">
                                         <p>'.$pelicula['horaris'].'</p>
                                     </div>
                                    
                                 </div>
                             </div>
-                            <div>
+                        <div>
                                 
                            ';
             }
@@ -84,9 +95,9 @@
             for($i=0;$i<5;$i++){
                 
                 if($i<$pelicula['estrelles']){
-                    echo'<div><i class="fa-solid fa-star" style="color: yellow"></i></div>';
+                    echo'<i class="estrellas fa-solid fa-star" style="color: yellow"></i>';
                 }else{
-                    echo'<div><i class="fa-solid fa-star" style="color: grey;"></i></div>';
+                    echo'<i class="estrellas fa-solid fa-star" style="color: grey;"></i>';
                 }
             };
             
@@ -96,7 +107,7 @@
 ?>
 
 </div>
-<a href="index.php"><button>Volver</button></a>
+
 
 <?php
     foreach($peliculas as $pelicula){
@@ -107,7 +118,7 @@
         
         if($pelicula["nom"]==$nombre){
             echo'
-        <div>
+        <div class="imgCarrusel">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
@@ -139,7 +150,11 @@
 
 ?>
 
-
+<div class="btnVolver">
+    <a href="index.php">
+        <button>Volver</button>
+    </a>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
