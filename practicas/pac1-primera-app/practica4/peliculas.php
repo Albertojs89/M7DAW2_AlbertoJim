@@ -30,7 +30,7 @@ $peliculas = [
         'repartiment' => 'Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss',
         'qualificacio' => '+16',
         'genere' => 'Ciencia ficción, Acción',
-        'trailer_url' => 'https://www.youtube.com/watch?v=vKQi3bBA1y8',
+        'trailer_url' => 'https://www.youtube.com/embed/Pl_H2Lmjn6k?si=_Cv6Ok9Oxt017btB',
         'estrelles' => 4
     ],
     [
@@ -46,7 +46,7 @@ $peliculas = [
         'repartiment' => 'Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong',
         'qualificacio' => '+16',
         'genere' => 'Drama, Thriller',
-        'trailer_url' => 'https://www.youtube.com/watch?v=5xH0HfJHsaY',
+        'trailer_url' => 'https://www.youtube.com/embed/90dWVETAdtI?si=G-0dxsCMhpXuYmuH',
         'estrelles' => 5
     ],
     [
@@ -62,7 +62,7 @@ $peliculas = [
         'repartiment' => 'Joaquin Phoenix, Robert De Niro, Zazie Beetz',
         'qualificacio' => '+16',
         'genere' => 'Drama, Crimen',
-        'trailer_url' => 'https://www.youtube.com/watch?v=zAGVQLHvwOY',
+        'trailer_url' => 'https://www.youtube.com/embed/ygUHhImN98w?si=uUlUXxb-QC8HGook',
         'estrelles' => 4
     ],
     [
@@ -78,7 +78,7 @@ $peliculas = [
         'repartiment' => 'Matthew McConaughey, Anne Hathaway, Jessica Chastain',
         'qualificacio' => '+16',
         'genere' => 'Ciencia ficción, Aventura',
-        'trailer_url' => 'https://www.youtube.com/watch?v=zSWdZVtXT7E',
+        'trailer_url' => 'https://www.youtube.com/embed/UoSSbmD9vqc?si=IFl0EabPauRygXAJ',
         'estrelles' => 5
     ],
     [
@@ -94,7 +94,7 @@ $peliculas = [
         'repartiment' => 'Ryan Gosling, Emma Stone, John Legend',
         'qualificacio' => '+12',
         'genere' => 'Musical, Romance',
-        'trailer_url' => 'https://www.youtube.com/watch?v=0pdqf4P9MB8',
+        'trailer_url' => 'https://www.youtube.com/embed/UoSSbmD9vqc?si=IFl0EabPauRygXAJ',
         'estrelles' => 4
     ],
     [

@@ -30,7 +30,7 @@
             if($pelicula["nom"]==$nombre){
                 echo'
                     <div class="container">
-                        <div class="medidaImg">
+                        <div class="imgDetalle">
                             <img src="'.$pelicula['imatge'].'">
                             <a href="trailer.php?nom='.$pelicula['nom'].'"><button>Trailer</button></a>
                         </div>
