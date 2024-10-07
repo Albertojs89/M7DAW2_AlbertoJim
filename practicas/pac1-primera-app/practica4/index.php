@@ -62,7 +62,7 @@
         </div>
       </div>
     </section>
-
+    <!-- Div con la card de la pelicula introducio en PHP/Con el getter introducimos las variables que enviamos desde el enlace -->
     <div class="album py-5 bg-light">
       <div class="container">
 
@@ -96,15 +96,6 @@
 
 
             ?>
-
-
-
-
-
-
-
-
-          
         </div>
       </div>
     </div>

@@ -80,7 +80,7 @@
         }
     ?> 
 
-
+<!-- Bucle adquiriendo con getter para introducir las estrellas en color amarillo y gris -->
 <?php
     foreach($peliculas as $pelicula){
         if(isset($_GET['nom'])){
@@ -104,7 +104,7 @@
             
         }
     }
-    
+    //Carrusel------------------------------------------------------------------------------------
         foreach($peliculas as $pelicula){
             if(isset($_GET['nom'])){
                 $nombre=$_GET['nom'];
