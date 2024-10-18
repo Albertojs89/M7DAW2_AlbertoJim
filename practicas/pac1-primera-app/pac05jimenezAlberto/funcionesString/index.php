@@ -166,6 +166,9 @@
     echo "La palabra '". $palabra. "' aparece ". contarOcurrencias($palabra, $texto). " veces en el texto.";
     ?>
 
+    <!-- 9. Dividir una cadena en palabras -->
+     
+
 </body>
 
 </html>
