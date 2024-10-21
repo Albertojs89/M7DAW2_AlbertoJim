@@ -113,7 +113,7 @@
 
     <!-- 6. Comparar dos strings -->
 
-    
+
     <?php
     echo "<br>";
     function compararStrings($cadena1, $cadena2)
@@ -142,13 +142,14 @@
 
     <?php
     echo "<br>";
-        function eliminarEspacios($texto){
-            $nuevoTexto = trim($texto);
-            return $nuevoTexto;
-        }
-        //ejemplo:
-        $texto = "     Visca    El       Barça ";
-        echo eliminarEspacios($texto);
+    function eliminarEspacios($texto)
+    {
+        $nuevoTexto = trim($texto);
+        return $nuevoTexto;
+    }
+    //ejemplo:
+    $texto = "     Visca    El       Barça ";
+    echo eliminarEspacios($texto);
 
     ?>
 
@@ -156,19 +157,35 @@
 
     <?php
     echo "<br>";
-    function contarOcurrencias($palabra, $texto){
+    function contarOcurrencias($palabra, $texto)
+    {
         $ocurrencias = substr_count($texto, $palabra);
         return $ocurrencias;
     }
     //ejemplo:
     $palabra = "El";
     $texto = "El Barça es el mejor equipo en la historia";
-    echo "La palabra '". $palabra. "' aparece ". contarOcurrencias($palabra, $texto). " veces en el texto.";
+    echo "La palabra '" . $palabra . "' aparece " . contarOcurrencias($palabra, $texto) . " veces en el texto.";
     ?>
 
-    <!-- 9. Dividir una cadena en palabras -->
-     
 
+
+
+    <!-- 9. Dividir una cadena en palabras -->
+
+
+    <?php
+    echo "<br>";
+    function dividirPalabras($texto){
+        $palabras = explode(" ", $texto);
+        return $palabras;
+    }
+    //ejemplo:
+    $textoInicial = "Muse, Artic Monkeys son unos grupos increibles!";
+    $palabras = dividirPalabras($textoInicial);
+    print_r($palabras);
+
+    ?>
 </body>
 
 </html>
