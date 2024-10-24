@@ -186,6 +186,37 @@
     print_r($palabras);
 
     ?>
+
+
+    <?php
+        //Sumar valores de un array--->
+        echo "<br>";
+        function sumarArray($numeros){
+            $sumaTotal=array_sum($numeros);
+            return $sumaTotal;
+        }
+        //ejemplo:
+        $miArray2=[1,2,3,4,5];
+        print_r($miArray2);
+        $resultado2=sumarArray($miArray2);
+        echo "La suma de los valores del array es: ".$resultado2;
+    ?>
+<!-- 2.Ordenar un array alfabeticamente -->
+    <?php
+        echo "<br>";
+        function ordenarArrayAlfabetico($nombres){
+            sort($nombres);
+            return $nombres;
+        }
+        //ejemplo:
+        $miArray3=["Juan","Maria","Pedro","Ana"];
+        print_r($miArray3);
+        $nombresOrdenados=ordenarArrayAlfabetico($miArray3);
+        echo "Los nombres ordenados alfabéticamente son: ";
+        print_r($nombresOrdenados);
+    ?>
+<!--3. Filtrar elementos mayores a un valor  -->
+
 </body>
 
 </html>
