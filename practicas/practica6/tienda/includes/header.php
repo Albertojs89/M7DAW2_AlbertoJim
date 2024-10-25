@@ -4,7 +4,7 @@
     <div class="container-fluid d-flex justify-content-between">
         <!-- Logo -->
         <a class="navbar-brand" href="index.php">
-            <img src="logo-mercadona" alt="logo-mercadona" class="img-fluid" style="height: 50px;">
+            <img src="tienda/data/assets/mercadona.png" alt="tienda/data/assets/mercadona.png" class="img-fluid" style="height: 50px;">
         </a>
 
         <div>
