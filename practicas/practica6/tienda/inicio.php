@@ -38,11 +38,9 @@
                 <div class="col-md-4 position-relative">
                     <label for="validationTooltipUsername" class="form-label">Imagen</label>
                     <div class="input-group has-validation">
-                        <span class="input-group-text" id="validationTooltipUsernamePrepend">Url</span>
-                        <input type="text" class="form-control" name="img" id="validationTooltipUsername" aria-describedby="validationTooltipUsernamePrepend" required>
-                        <div class="invalid-tooltip">
-                            Please choose a unique and valid username.
-                        </div>
+                        <span class="input-group-text">Url</span>
+                        <input type="text" class="form-control" name="img" required>
+                       
                     </div>
                 </div>
 

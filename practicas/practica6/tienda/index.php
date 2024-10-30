@@ -22,12 +22,18 @@
     $urlImg=$_POST['img'];
 
     include 'includes/header.php';
+   
+    include 'includes/funciones.php';
+    include 'data/productos.php'; // Array de productos en 'data/products.php'
     ?>
 
     <div class="container">
         <div>
             <h2>Productos disponibles</h2>
             <!-- aquí va la tabla de productos -->
+             <?php
+                generarTablaProductos($productos);
+             ?>
         </div>
 
         <!-- aquí incluye los datos de contacto del cliente con un toast live -->
@@ -46,11 +52,17 @@
                     </div>
                     <div class="modal-body">
                         <!-- AQUI VA LA INFORMACIÓN DE CONTACTO -->
+                         <?php
+                         
+                            muestraInfoContacto($nombre, $telf, $urlImg);
+                         ?>
                     </div>
                 </div>
             </div>
         </div>
-
+<!-- ----------------------------------------------------------------- -->
+ 
+      
         <!-- Modal con la lista de productos que están disponibles -->
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <!-- AQUI LA LISTA DE PRODUCTOS -->
@@ -63,6 +75,8 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 </body>
-
+<?php
+     include 'includes/footer.php';
+?>
 
 </html>
