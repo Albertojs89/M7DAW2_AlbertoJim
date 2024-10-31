@@ -11,13 +11,17 @@
 function generarTablaProductos($productos)
 {
     echo '<table class="table table-striped table-bordered">';
-    echo '<thead class="thead-light"><tr><th>Producto</th><th>Precio</th><th>ID</th></tr></thead>';
+    echo '<thead class="thead-light"><tr><th>Producto</th><th>Precio</th><th>Disponibilidad</th></tr></thead>';
     echo '<tbody>';
     foreach ($productos as $producto) {
         echo '<tr>';
+        if($producto['disponibilidad'] == false){
+            echo '<tr class="table-danger">';
+        }
         echo '<td>' . ucfirst($producto['nombre']) . '</td>';
         echo '<td>' . $producto['precio'] . '</td>';
-        echo '<td>' . $producto['disponibilidad'] . '</td>';
+        echo '<td>'.($producto['disponibilidad']? 'Disponible' : 'No disponible').'</td>';
+        //ahora vamos hacer que si está no disponible, la fila sea de color rojo
         echo '</tr>';
     }
     echo '</tbody>';
