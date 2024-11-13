@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+ 
 // var_dump($_SESSION['username']);
 // var_dump($_SESSION['dificultat']);
 // var_dump($_SESSION['endevinalles']);
@@ -9,7 +10,10 @@ session_start();
 ?>
 
  <?php 
-
+          //aplicar un contador para el numero de aciertos--> Si es 2 mensaje de felicidades
+          if($_SESSION['numPR']==1){
+            $message='Felicidades! Has completado la dificultad '. $_SESSION['dificultat'];
+          }
           
            // Comprobar si la respuesta es correcta
           if($_POST['answer']==$_SESSION['endevinalles'][$_SESSION['dificultat']][$_SESSION['numPR']]['respuesta']){
@@ -38,7 +42,10 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Habitación 1</title>
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100">
+
+<body>
+  <?  include 'header.php'; ?>
+  <div  class="d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4" style="width: 22rem;">
         <h2 class="card-title text-center">Habitación <?= $_SESSION['numPR']+1; ?></h2>
         <!-- el = es como un echo  -->
@@ -51,5 +58,7 @@ session_start();
         </form>
        <?= $message; ?>
     </div>
+  </div>
+    
 </body>
 </html>

@@ -1,9 +1,12 @@
 <?php 
   session_start();
 
+
+
 $_SESSION['username']=$_POST['username'];
 $_SESSION['dificultat']=$_POST['dificultat'];
 $_SESSION['numPR']=0;
+$_SESSION['img']=$_POST['img'];
 
 //Utilizar el isset para comprobar si username (variable) está declarada
 if(isset($_SESSION['username'])){
@@ -73,6 +76,14 @@ $_SESSION['endevinalles'] = [
                     <option value="mig">Mig</option>
                     <option value="dificil">Difícil</option>
                 </select>
+                <div class="col-md-4 position-relative">
+                    <label for="validationTooltipUsername" class="form-label">Imagen</label>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">Url</span>
+                        <input type="text" class="form-control" name="img" required>
+                       
+                    </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary w-100">Comença el Joc</button>
         </form>
