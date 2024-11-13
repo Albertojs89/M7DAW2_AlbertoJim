@@ -10,7 +10,7 @@ $_SESSION['img']=$_POST['img'];
 
 //Utilizar el isset para comprobar si username (variable) está declarada
 if(isset($_SESSION['username'])){
-    header('Location: room1.php');
+    header('Location: rooms.php');
     exit;
 }
 
