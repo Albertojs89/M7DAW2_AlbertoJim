@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Felicidades</title>
 </head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style>
   h1{
     text-align: center;
@@ -23,18 +22,23 @@
     height: 100vh; /* Asegura que el `body` ocupe toda la altura de la pantalla */
     margin: 0; /* Elimina el margen para que no haya espacio alrededor */
 }
+.btn{
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
 
 </style>
 <body>
 
-<div class="alert alert-success mt-3">
-  <h1>¡Felicidades! ¡Has completado el juego!</h1>
-</div>
-
-
-
-
-
-
+  <div class="container-fluid">
+    <h1>¡Felicidades! ¡Has completado el juego!</h1>
+    
+    <div class="btn">
+      <a href="logout.php"><button type="button" class="btn btn-secondary btn-lg">Volver a jugar</button></a>
+    </div>
+    
+  </div>
+  
 </body>
 </html>
