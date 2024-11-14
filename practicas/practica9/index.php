@@ -39,6 +39,8 @@
     }
     h1{
       margin-top: 200px;
+      font-weight: 200;
+      
     }
   </style>
  </head>

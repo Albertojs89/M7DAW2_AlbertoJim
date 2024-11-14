@@ -11,8 +11,26 @@ $usuarios = [
 $_SESSION['username']=$_POST['username'];
 $_SESSION['pass']=$_POST['pass'];
 $_SESSION['img']=$_POST['img'];
+$_SESSION['role'];
+
+//comprobar con isset si hay algun campo en usuario, si es que si directamente pasa al foreach y recorre la lista
+//Si es que no pasa a sacar el mensaje de error
+if(isset($_SESSION['username'])){
     // Validación de credenciales.
+   //recorrer array con foreach para verficar credenciales
+   foreach ($usuarios as $usuario) {
+       if ($usuario['username'] === $_SESSION['username'] && $usuario['password'] === $_SESSION['pass']) {
+           $_SESSION['role'] = $usuario['role'];
+           header('Location: home.php');
+           exit;
+       }
+       $error='Usuario incorrecto';
+   }
+}
+    
    
+
+
   
 
 ?>
@@ -48,7 +66,7 @@ $_SESSION['img']=$_POST['img'];
                        
                     </div>
                     <div class="inputBox ">
-                        <input class="p-2 m-2 form-control" placeholder="Foto de perfil" type="text" name="img" required>
+                        <input class="p-2 m-2 form-control" placeholder="Foto de perfil" type="text" name="img" value="https://static.wikia.nocookie.net/zelda/images/0/08/Link_%28Phamtom_Hourglass%29.png/revision/latest?cb=20120122192917&path-prefix=es" required>
                        
                     </div>
                     <?php if (!empty($error)) : ?>
@@ -61,6 +79,15 @@ $_SESSION['img']=$_POST['img'];
                 </form>
             </div>
         </div>
+
+        <?php 
+        // echo var_dump($_SESSION['username']=$_POST['username']);
+        // echo var_dump($_SESSION['username']=$_POST['pass']);
+        // echo var_dump($_SESSION['username']=$_POST['img']); 
+
+        
+        
+        ?>
     </section>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
