@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'libreria.php';
 
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 //Utilizar el isset para comprobar si username (variable) está declarada
@@ -8,8 +9,9 @@ if(!isset($_SESSION['username'])){
     exit;
 }
 // Verifica el rol del usuario
-
-// Obtener la lista de libros desde la sesión
+if(!isset($_SESSION['role']));
+ 
+// Obtener la lista de libros desde la sesión con el include
 
 ?>
 
@@ -31,9 +33,14 @@ if(!isset($_SESSION['username'])){
                 <div>
                     <h4 class="m-0">👋 Bienvenido, <?= $_SESSION['username']?></h4>
                     <!-- SI ES ADMIN.... -->
-                        <p class="text-muted m-0"><i class="fas fa-user-shield text-success"></i> <?= $_SESSION['role']?> ✏️</p>
-                   <!-- SINO.... -->
-                        <p class="text-muted m-0">Lector 📚</p>
+                     <?php if($_SESSION['role']==='admin'){
+                        echo ' <p class="text-muted m-0"><i class="fas fa-user-shield text-success"></i> Admin ✏️</p>';
+                      }else{
+                        echo '<p class="text-muted m-0">Lector 📚</p>';
+                      }
+                       
+                      ?>
+                        
                    
                 </div>
             </div>

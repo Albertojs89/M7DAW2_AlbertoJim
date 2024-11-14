@@ -37,16 +37,25 @@
     .container:hover .image {
       transform: scale(1.2);
     }
+    .titulo{
+      margin-left: 100px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 50px;
+    }
     h1{
       margin-top: 200px;
       font-weight: 200;
+      color: red;
       
     }
   </style>
  </head>
  
  <body>
-  <div>
+  <div class="titulo">
     <h1>Bienvenido a bookmarket</h1>
    </div> 
   <div class="container">
