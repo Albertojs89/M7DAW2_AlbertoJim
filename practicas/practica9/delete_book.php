@@ -1,0 +1,1 @@
+<!-- Script para eliminar un libro -->

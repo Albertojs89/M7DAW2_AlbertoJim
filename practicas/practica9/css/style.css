@@ -1,0 +1,15 @@
+ body{
+      font-family: "Poppins", sans-serif !important;
+      align-items: center;
+      text-align: center;
+      color:brown;
+      background: rgb(191,176,90);
+      background: linear-gradient(90deg, rgba(191,176,90,1) 0%, rgba(247,237,144,1) 21%, rgba(231,238,213,1) 48%);
+    }
+
+    .form-control{
+      width: 300px;
+      align-items: center;
+      display: inline-block;
+      border: saddlebrown 1px solid;
+    }
