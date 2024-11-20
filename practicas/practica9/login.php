@@ -12,6 +12,7 @@ $_SESSION['username']=$_POST['username'];
 $_SESSION['pass']=$_POST['pass'];
 $_SESSION['img']=$_POST['img'];
 $_SESSION['role'];
+$_SESSION['id'];
 
 //comprobar con isset si hay algun campo en usuario, si es que si directamente pasa al foreach y recorre la lista
 //Si es que no pasa a sacar el mensaje de error
