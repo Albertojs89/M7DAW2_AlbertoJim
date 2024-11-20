@@ -66,15 +66,18 @@ if(!isset($_SESSION['role']));
         
 
         <!-- Mostrar lista de libros en un grid de tarjetas con tamaño uniforme -->
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <?php
+        foreach ($_SESSION['libreria'] as $libro) {
+            echo '
+                <div class="container-fluid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             
                 <div class="col">
                     <div class="card h-100 shadow-sm">
-                        <img src="" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
+                        <img src="'.$libro['Imagen'].'" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">TITULO</h5>
-                            <p class="card-text"><strong>Autor:</strong> AUTOR</p>
-                            <p class="card-text">DESCRIPCIÓN</p>
+                            <h5 class="card-title">'.$libro['Titulo'].'</h5>
+                            <p class="card-text"><strong>'.$libro['Autor'].'</strong> AUTOR</p>
+                            <p class="card-text">'.$libro['Descripcion'].'</p>
                         </div>
                       
                         <!-- Botones de editar y eliminar (solo visible para el admin) -->
@@ -90,7 +93,11 @@ if(!isset($_SESSION['role']));
                     </div>
                 </div>
            
-        </div>
+                </div>
+            
+            ';
+        }
+        ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
