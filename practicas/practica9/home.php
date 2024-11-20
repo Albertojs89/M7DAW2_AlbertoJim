@@ -69,27 +69,27 @@ if(!isset($_SESSION['role']));
         <?php
         foreach ($_SESSION['libreria'] as $libro) {
             echo '
-                <div class="container-fluid row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <div class="container-fluid d-flex flex-wrap row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             
-                <div class="col">
-                    <div class="card h-100 shadow-sm">
-                        <img src="'.$libro['Imagen'].'" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">'.$libro['Titulo'].'</h5>
-                            <p class="card-text"><strong>'.$libro['Autor'].'</strong> AUTOR</p>
-                            <p class="card-text">'.$libro['Descripcion'].'</p>
-                        </div>
-                      
-                        <!-- Botones de editar y eliminar (solo visible para el admin) -->
-                            <div class="card-footer d-flex justify-content-between">
-                                <a href="" class="btn btn-outline-primary btn-sm">
-                                    <i class="fas fa-edit"></i> Editar
-                                </a>
-                                <a href="" class="btn btn-outline-danger btn-sm">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </a>
+                    <div class="col">
+                        <div class="card h-100 shadow-sm">
+                            <img src="'.$libro['Imagen'].'" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
+                            <div class="card-body">
+                                <h5 class="card-title">'.$libro['Titulo'].'</h5>
+                                <p class="card-text"><strong>'.$libro['Autor'].'</strong> AUTOR</p>
+                                <p class="card-text">'.$libro['Descripcion'].'</p>
                             </div>
-                      
+                        
+                            <!-- Botones de editar y eliminar (solo visible para el admin) -->
+                                <div class="card-footer d-flex justify-content-between">
+                                    <a href="" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <a href="" class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i> Eliminar
+                                    </a>
+                                </div>
+                        
                     </div>
                 </div>
            
