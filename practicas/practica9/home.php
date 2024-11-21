@@ -14,7 +14,7 @@ if (!isset($_SESSION['role'])) {
     exit;
 }
 
-
+// $_SESSION['libreria']['id']=$id;
 
 ?>
 
@@ -63,6 +63,7 @@ if (!isset($_SESSION['role'])) {
             
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <?php foreach ($_SESSION['libreria'] as $libro): ?>
+                
                 <div class="col">
                     <div class="card h-100 shadow-sm">
                         <img src="<?= $libro['Imagen'] ?>" class="card-img-top" alt="" style="height: 400px; object-fit: cover;">
@@ -73,10 +74,10 @@ if (!isset($_SESSION['role'])) {
                         </div>
                         <?php if ($_SESSION['role'] === 'admin'): ?>
                             <div class="card-footer d-flex justify-content-between">
-                                <a href="add_edit_book.php?id=1&titulo=<?= urlencode($libro['Titulo']) ?>" class="btn btn-outline-primary btn-sm">
+                                <a href="add_edit_book.php?id=<?=$libro['id']?>" class="btn btn-outline-primary btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a href="add_edit_book.php?$_SESSION['id']=2" class="btn btn-outline-danger btn-sm">
+                                <a href="add_edit_book.php?id" class="btn btn-outline-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </a>
                                 

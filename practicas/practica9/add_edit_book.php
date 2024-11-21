@@ -1,13 +1,16 @@
 <?php
 session_start();
 include 'libreria.php';
-
+include 'functions.php';
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (($_SESSION['username']!='admin')) {
     header('Location: home.php');
     exit;
 }
-   $titulo=$_GET['titulo'];     
+   
+   $id=$_GET['id'];
+//    echo $id;
+        
 ?>
 
 <!-- AQUI VA LA LÓGICA PHP  -->
@@ -32,19 +35,57 @@ if (($_SESSION['username']!='admin')) {
             </a>
         </div>
     </header>
-
+    <? if(isset($id)):?>
     <div class="container">
         <div class="text-center mb-5">
             <h2 class="fw-bold"></h2>
             <p class="lead"></p>
         </div>
 
-        <!-- Formulario para agregar o editar libro. DEPENDIENDO DE SI SE AÑADE O SE EDITA CAMBIARÁN COSA DEL FORMULARIO, USA TERNARIOS SON MUY ÚTILES-->
-         
+        <!-- Formulario para agregar o editar libro. DEPENDIENDO DE SI SE AÑADE O SE EDITA CAMBIARÁN COSA DEL FORMULARIO, USA TERNARIOS SON MUY ÚTILES
+        id hace de indice o contador para seleccionar los elementos de la array 
+        -->
+        
+        <form method="POST" class="mx-auto" style="max-width: 600px;">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $_SESSION['libreria'][$id]['Titulo'] ?>" placeholder="Título" required>
+                <label for="titulo"><?= $_SESSION['libreria'][$id]['titulo'] ?></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="autor" name="autor" value="<?=$_SESSION['libreria'][$id]['Autor']?>" placeholder="Autor" required>
+                <label for="autor"><?=$_SESSION['libreria'][$id]['autor']?></label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="imagen" name="imagen" value="<?=$_SESSION['libreria'][$id]['Imagen']?>" placeholder="URL de la Imagen">
+                <label for="imagen"></label>
+            </div>
+            <div class="form-floating mb-4">
+                <textarea class="form-control" id="descripcion" name="descripcion"  placeholder="Descripción" style="height: 150px;"><?=$_SESSION['libreria'][$id]['Descripcion']?></textarea>
+                <label for="descripcion"></label>
+            </div>
+            
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Editar</button>
+            </div>
+        </form>
+        
+    </div>
+    <? endif; ?>
+    <? if(!isset($id)):?>
+            <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold"></h2>
+            <p class="lead"></p>
+        </div>
+
+        <!-- Formulario para agregar o editar libro. DEPENDIENDO DE SI SE AÑADE O SE EDITA CAMBIARÁN COSA DEL FORMULARIO, USA TERNARIOS SON MUY ÚTILES
+        id hace de indice o contador para seleccionar los elementos de la array 
+        -->
+        
         <form method="POST" class="mx-auto" style="max-width: 600px;">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="titulo" name="titulo" value="" placeholder="Título" required>
-                <label for="titulo"><?= $titulo ?></label>
+                <label for="titulo">Titulo</label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="autor" name="autor" value="" placeholder="Autor" required>
@@ -52,20 +93,23 @@ if (($_SESSION['username']!='admin')) {
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="imagen" name="imagen" value="" placeholder="URL de la Imagen">
-                <label for="imagen">URL de la Imagen</label>
+                <label for="imagen">url Imagen</label>
             </div>
             <div class="form-floating mb-4">
-                <textarea class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" style="height: 150px;"><?= $descripcion ?></textarea>
-                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" name="descripcion"  placeholder="Descripción" style="height: 150px;"></textarea>
+                <label for="descripcion">Descripcion</label>
             </div>
             
             <div class="d-grid">
                 <button type="submit" class="btn btn-primary btn-lg">Agregar</button>
             </div>
+            
         </form>
+       
+
         
     </div>
-    
+    <? endif; ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </body>
