@@ -14,7 +14,11 @@ if (!isset($_SESSION['role'])) {
     exit;
 }
 
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -69,10 +73,10 @@ if (!isset($_SESSION['role'])) {
                         </div>
                         <?php if ($_SESSION['role'] === 'admin'): ?>
                             <div class="card-footer d-flex justify-content-between">
-                                <a href="add_edit_book.php?id=$_SESSION['id']" class="btn btn-outline-primary btn-sm">
+                                <a href="add_edit_book.php?id=1&titulo=<?= urlencode($libro['Titulo']) ?>" class="btn btn-outline-primary btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a href="" class="btn btn-outline-danger btn-sm">
+                                <a href="add_edit_book.php?$_SESSION['id']=2" class="btn btn-outline-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </a>
                                 
