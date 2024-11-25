@@ -2,8 +2,6 @@
 session_start();
 include 'libreria.php';
 include 'functions.php';
-
-
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
