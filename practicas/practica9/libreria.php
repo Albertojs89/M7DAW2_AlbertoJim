@@ -47,7 +47,7 @@ $_SESSION['libreria'] = [
         "Descripcion" => "Una novela de ciencia ficción que narra la misión de un astronauta solitario en una misión desesperada para salvar a la humanidad.",
         "Imagen" => "https://imagessl6.casadellibro.com/a/l/s5/16/9788418037016.webp",
         "id"=>"5"
-        
+        ,
     ]
 ];
 ?>

@@ -10,22 +10,24 @@ if (($_SESSION['username']!='admin')) {
    
    $id=$_GET['id'];
 //    echo $id;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recoger datos del formulario
     $titulo = $_POST['titulo'];
     $autor = $_POST['autor'];
     $imagen = $_POST['imagen'];
     $descripcion = $_POST['descripcion'];
 
-    // Agregar el libro a la sesión
+    
     agregarLibro($titulo, $autor, $imagen, $descripcion);
-
-    //Redirigir a la página principal
+    
+    // Redirige a home
     header('Location: home.php');
     exit;
 }
+
 //Aquí si ha guardado $nuevoLibro en la array Libreria
-// print_r($_SESSION['libreria'])
+ print_r($_SESSION['libreria'])
+ 
 
 
 ?>
@@ -99,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         id hace de indice o contador para seleccionar los elementos de la array 
         -->
         
-        <form method="POST" class="mx-auto" style="max-width: 600px;">
+        <form method="POST" action="add_edit_book.php" class="mx-auto" style="max-width: 600px;">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="titulo" name="titulo" value="" placeholder="Título" required>
                 <label for="titulo">Titulo</label>

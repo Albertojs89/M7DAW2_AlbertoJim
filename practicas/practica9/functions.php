@@ -2,8 +2,8 @@
 session_start();
 include 'libreria.php';
 function editarLibro($id, $titulo, $autor, $imagen, $descripcion) {
-    if (isset($_SESSION['libros'][$id])) {
-        $_SESSION['libros'][$id] = ["titulo" => $titulo, "autor" => $autor, "imagen" => $imagen, "descripcion" => $descripcion];
+    if (isset($_SESSION['libreria'][$id])) {
+        $_SESSION['libreria'][$id] = ["titulo" => $titulo, "autor" => $autor, "imagen" => $imagen, "descripcion" => $descripcion];
 
 
     }
@@ -17,11 +17,11 @@ function editarLibro($id, $titulo, $autor, $imagen, $descripcion) {
 
   function agregarLibro($titulo, $autor, $imagen, $descripcion) {
     $nuevoLibro = [
-        "id" => count($_SESSION['libreria']),
         "titulo" => $titulo,
         "autor" => $autor,
         "imagen" => $imagen,
-        "descripcion" => $descripcion
+        "descripcion" => $descripcion,
+        "id" => count($_SESSION['libreria'])
     ];
     $_SESSION['libreria'][] = $nuevoLibro;
 }
