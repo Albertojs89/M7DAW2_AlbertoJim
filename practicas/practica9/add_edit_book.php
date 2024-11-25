@@ -10,7 +10,23 @@ if (($_SESSION['username']!='admin')) {
    
    $id=$_GET['id'];
 //    echo $id;
-        
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recoger datos del formulario
+    $titulo = $_POST['titulo'];
+    $autor = $_POST['autor'];
+    $imagen = $_POST['imagen'];
+    $descripcion = $_POST['descripcion'];
+
+    // Agregar el libro a la sesión
+    agregarLibro($titulo, $autor, $imagen, $descripcion);
+
+    //Redirigir a la página principal
+    header('Location: home.php');
+    exit;
+}
+
+
+
 ?>
 
 <!-- AQUI VA LA LÓGICA PHP  -->
@@ -105,6 +121,7 @@ if (($_SESSION['username']!='admin')) {
             </div>
             
         </form>
+        
        
 
         

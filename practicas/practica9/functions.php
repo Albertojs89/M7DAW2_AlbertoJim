@@ -16,9 +16,15 @@ function editarLibro($id, $titulo, $autor, $imagen, $descripcion) {
   }
 
   function agregarLibro($titulo, $autor, $imagen, $descripcion) {
-    $nuevoLibro = ["titulo" => $titulo, "autor" => $autor, "imagen" => $imagen, "descripcion" => $descripcion];
-    $_SESSION['libreria'][count($_SESSION['libreria'])] = $nuevoLibro;
-  }
+    $nuevoLibro = [
+        "id" => count($_SESSION['libreria']),
+        "titulo" => $titulo,
+        "autor" => $autor,
+        "imagen" => $imagen,
+        "descripcion" => $descripcion
+    ];
+    $_SESSION['libreria'][] = $nuevoLibro;
+}
 
   
 

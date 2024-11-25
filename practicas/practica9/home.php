@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'libreria.php';
+include 'functions.php';
 
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (!isset($_SESSION['username'])) {
@@ -14,7 +15,9 @@ if (!isset($_SESSION['role'])) {
     exit;
 }
 
-// $_SESSION['libreria']['id']=$id;
+// comprobar si se añade el nuevo libro
+
+print_r($_SESSION['libreria']);
 
 ?>
 
