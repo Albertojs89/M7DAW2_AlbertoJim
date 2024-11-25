@@ -24,7 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: home.php');
     exit;
 }
-
+//Aquí si ha guardado $nuevoLibro en la array Libreria
+// print_r($_SESSION['libreria'])
 
 
 ?>

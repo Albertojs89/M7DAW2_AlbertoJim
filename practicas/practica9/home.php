@@ -3,6 +3,7 @@ session_start();
 include 'libreria.php';
 include 'functions.php';
 
+
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (!isset($_SESSION['username'])) {
     header('Location: login.php');
@@ -17,7 +18,8 @@ if (!isset($_SESSION['role'])) {
 
 // comprobar si se añade el nuevo libro
 
-print_r($_SESSION['libreria']);
+print_r($_SESSION['libreria']); 
+
 
 ?>
 
@@ -91,7 +93,17 @@ print_r($_SESSION['libreria']);
             <?php endforeach; ?>
         </div>
     </div>
+<?php 
+foreach($_SESSION['libreria'] as $item){
+    //recorrer y ver la array
+    echo '<h2>'. $item['Titulo'].'</h2>';
+    echo '<p>'. $item['Autor'].'</p>';
+    echo '<p>'. $item['Descripcion'].'</p>';
+    echo '<p>'. $item['Imagen'].'</p>';
+    echo '<hr>';  //agregamos un separador entre cada libro
+}
 
+?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
