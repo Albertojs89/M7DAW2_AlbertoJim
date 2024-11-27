@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(!isset($_SESSION['libreria'])){
 $_SESSION['libreria'] = [
     [
         "Titulo" => "El Ritmo de la Guerra",
@@ -50,4 +51,5 @@ $_SESSION['libreria'] = [
         ,
     ]
 ];
+}
 ?>

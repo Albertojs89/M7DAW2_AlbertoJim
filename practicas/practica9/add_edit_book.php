@@ -1,6 +1,6 @@
 <?php
 session_start();
-// include 'libreria.php';
+include 'libreria.php';
 include 'functions.php';
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (($_SESSION['username']!='admin')) {
@@ -9,35 +9,26 @@ if (($_SESSION['username']!='admin')) {
 }
    
 $id=$_GET['id'];
-echo ($id);   
-//Comprobar si tiene id y llamar a la funcion de editar:
-//recorrer la array libreria y comparar si la session libreria id es igual a id:  
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($id)) {
-        // Editar libro
+   
+  
+if (isset($_GET['id'])) {
+    if (isset($_POST['titulo'],$_POST['autor'],$_POST['imagen'],$_POST['descripcion'])) {
+    
         $titulo = $_POST['titulo'];
         $autor = $_POST['autor'];
         $imagen = $_POST['imagen'];
         $descripcion = $_POST['descripcion'];
 
-        foreach($_SESSION['libreria'] as $libro) {
-            if ($libro['id'] === $id) {
-                $_SESSION['libreria'][$libro] = [
-                    // 'id' => $id,
-                    'titulo' => $titulo,
-                    'autor' => $autor,
-                    'imagen' => $imagen,
-                    'descripcion' => $descripcion
-                ];
-                editarLibro($id, $titulo, $autor, $imagen, $descripcion);
-                break;
-            }
-        }
-        // Redirige a home
+        
+            
+        editarLibro($id, $titulo, $autor, $imagen, $descripcion);
+                
+        
         header('Location: home.php');
         exit();
-    } else {
-        // Agregar libro
+    } 
+}else {
+    if (isset($_POST['titulo'],$_POST['autor'],$_POST['imagen'],$_POST['descripcion'])) { 
         $titulo = $_POST['titulo'];
         $autor = $_POST['autor'];
         $imagen = $_POST['imagen'];
@@ -45,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         agregarLibro($titulo, $autor, $imagen, $descripcion);
 
-        // Redirige a home
+        
         header('Location: home.php');
         exit();
     }
@@ -89,11 +80,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" class="mx-auto" style="max-width: 600px;">
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="titulo" name="titulo" value="<?= $_SESSION['libreria'][$id]['Titulo'] ?>" placeholder="Título" required>
-                <label for="titulo"><?= $_SESSION['libreria'][$id]['titulo'] ?></label>
+                <label for="titulo">?></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="autor" name="autor" value="<?=$_SESSION['libreria'][$id]['Autor']?>" placeholder="Autor" required>
-                <label for="autor"><?=$_SESSION['libreria'][$id]['autor']?></label>
+                <label for="autor"></label>
             </div>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="imagen" name="imagen" value="<?=$_SESSION['libreria'][$id]['Imagen']?>" placeholder="URL de la Imagen">

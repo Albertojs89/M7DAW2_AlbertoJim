@@ -1,6 +1,6 @@
 <?php
 session_start();
-// include 'libreria.php';
+include 'libreria.php';
 include 'functions.php';
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (!isset($_SESSION['username'])) {
@@ -86,7 +86,7 @@ print_r($_SESSION['libreria']);
                                 <a href="add_edit_book.php?id=<?=$libro['id']?>" class="btn btn-outline-primary btn-sm">
                                     <i class="fas fa-edit"></i> Editar
                                 </a>
-                                <a href="add_edit_book.php?id" class="btn btn-outline-danger btn-sm">
+                                <a href="delete_book.php?id=<?=$libro['id']?>" class="btn btn-outline-danger btn-sm">
                                     <i class="fas fa-trash-alt"></i> Eliminar
                                 </a>
                                 
