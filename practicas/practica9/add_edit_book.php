@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'libreria.php';
+// include 'libreria.php';
 include 'functions.php';
 // Verifica si el usuario ha iniciado sesión; si no, redirige a login.php.
 if (($_SESSION['username']!='admin')) {
@@ -9,7 +9,7 @@ if (($_SESSION['username']!='admin')) {
 }
    
    $id=$_GET['id'];
-//    echo $id;
+   
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = $_POST['titulo'];
@@ -22,11 +22,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Redirige a home
     header('Location: home.php');
-    exit;
+    exit();
+
+//Comprobar si tiene id y llamar a la funcion de editar:
+//recorrer la array libreria y comparar si la session libreria id es igual a id:  
+
+}else if(isset($id)){
+    foreach($_SESSION['libreria'] as $libro){
+        if($libro['id'] == $id){
+             editarLibro($id, $titulo, $autor, $imagen, $descripcion);
+             header('location:Home.php');
+             exit();
+        }
+   }
 }
 
-//Aquí si ha guardado $nuevoLibro en la array Libreria
- print_r($_SESSION['libreria'])
+
+
+
+
  
 
 
