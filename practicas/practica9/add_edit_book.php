@@ -8,57 +8,49 @@ if (($_SESSION['username']!='admin')) {
     exit;
 }
    
-   $id=$_GET['id'];
-   
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
-    $imagen = $_POST['imagen'];
-    $descripcion = $_POST['descripcion'];
-
-    
-    agregarLibro($titulo, $autor, $imagen, $descripcion);
-    
-    // Redirige a home
-    header('Location: home.php');
-    exit();  
-
-}
-   
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = $_POST['titulo'];
-    $autor = $_POST['autor'];
-    $imagen = $_POST['imagen'];
-    $descripcion = $_POST['descripcion'];
-    if(isset($id)){
-        foreach($_SESSION['libreria'] as $libro){
-                if($libro['id'] === $id){
-                    editarLibro($id, $titulo, $autor, $imagen, $descripcion);
-                    header('location:Home.php');
-                    exit();
-                    }
-            }
-    
-    
-    // Redirige a home
-    header('Location: home.php');
-    exit();
-    }
-      
-
+$id=$_GET['id'];
+echo ($id);   
 //Comprobar si tiene id y llamar a la funcion de editar:
 //recorrer la array libreria y comparar si la session libreria id es igual a id:  
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($id)) {
+        // Editar libro
+        $titulo = $_POST['titulo'];
+        $autor = $_POST['autor'];
+        $imagen = $_POST['imagen'];
+        $descripcion = $_POST['descripcion'];
 
+        foreach($_SESSION['libreria'] as $libro) {
+            if ($libro['id'] === $id) {
+                $_SESSION['libreria'][$libro] = [
+                    // 'id' => $id,
+                    'titulo' => $titulo,
+                    'autor' => $autor,
+                    'imagen' => $imagen,
+                    'descripcion' => $descripcion
+                ];
+                editarLibro($id, $titulo, $autor, $imagen, $descripcion);
+                break;
+            }
+        }
+        // Redirige a home
+        header('Location: home.php');
+        exit();
+    } else {
+        // Agregar libro
+        $titulo = $_POST['titulo'];
+        $autor = $_POST['autor'];
+        $imagen = $_POST['imagen'];
+        $descripcion = $_POST['descripcion'];
+
+        agregarLibro($titulo, $autor, $imagen, $descripcion);
+
+        // Redirige a home
+        header('Location: home.php');
+        exit();
+    }
 }
-
-
-
-
-
- 
-
-
+      
 ?>
 
 <!-- AQUI VA LA LÓGICA PHP  -->
