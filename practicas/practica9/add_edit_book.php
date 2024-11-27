@@ -22,19 +22,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Redirige a home
     header('Location: home.php');
+    exit();  
+
+}
+   
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $titulo = $_POST['titulo'];
+    $autor = $_POST['autor'];
+    $imagen = $_POST['imagen'];
+    $descripcion = $_POST['descripcion'];
+    if(isset($id)){
+        foreach($_SESSION['libreria'] as $libro){
+                if($libro['id'] === $id){
+                    editarLibro($id, $titulo, $autor, $imagen, $descripcion);
+                    header('location:Home.php');
+                    exit();
+                    }
+            }
+    
+    
+    // Redirige a home
+    header('Location: home.php');
     exit();
+    }
+      
 
 //Comprobar si tiene id y llamar a la funcion de editar:
 //recorrer la array libreria y comparar si la session libreria id es igual a id:  
 
-}else if(isset($id)){
-    foreach($_SESSION['libreria'] as $libro){
-        if($libro['id'] == $id){
-             editarLibro($id, $titulo, $autor, $imagen, $descripcion);
-             header('location:Home.php');
-             exit();
-        }
-   }
 }
 
 
