@@ -9,10 +9,16 @@ function editarLibro($id, $titulo, $autor, $imagen, $descripcion) {
   
 
   function eliminarLibro($id) {
-    if (isset($_SESSION['libreria'][$id])) {
-    array_splice($_SESSION['libreria'],$id,1);
+    // Eliminar el elemento del array
+    array_splice($_SESSION['libreria'], $id, 1);
+    $i=0;
+    foreach ($_SESSION['libreria'] as $libro) {
+        $libro['id'] = $i;
+        $_SESSION['libreria'][$i] = $libro;
+        $i++;
     }
-  }
+    
+}
 
   function agregarLibro($titulo, $autor, $imagen, $descripcion) {
     $libro = [
