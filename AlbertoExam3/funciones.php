@@ -11,6 +11,13 @@ function agregarJuego($nombre, $precio, $descripcion) {
     $_SESSION['productos'][] = $juego;
 }
 
+//oopcion con arraypush
+array_push(
+    $_SESSION['productos'],
+    ['nombre'=>$nombre, 'precio'=>$precio, 'descripcion'=>$descripcion]
+
+);
+
 function eliminarJuego($id) {
     // Eliminar el elemento del array
     array_splice($_SESSION['productos'], $id, 1);
