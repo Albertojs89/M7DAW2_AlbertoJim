@@ -7,7 +7,7 @@ include 'data.php';
 if (!isset($_SESSION['arrayPreguntas'])) {
     $_SESSION['arrayPreguntas'] = [];
 }
-print_r($_SESSION['arrayPreguntas']); 
+
 
 ?>
 
@@ -25,8 +25,8 @@ print_r($_SESSION['arrayPreguntas']);
     <div style="border: 2px solid grey;">
       <p><?php foreach ($_SESSION['arrayPreguntas'] as $pregunta): ?></p>
          <div style="display: flex;">
-          <?="esta es: ",$pregunta['id']?>
-            <a href="add_edit_question.php?id=<?=$pregunta['id']?>&action=add"><button>Añadir nueva pregunta</button></a>
+          
+            <a href="add_edit_question.php?>&action=add"><button>Añadir nueva pregunta</button></a>
             <a href="add_edit_question.php?id=<?=$pregunta['id']?>&action=edit"><button id="edit_question_<?=$pregunta['id']?>">Editar pregunta</button></a>
             <a href="delete_question.php?id=<?=$pregunta['id']?>"><button id="delete_question_<?=$pregunta['id']?>">Eliminar pregunta</button></a>
         </div>

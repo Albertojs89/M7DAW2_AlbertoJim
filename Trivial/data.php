@@ -1,6 +1,22 @@
 <?
 session_start();
 
+//FUNCION DELE----------------------------------------------------------------
+  function eliminarPregunta($id) {
+    // Eliminar el elemento del array
+    array_splice($_SESSION['arrayPreguntas'], $id, 1);
+    $i=0;
+    foreach ($_SESSION['arrayPreguntas'] as $pregunta) {
+        $pregunta['id'] = $i;
+        $_SESSION['arrayPreguntas'][$i] = $pregunta;
+        $i++;
+    }
+    
+}
+
+
+
+
 
 if(!isset($_SESSION['arrayPreguntas'])){
 $_SESSION['arrayPreguntas'] = [
