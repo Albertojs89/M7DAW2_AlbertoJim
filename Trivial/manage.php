@@ -2,6 +2,13 @@
 session_start();
 include 'header.php';
 include 'data.php';
+
+//iniciar la array]
+if (!isset($_SESSION['arrayPreguntas'])) {
+    $_SESSION['arrayPreguntas'] = [];
+}
+print_r($_SESSION['arrayPreguntas']); 
+
 ?>
 
 
@@ -14,18 +21,19 @@ include 'data.php';
 </head>
 <body>
   <section>
-      <h2>Trivial Game</h2>
+      <h2>Configuración del Juego</h2>
     <div style="border: 2px solid grey;">
       <p><?php foreach ($_SESSION['arrayPreguntas'] as $pregunta): ?></p>
          <div style="display: flex;">
-          <a href="add_edit_question.php"><button>Añadir nueva pregunta</button></a>
-          <a href="add_edit_question."><button>Editar pregunta</button></a>
-          <a href="delete_question.php"><button>Eliminar pregunta</button></a>
+          <?="esta es: ",$pregunta['id']?>
+            <a href="add_edit_question.php?id=<?=$pregunta['id']?>&action=add"><button>Añadir nueva pregunta</button></a>
+            <a href="add_edit_question.php?id=<?=$pregunta['id']?>&action=edit"><button id="edit_question_<?=$pregunta['id']?>">Editar pregunta</button></a>
+            <a href="delete_question.php?id=<?=$pregunta['id']?>"><button id="delete_question_<?=$pregunta['id']?>">Eliminar pregunta</button></a>
         </div>
         <h2><?=$pregunta['pregunta']?></h2>
         <div class="d-flex">
-          <button type="submit" class="btn btn-success w-100"><?=$pregunta['respuestas'][0]?></button>
-          <button type="submit" class="btn btn-success w-100"><?=$pregunta['respuestas'][1]?></button>
+          <p><?=$pregunta['respuestas'][0]?></p>
+          <p><?=$pregunta['respuestas'][1]?></p>
           <h3>Respuesta correcta</h3>
           <p><?=$pregunta['correcta']?></p>
         </div>
