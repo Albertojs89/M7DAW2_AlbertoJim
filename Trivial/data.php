@@ -2,7 +2,7 @@
 session_start();
 
 
-if(!isset($_SESSION['libreria'])){
+if(!isset($_SESSION['arrayPreguntas'])){
 $_SESSION['arrayPreguntas'] = [
     [
         "pregunta" => "¿Cuál es la capital de Francia?",

@@ -31,7 +31,7 @@ if(isset($_SESSION['username'])){
         
     </div>
     <div class="inputBox ">
-        <input class="p-2 m-2 form-control" placeholder="Rol" type="password" name="rol" required>
+        <input class="p-2 m-2 form-control" placeholder="Rol" type="text" name="rol" required>
     </div>
     <div class="inputBox">
      <a href="index.php"> <input class="bg-warning btn mt-2" type="submit" value="Iniciar"></a>

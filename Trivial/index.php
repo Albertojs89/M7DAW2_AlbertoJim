@@ -27,8 +27,20 @@ require_once('header.php');
   <main>
     <h2>Trivial Game</h2>
     <div>
-      <a href="trivial.php">Comenzar!</a>
+      <?php if ($_SESSION['role'] === 'admin'): ?>
+        <a href="manage.php">Comenzar!</a>
+        <?php else: ?>
+        <a href="trivial.php">Comenzar!</a>
+        <?php endif; ?>
+      
+      
     </div>
   </main>
+
+  <footer>
+    <div>
+      <a href="logout.php"><button>Cerrar Sesión</button></a>
+    </div>
+  </footer>
 </body>
 </html>
