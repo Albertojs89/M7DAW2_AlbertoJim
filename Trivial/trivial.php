@@ -52,7 +52,8 @@ if (isset($_POST['respuesta'])) {
 
 <footer>
     <div>
-      <a href="logout.php"><button>Cerrar Sesión</button></a>
-    </div>
+    <a href="logout.php"><button>Cerrar sesión</button></a>
+    <a href="index.php"><button>Inicio</button></a>
+</div>
   </footer>
 </html>

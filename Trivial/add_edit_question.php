@@ -95,4 +95,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
 </body>
+
+
+<div>
+    <a href="logout.php"><button>Cerrar sesión</button></a>
+    <a href="index.php"><button>Inicio</button></a>
+</div>
 </html>
