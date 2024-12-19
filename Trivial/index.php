@@ -17,9 +17,9 @@ require_once('header.php');
   <!-- Header -->
   <header class="text-center my-3 mt-5">
     <?php if ($_SESSION['role'] === 'admin'): ?>
-      <a href="manage.php" class="btn btn-dark tuerca">⚙️</a>
+      <a href="manage.php" class="btn btn-warning">⚙️</a>
     <?php else: ?>
-      <a href="login.php" class="btn btn-dark tuerca">⚙️</a>
+      <a href="login.php" class="btn btn-dark">⚙️</a>
     <?php endif; ?>
   </header>
 
