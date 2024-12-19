@@ -33,14 +33,29 @@ body{
       transparent 40%
     );
   background-blend-mode: normal, normal, normal, normal, normal, normal;
+
+  font-family: "Sour Gummy", serif!important;
 }
 
 
 #titleInicio{
-  font-size: 50px;
+  font-size: 100px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 30px;
   color: blueviolet;
+  font-family: "Barrio", serif;
+}
+#titleInicio2{
+  font-size: 70px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: blueviolet;
+  font-family: "Barrio", serif;
 }
 
+.btn-config a{
+  font-size: 40px;
+  border-radius: 20px;
+}

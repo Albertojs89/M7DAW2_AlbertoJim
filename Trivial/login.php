@@ -16,15 +16,19 @@ if (isset($_SESSION['username'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barrio&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
-    /* Estilos adicionales para mejorar el diseño */
+    
     .login-container {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh; /* Asegura que el formulario esté centrado verticalmente */
-      background-color: #f4f4f4;
+      
     }
     .form-container {
       background-color: #fff;
@@ -32,7 +36,7 @@ if (isset($_SESSION['username'])) {
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       width: 100%;
-      max-width: 400px; /* Max ancho para el formulario */
+      max-width: 400px; 
     }
     .form-title {
       margin-bottom: 20px;
