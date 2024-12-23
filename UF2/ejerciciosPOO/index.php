@@ -24,7 +24,7 @@ echo "<br>";
 
 class Persona{
   public string $nombre;
-  private int $edad;
+  public int $edad;
 
   public function __construct(string $nombre, int $edad) {
   $this->nombre = $nombre;
