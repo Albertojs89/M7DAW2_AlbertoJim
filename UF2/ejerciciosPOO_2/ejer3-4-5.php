@@ -15,4 +15,7 @@ class Persona{
 
 $persona1 = new Persona("Juan", 30);
 echo $persona1->saludar();
+$persona2= new Persona ("Ana",24);
+echo "<br>";
+echo $persona2->saludar();
 ?>
