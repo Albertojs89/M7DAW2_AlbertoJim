@@ -38,4 +38,12 @@ session_start();
     </div>
   </main>
 </body>
+
+<div class="container-fluid">
+  <a href="logout.php">
+    <button class="btn">
+    Cerrar Sesión
+  </button>
+  </a>
+</div>
 </html>

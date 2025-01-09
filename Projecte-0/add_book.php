@@ -1,19 +1,41 @@
 <?php
 session_start();
 include 'classes/Libro.php';
+include 'classes/Biblioteca.php';
+
+$biblioteca = new Biblioteca; 
 
 
-if ($_SERVER["REQUEST_METHOD"]=="POST"){
-  $titol=$_POST["titol"];
-  $autor=$_POST["autor"];
-  $anyPublicacio=$_POST["anyPublicacio"];
-  $foto=$_POST["urlPortada"];
+
+
+if(!isset($_SESSION['biblioteca'])){
+  $_SESSION['biblioteca'] = serialize($biblioteca);
+}
+
+
+// Comprobamos si se ha enviado el formulario
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recibimos los datos del formulario
+    $titol = $_POST['titol'];
+    $autor = $_POST['autor'];
+    $anyPublicacio = $_POST['anyPublicacio'];
+    $foto = $_POST['urlPortada']; 
+
+    
+    //llamar a la funcion añadirLibro:
+    $libro = new Llibre($titol, $autor, $anyPublicacio, $foto);
+    
+    // Añadir libro a la biblioteca
+    $biblioteca->añadirLibro($libro);
+    
+    // var_dump($libro);
+    
 }
 
 
 
-$llibre1=new Llibre("El imperio Final","Brandon Sanderson",2020,"");
-echo $llibre1->descripcio();
+
 
 
 ?>
@@ -66,4 +88,17 @@ echo $llibre1->descripcio();
   
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
+
+<div class="container-fluid">
+  <a href="logout.php">
+    <button class="btn">
+    Cerrar Sesión
+  </button>
+  </a>
+  <a href="principal.php">
+    <button class="btn">
+    Biblioteca
+  </button>
+  </a>
+</div>
 </html>
