@@ -1,6 +1,6 @@
 <?php
 class Baraja {
-    public $conjunto_cartas = []; // Array de todas las cartas
+    public $conjunto_cartas = []; // Array de todas las cartas Tener en cuenta serialize mas adelante!
 
     public function crea_baraja() {
         $index = 0; // Identificador único para las cartas
