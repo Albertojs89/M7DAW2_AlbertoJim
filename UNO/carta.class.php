@@ -15,13 +15,15 @@ class Carta{
 
   //METODOS-----------------------------------------------------
   public function pinta_carta(){
-    //imagen de la carta (yellow etc etc)
+    return "<img src='images/{$this->numero}_{$this->palo}.png' alt='{$this->palo} {$this->numero}' />";
   }
   public function pinta_carta_link(){
     //mostrar la carta como un enlace para interactuar
+     return "<a href='jugar.php?carta={$this->id}'><img src='images/{$this->numero}_{$this->palo}.png' alt='{$this->palo} {$this->numero}' /></a>";
   }
   public function pinta_carta_girada(){
     //Mostrar carta girada cuando esta en la mano del jugador
+    return "<img src='images/carta_girada.png' alt='Carta girada' />";
   }
 }
 
