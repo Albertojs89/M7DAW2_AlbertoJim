@@ -41,6 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "<h1>Error: No se recibieron datos del formulario.</h1>";
 }
+
+ $baraja = new Baraja();
+ $baraja->crea_baraja(); // Generar todas las cartas
+ $baraja->mezcla(); // Barajar las cartas
+
+ echo $baraja->pinta_baraja(); // Mostrar las cartas visualmente
+
+
+  
 ?>
 
 
