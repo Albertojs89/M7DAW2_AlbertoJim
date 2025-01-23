@@ -40,5 +40,10 @@ class Jugador {
       <img src='images/1_red.png' alt='1 red' />
       <img src='images/reverse_blue.png' alt='reverse blue' />
     </div>
+          Ejemplo practico:
+          $text = "Hola";
+          $text .= " Mundo"; // Equivalente a $text = $text . " Mundo";
+          echo $text;
+
   */
 }

@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f3e9; /* Fondo pastel */
+    background-image: url(https://wallpapers.com/images/hd/uno-family-card-game-poster-e1kf9dtuc6imw4xm.jpg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.form-container {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    width: 100%;
+    max-width: 400px;
+}
+.form-title {
+    color: #495057; /* Texto oscuro */
+    text-align: center;
+    margin-bottom: 20px;
+}
+.btn-custom {
+    background-color: #f9a825; /* Amarillo pastel */
+    color: #fff;
+}
+.btn-custom:hover {
+    background-color: #f57f17; /* Amarillo más oscuro */
+}

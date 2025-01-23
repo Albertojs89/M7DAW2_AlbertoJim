@@ -13,6 +13,8 @@ class Carta {
 
     // Método para mostrar la carta como una imagen
     public function pinta_carta() {
+        //lo primero hemos añadido la condicion para las cartas extras con nombre wild:
+        //si palo es wild devuelve la ruta de imagen con el numero.
       if ($this->palo === 'wild') {
         return "<img src='images/{$this->numero}.png' alt='{$this->numero}' />";
     }

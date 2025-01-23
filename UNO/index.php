@@ -1,4 +1,16 @@
 <?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego UNO</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<?php
 require_once 'baraja.class.php';
 require_once 'jugador.class.php';
 
@@ -10,22 +22,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // (int) convierte el valor a un número entero
         $num_jugadores = (int)$_POST['num_jugadores'];
     } else {
-        die("Error: Número de jugadores inválido.");
+        echo "<h1>Error: Número de jugadores inválido.</h1>"; return;
     }
 
     if (isset($_POST['num_cartas']) && is_numeric($_POST['num_cartas'])) {
         $num_cartas = (int)$_POST['num_cartas'];
     } else {
-        die("Error: Número de cartas inválido.");
+        echo "<h1>Error: Número de cartas inválido.</h1>"; return;
     }
 
     // Validar el rango de los datos
     if ($num_jugadores < 1 || $num_jugadores > 5) {
-        die("Error: El número de jugadores debe estar entre 1 y 5.");
+        echo "<h1>Error: El número de jugadores debe estar entre 1 y 5.</h1>"; return;
     }
 
     if ($num_cartas < 1 || $num_cartas > 7) {
-        die("Error: El número de cartas debe estar entre 1 y 7.");
+        echo "<h1>Error: El número de cartas debe estar entre 1 y 7.</h1>"; return;
     }
 
     // Crear y mezclar la baraja
@@ -54,7 +66,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $jugador->mostrar_mano(); // Mostrar las cartas del jugador
     }
 
-} else {
+    // Sacar la primera carta para la mesa
+    $carta_en_mesa = array_shift($baraja->conjunto_cartas);
+
+    // Mostrar la carta inicial sobre la mesa
+    echo "<h2>Carta inicial sobre la mesa:</h2>";
+    echo "<div style='margin-bottom: 20px;'>";
+    echo $carta_en_mesa->pinta_carta(); // Mostrar la carta visualmente
+    echo "</div>";
+
+    // Mostrar el mazo de robo (cartas giradas)
+    $cartas_restantes = count($baraja->conjunto_cartas); // Contar las cartas restantes
+    echo "<h2>Mazo para robar:</h2>";
+    echo "<div style='margin-bottom: 20px;'>";
+    echo "<a href='robar.php' id='mazo-robo' style='text-decoration: none;'>";
+    echo "<img src='images/carta_girada.png' alt='Mazo girado' />";
+    echo "</a>";
+    echo "<p>Cartas restantes: $cartas_restantes</p>";
+    echo "</div>";
+}
+else {
     echo "<h1>Error: No se recibieron datos del formulario.</h1>";
 }
 ?>
+<!-- Botón de cerrar sesión -->
+<div style="margin-top: 20px;">
+    <a href="logout.php" style="text-decoration: none; padding: 10px 20px; background-color: #f44336; color: white; border-radius: 5px;">Cerrar Sesión</a>
+</div>
+</body>
+</html>

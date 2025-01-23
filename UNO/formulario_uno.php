@@ -7,7 +7,7 @@
     <!-- Enlace a Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Enlace a estilos personalizados -->
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="formulario.css">
 </head>
 <body>
     <div class="form-container">
