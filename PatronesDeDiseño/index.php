@@ -43,7 +43,13 @@
         class="container-fluid d-flex justify-content-center align-items-center"
         style="height: 100vh"
       >
-      <h1 class="titulo">Patrons de Disseny</h1>
+      <div>
+        <h1 class="titulo">Patrons de Disseny</h1>
+        <p class="descripcion">
+          Los patrones de diseño son soluciones reutilizables para problemas comunes en el desarrollo de software. 
+          Ayudan a escribir código más organizado, eficiente y fácil de mantener.
+        </p>
+      </div>
         
           <article>
           <div class="container text-center d-flex justify-content-center">

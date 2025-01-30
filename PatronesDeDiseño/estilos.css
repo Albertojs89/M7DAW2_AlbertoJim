@@ -1,39 +1,17 @@
 body {
   width: 1300;
   font-family: "Poppins", serif;
-  height: 1500px;
-  background-color: hsla(204, 0%, 100%, 1);
-  background-image: radial-gradient(
-      circle at 0% 0%,
-      hsla(295.99999999999994, 77%, 74%, 0.35) 3.1210986267166043%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 20% 0%,
-      hsla(236.91176470588243, 77%, 74%, 0.35) 3.1210986267166043%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 40% 0%,
-      hsla(186.61764705882354, 77%, 74%, 0.35) 3.1210986267166043%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 60% 0%,
-      hsla(127.0588235294118, 77%, 74%, 0.35) 3.1210986267166043%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 80% 0%,
-      hsla(62.20588235294117, 77%, 74%, 0.35) 3.1210986267166043%,
-      transparent 40%
-    ),
-    radial-gradient(
-      circle at 100% 0%,
-      hsla(23.823529411764703, 77%, 74%, 0.35) 3%,
-      transparent 40%
-    );
-  background-blend-mode: normal, normal, normal, normal, normal, normal;
+  height: auto;
+background: rgb(2,0,36);
+background: linear-gradient(135deg, rgba(2,0,36,1) 4%, rgba(104,95,212,1) 67%, rgba(0,212,255,1) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 .titulo{
   font-size: 4rem;
@@ -43,17 +21,29 @@ body {
   align-items: center;
   width: 400px;
 }
+.descripcion{
+  width: 400px;
+  font-size: 1.5rem;
+  color: white;
+  
+}
 .img-container {
   position: relative;
+  
 }
 
 .img-hover-container img {
   width: 100%;
   height: auto;
+  
+  
 }
+i{
+color:  #3b3d5a!important;
 
+}
 .hover-text, .hover-text2 {
-  color: white;
+  color:  #3b3d5a;
   font-size: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -98,7 +88,8 @@ header {
   .navbar {
   font-family: "Poppins", serif;
   font-size: 1.3rem;
-  background-color: #f8f9fa; 
+  background-color: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(10px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   padding: 10px;
   
@@ -111,3 +102,34 @@ header {
 .nav-link:hover {
   color: #0056b3; 
 }}
+
+/* ESTRUCTURAL */
+
+.container {
+  display: flex;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.image {
+  max-width: 40%; 
+  border-radius: 20px;
+}
+
+.text {
+  flex: 1;
+  padding-left: 20px; 
+  font-size: 1.5rem;
+  color: whitesmoke;
+  
+  
+}
+
+.text2 {
+  flex: 1;
+  padding-left: 20px; 
+  font-size: 1.2rem;
+  color: yellow;
+  /* poner cursiva */
+  font-style: italic;
+}

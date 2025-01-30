@@ -32,7 +32,7 @@
         <nav class="navbar">
             <ul class="nav py-3">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php"><i class="fa-solid fa-house"></i></a>
+                    <a class="nav-link active" aria-current="page" href="index.php"><i class="fa-solid fa-house" style="color: #0056b3!important;"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="estructurals.php">Estructurales</a>
@@ -46,7 +46,7 @@
                 
             </ul>
             <div class="mx-5" style="font-size: 35px;">
-              <a href="index.php"><i class="fa-solid fa-right-from-bracket"></i></a>
+              <a href="index.php"><i class="fa-solid fa-right-from-bracket" style="color: #0056b3!important;"></i></a>
             </div>
         </nav>
     </header>
