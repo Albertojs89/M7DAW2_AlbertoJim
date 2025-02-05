@@ -33,20 +33,32 @@
     </div>
     <div class="container">
       
-      <img src="patrons/adapter.jpg" alt="Descripción de la imagen" class="image">
+      <img src="imgs/adapter.jpg" alt="Descripción de la imagen" class="image">
       <div class="text">
         <p>Los patrones estructurales ayudan a organizar las relaciones entre clases y objetos, 
           asegurando que las estructuras sean eficientes y flexibles.</p>
+          <form action="patrons/redirect.php" method="GET">
+                    <div class="mb-3">
+                        <label for="patro" class="form-label">Selecciona un patró:</label>
+                        <select class="form-select form-select-lg" name="patro" id="patro">
+                            <option value="adapter.php">Adapter</option>
+                            <option value="bridge.php">Bridge</option>
+                        </select>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">🔍 Ver Más</button>
+                    </div>
+                </form>
       </div>
     </div>
 
-    <aside class="container">
+    <aside class="container mt-0">
       <h2 style="font-size: 50px;"><i class="fa-solid fa-lightbulb icons" style="color: yellow!important;"></i></h2>
       <p class="text2">Imagina que tienes un cargador con un enchufe de EE.UU., 
         pero estás en Europa. No puedes conectar el enchufe directamente a la toma de corriente, así que usas un adaptador.</p>
     </aside>
 
-    <div class="container py-3">
+    <!-- <div class="container py-3">
       <i class="fa-solid fa-plug icons"></i>
       <div class="text">
         <h2>Adapter</h2>
@@ -88,7 +100,7 @@
         <p style="width: 300px;">Actúa como intermediario para controlar el acceso a otro objeto.</p>
       </div>
     </div>
-    </div>
+    </div> -->
    
 </section>
 

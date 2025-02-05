@@ -133,3 +133,40 @@ header {
   /* poner cursiva */
   font-style: italic;
 }
+
+
+/* Contenedor principal */
+.container-pattern {
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin: 100px auto 50px; /* Centrar y dar espacio superior */
+}
+
+/* Descripción con icono */
+.description-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.description-box i {
+    font-size: 2rem;
+    color: #007bff; /* Color azul para destacar */
+}
+
+/* Estilo para el cuadro de código */
+.code-box {
+    background-color: #222;
+    color: #ffcc00;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    overflow-x: auto;
+    font-family: "Courier New", monospace;
+}

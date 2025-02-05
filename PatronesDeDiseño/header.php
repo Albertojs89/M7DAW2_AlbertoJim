@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Header</title>
 </head>
-<link rel="stylesheet" href="estilos.css">
+
+<link rel="stylesheet" href="/estilos.css">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,7 +34,7 @@
         <nav class="navbar">
             <ul class="nav py-3">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php"><i class="fa-solid fa-house" style="color: #0056b3!important;"></i></a>
+                    <a class="nav-link active" aria-current="page" href="/index.php"><i class="fa-solid fa-house" style="color: #0056b3!important;"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="estructurals.php">Estructurales</a>
@@ -46,7 +48,7 @@
                 
             </ul>
             <div class="mx-5" style="font-size: 35px;">
-              <a href="index.php"><i class="fa-solid fa-right-from-bracket" style="color: #0056b3!important;"></i></a>
+              <a href="/index.php"><i class="fa-solid fa-right-from-bracket" style="color: #0056b3!important;"></i></a>
             </div>
         </nav>
     </header>
