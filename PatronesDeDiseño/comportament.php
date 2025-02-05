@@ -33,10 +33,21 @@
     </div>
     <div class="container">
       
-      <img src="patrons/comportamiento.jpg" alt="Descripción de la imagen" class="image">
+      <img src="imgs/comportamiento.jpg" alt="Descripción de la imagen" class="image">
       <div class="text">
         <p>Los patrones de comportamiento se centran en cómo los objetos interactúan y se comunican entre sí. 
           Ayudan a definir reglas de colaboración, evitando dependencias innecesarias y facilitando la escalabilidad del código.</p>
+             <form action="patrons/redirect.php" method="GET">
+        <div class="mb-3">
+            <select class="form-select form-select-lg" name="patro" id="patro">
+                <option value="strategy.php">Strategy</option>
+                <option value="observer.php">Observer</option>
+            </select>
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">🔍 Ver Más</button>
+        </div>
+    </form>
       </div>
     </div>
 

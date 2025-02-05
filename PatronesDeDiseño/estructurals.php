@@ -58,49 +58,7 @@
         pero estás en Europa. No puedes conectar el enchufe directamente a la toma de corriente, así que usas un adaptador.</p>
     </aside>
 
-    <!-- <div class="container py-3">
-      <i class="fa-solid fa-plug icons"></i>
-      <div class="text">
-        <h2>Adapter</h2>
-        <p>Permite que objetos con interfaces incompatibles trabajen juntos.</p>
-      </div>
-      <i class="fa-solid fa-bridge icons"></i>
-      <div class="text">
-        <h2>Bridge</h2>
-        <p>Separa la abstracción de la implementación para que evolucionen independientemente.</p>
-      </div>
-      <i class="fa-brands fa-stack-overflow icons"></i>
-      <div class="text">
-        <h2>Composite</h2>
-        <p>Permite tratar estructuras jerárquicas de objetos de manera uniforme.</p>
-      </div>
-    </div>
-      <div class="container">
-      <i class="fa-solid fa-pencil icons"></i>
-      <div class="text">
-        <h2>Decorator</h2>
-        <p>Agrega funcionalidades a objetos sin modificar su estructura original.</p>
-      </div>
-      <i class="fa-solid fa-building icons"></i>
-      <div class="text">
-        <h2>Facade</h2>
-        <p>Proporciona una interfaz simplificada para interactuar con sistemas complejos.</p>
-      </div>
-      <i class="fa-solid fa-memory icons"></i>
-      <div class="text">
-        <h2>Flyweight</h2>
-        <p>Optimiza el uso de memoria compartiendo información común entre múltiples objetos.</p>
-      </div>
-    </div>
-
-    <div class="container">
-       <i class="fa-solid fa-users-between-lines icons"></i>
-    <div class="text" style="width: 100px;">
-        <h2>Proxy</h2>
-        <p style="width: 300px;">Actúa como intermediario para controlar el acceso a otro objeto.</p>
-      </div>
-    </div>
-    </div> -->
+    
    
 </section>
 

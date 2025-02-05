@@ -37,13 +37,13 @@
                     <a class="nav-link active" aria-current="page" href="/index.php"><i class="fa-solid fa-house" style="color: #0056b3!important;"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="estructurals.php">Estructurales</a>
+                    <a class="nav-link" href="/estructurals.php">Estructurales</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="creacion.php">De Creación</a>
+                    <a class="nav-link" href="/creacion.php">De Creación</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="comportament.php">De Comportamiento</a>
+                    <a class="nav-link" href="/comportament.php">De Comportamiento</a>
                 </li>
                 
             </ul>

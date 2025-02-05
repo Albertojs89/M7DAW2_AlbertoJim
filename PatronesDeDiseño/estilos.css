@@ -2,8 +2,8 @@ body {
   width: 1300;
   font-family: "Poppins", serif;
   height: auto;
-background: rgb(2,0,36);
-background: linear-gradient(135deg, rgba(2,0,36,1) 4%, rgba(104,95,212,1) 67%, rgba(0,212,255,1) 100%);
+background: rgb(11,9,45);
+background: linear-gradient(142deg, rgba(11,9,45,1) 0%, rgba(3,31,36,1) 40%, rgba(18,64,111,1) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -96,11 +96,11 @@ header {
 }
 
 .nav-link {
-  color: #0077ff; 
+  color: #675cb0; 
 }
 
 .nav-link:hover {
-  color: #0056b3; 
+  color: #2f2c79; 
 }}
 
 /* ESTRUCTURAL */
@@ -138,7 +138,8 @@ header {
 /* Contenedor principal */
 .container-pattern {
     max-width: 800px;
-    background: rgba(255, 255, 255, 0.95);
+    background-image: url(https://img.freepik.com/vector-gratis/telon-fondo-abstracto-estilo-poli-presentacion-moderna_1017-53594.jpg);
+    background-size: cover;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     padding: 30px;
@@ -151,13 +152,13 @@ header {
     align-items: center;
     gap: 15px;
     font-size: 1.2rem;
-    color: #333;
+    color: #171a4a;
     margin-bottom: 20px;
 }
 
 .description-box i {
-    font-size: 2rem;
-    color: #007bff; /* Color azul para destacar */
+    font-size: 3rem;
+    color: #675cb0!important; 
 }
 
 /* Estilo para el cuadro de código */
@@ -169,4 +170,19 @@ header {
     font-size: 1rem;
     overflow-x: auto;
     font-family: "Courier New", monospace;
+}
+
+.d-grid button{
+  border-radius: 30px;
+  width: 200px;
+  background-color: whitesmoke;
+  color: #9f90ea;
+  transition: 1s;
+}
+
+.d-grid button:hover{
+  transition: 1s;
+  transform: translateY(-5px);
+  background-color: #675cb0;
+  color: whitesmoke;
 }
