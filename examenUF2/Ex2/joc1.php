@@ -18,7 +18,7 @@ class JocAdivinacio {
 
     public function comprovar($num) {
         $this->intents++;
-        if ($num <= $this->numeroSecret) {
+        if ($num < $this->numeroSecret) {
             return "El número es más grande.";
         } elseif ($num > $this->numeroSecret) {
             return "El número es más pequeño.";
