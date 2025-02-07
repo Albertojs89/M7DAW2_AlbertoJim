@@ -2,8 +2,8 @@ body {
   width: 1300;
   font-family: "Poppins", serif;
   height: auto;
-background: rgb(11,9,45);
-background: linear-gradient(142deg, rgba(11,9,45,1) 0%, rgba(3,31,36,1) 40%, rgba(18,64,111,1) 100%);
+  background: rgb(11,9,45);
+  background: linear-gradient(142deg, rgba(11,9,45,1) 0%, rgba(3,31,36,1) 40%, rgba(18,64,111,1) 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -11,9 +11,9 @@ background: linear-gradient(142deg, rgba(11,9,45,1) 0%, rgba(3,31,36,1) 40%, rgb
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
 }
-.titulo{
+
+.titulo {
   font-size: 4rem;
   text-align: center;
   color: whitesmoke;
@@ -21,89 +21,80 @@ background: linear-gradient(142deg, rgba(11,9,45,1) 0%, rgba(3,31,36,1) 40%, rgb
   align-items: center;
   width: 400px;
 }
-.descripcion{
+
+.descripcion {
   width: 400px;
   font-size: 1.5rem;
   color: white;
-  
 }
+
 .img-container {
   position: relative;
-  
 }
 
 .img-hover-container img {
   width: 100%;
   height: auto;
-  
-  
 }
-i{
-color:  #3b3d5a!important;
 
+i {
+  color: #3b3d5a!important;
 }
+
 .hover-text, .hover-text2 {
-  color:  #3b3d5a;
+  color: #3b3d5a;
   font-size: 1.5rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 a {
-    text-decoration: none; /* Eliminar el subrayado de los enlaces */
-    color:inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 ul, ol {
-    list-style: none; /* Eliminar los puntos o números de las listas */
-    padding: 0; /* Eliminar el padding */
-    margin: 0; /* Eliminar el margin */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .img-container {
-  overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
-  position: relative; /* Para que el zoom funcione correctamente */
-  border-radius: 10px; /* Aplica el border-radius aquí */
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
 }
 
 .img-container img {
-  width: 300px; /* Ancho fijo de 300px */
-  height: 500px; /* Alto fijo de 100px */
-  object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
-  transition: transform 0.5s ease; /* Suaviza la transición del zoom */
+  width: 300px;
+  height: 500px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
 .img-container:hover img {
-  transform: scale(1.2); /* Zoom al pasar el ratón */
+  transform: scale(1.2);
 }
 
 .col-auto {
-  padding: 0; /* Elimina el padding de las columnas */
+  padding: 0;
 }
-
-
-/* HEADER STYLES */
-
 
 header {
-  
-
   .navbar {
-  font-family: "Poppins", serif;
-  font-size: 1.3rem;
-  background-color: rgba(255, 255, 255, 0.8); 
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  padding: 10px;
-  
+    font-family: "Poppins", serif;
+    font-size: 1.3rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+  }
+  .nav-link {
+    color: #675cb0;
+  }
+  .nav-link:hover {
+    color: #2f2c79;
+  }
 }
-
-.nav-link {
-  color: #675cb0; 
-}
-
-.nav-link:hover {
-  color: #2f2c79; 
-}}
-
-/* ESTRUCTURAL */
 
 .container {
   display: flex;
@@ -112,67 +103,60 @@ header {
 }
 
 .image {
-  max-width: 40%; 
+  max-width: 40%;
   border-radius: 20px;
 }
 
 .text {
   flex: 1;
-  padding-left: 20px; 
+  padding-left: 20px;
   font-size: 1.5rem;
   color: whitesmoke;
-  
-  
 }
 
 .text2 {
   flex: 1;
-  padding-left: 20px; 
+  padding-left: 20px;
   font-size: 1.2rem;
   color: yellow;
-  /* poner cursiva */
   font-style: italic;
 }
 
-
-/* Contenedor principal */
 .container-pattern {
-    max-width: 800px;
-    background-image: url(https://img.freepik.com/vector-gratis/telon-fondo-abstracto-estilo-poli-presentacion-moderna_1017-53594.jpg);
-    background-size: cover;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 30px;
-    margin: 100px auto 50px; /* Centrar y dar espacio superior */
+  max-width: 800px;
+  background-image: url(https://img.freepik.com/vector-gratis/telon-fondo-abstracto-estilo-poli-presentacion-moderna_1017-53594.jpg);
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin: 100px auto 50px;
 }
 
-/* Descripción con icono */
 .description-box {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 1.2rem;
-    color: #171a4a;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  color: #171a4a;
+  margin-bottom: 20px;
 }
 
 .description-box i {
-    font-size: 3rem;
-    color: #675cb0!important; 
+  font-size: 3rem;
+  color: #675cb0!important;
 }
 
-/* Estilo para el cuadro de código */
 .code-box {
-    background-color: #222;
-    color: #ffcc00;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 1rem;
-    overflow-x: auto;
-    font-family: "Courier New", monospace;
+  background-color: #222;
+  color: #ffcc00;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  overflow-x: auto;
+  font-family: "Courier New", monospace;
 }
 
-.d-grid button{
+.d-grid button {
   border-radius: 30px;
   width: 200px;
   background-color: whitesmoke;
@@ -180,7 +164,7 @@ header {
   transition: 1s;
 }
 
-.d-grid button:hover{
+.d-grid button:hover {
   transition: 1s;
   transform: translateY(-5px);
   background-color: #675cb0;
