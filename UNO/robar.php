@@ -4,31 +4,32 @@ require_once 'baraja.class.php';
 require_once 'jugador.class.php';
 
 // Recuperar el estado actual del juego desde la sesión
-$baraja = $_SESSION['baraja']; // Mazo restante
-$jugador_actual = $_SESSION['jugador_actual']; // Jugador en turno
-$jugadores = $_SESSION['jugadores']; // Lista de jugadores
+$baraja = isset($_SESSION['baraja']) ? unserialize($_SESSION['baraja']) : null;
+$jugador_actual = $_SESSION['jugador_actual'];
+$jugadores = isset($_SESSION['jugadores']) ? unserialize($_SESSION['jugadores']) : [];
 
-// Verificar si hay cartas en el mazo
-if (!empty($baraja->conjunto_cartas)) {
+// Verificar si la baraja es válida y contiene cartas
+if ($baraja !== null && count($baraja->conjunto_cartas) > 0) {
     // Sacar una carta del mazo
     $nueva_carta = array_shift($baraja->conjunto_cartas);
-    
+
     // Añadir la carta a la mano del jugador actual
     $jugadores[$jugador_actual]->añadir_carta($nueva_carta);
-    
+
     // Actualizar la sesión con los nuevos datos
-    $_SESSION['baraja'] = $baraja;
-    $_SESSION['jugadores'] = $jugadores;
+    $_SESSION['baraja'] = serialize($baraja);
+    $_SESSION['jugadores'] = serialize($jugadores);
 } else {
     // Si el mazo está vacío
     echo "<h1>El mazo está vacío, no se puede robar más cartas.</h1>";
     exit;
 }
 
-// Redirigir de vuelta al tablero principal
+// Redirigir de vuelta a index.php
 header("Location: index.php");
 exit;
 ?>
+
 <!-- 
  EXPLICACION----------------------------------------------------------------
  ¿Qué logramos con cada dato guardado en la sesión?

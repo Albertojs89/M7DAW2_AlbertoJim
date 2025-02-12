@@ -17,9 +17,7 @@ require_once 'jugador.class.php';
 // Validar si se recibieron los datos del formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validar y asegurar que los datos existen y son números
-    // is_numeric se asegura de que el valor recibido sea un número o una cadena numérica
     if (isset($_POST['num_jugadores']) && is_numeric($_POST['num_jugadores'])) {
-        // (int) convierte el valor a un número entero
         $num_jugadores = (int)$_POST['num_jugadores'];
     } else {
         echo "<h1>Error: Número de jugadores inválido.</h1>"; return;
@@ -42,19 +40,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Crear y mezclar la baraja
     $baraja = new Baraja();
-    $baraja->crea_baraja(); // Crear todas las cartas
-    $baraja->mezcla(); // Mezclar la baraja
+    $baraja->crea_baraja();
+    $baraja->mezcla();
 
     // Inicializar jugadores y repartir cartas
     $jugadores = [];
     for ($i = 1; $i <= $num_jugadores; $i++) {
-        $jugador = new Jugador($i); // Crear jugador con un ID único
+        $jugador = new Jugador($i);
         for ($j = 0; $j < $num_cartas; $j++) {
-            $carta = array_shift($baraja->conjunto_cartas); // Sacar una carta de la baraja
-            $jugador->añadir_carta($carta); // Añadir la carta al jugador
+            $carta = array_shift($baraja->conjunto_cartas);
+            $jugador->añadir_carta($carta);
         }
-        $jugadores[] = $jugador; // Añadir el jugador al array de jugadores
+        $jugadores[] = $jugador;
     }
+
+    // ** Guardar el estado inicial del juego en la sesión **
+    $_SESSION['baraja'] = serialize($baraja);  // Serializamos la baraja para conservar su estado
+    $_SESSION['jugadores'] = serialize($jugadores);  // Serializamos los jugadores
+    $_SESSION['jugador_actual'] = 0;
 
     // Mostrar la mano de cada jugador
     echo "<h1>Partida Inicializada</h1>";
@@ -63,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     foreach ($jugadores as $jugador) {
         echo "<h2>Jugador {$jugador->id}</h2>";
-        echo $jugador->mostrar_mano(); // Mostrar las cartas del jugador
+        echo $jugador->mostrar_mano();
     }
 
     // Sacar la primera carta para la mesa
@@ -72,11 +75,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Mostrar la carta inicial sobre la mesa
     echo "<h2>Carta inicial sobre la mesa:</h2>";
     echo "<div style='margin-bottom: 20px;'>";
-    echo $carta_en_mesa->pinta_carta(); // Mostrar la carta visualmente
+    echo $carta_en_mesa->pinta_carta();
     echo "</div>";
 
     // Mostrar el mazo de robo (cartas giradas)
-    $cartas_restantes = count($baraja->conjunto_cartas); // Contar las cartas restantes
+    $cartas_restantes = count($baraja->conjunto_cartas);
     echo "<h2>Mazo para robar:</h2>";
     echo "<div style='margin-bottom: 20px;'>";
     echo "<a href='robar.php' id='mazo-robo' style='text-decoration: none;'>";
@@ -84,8 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "</a>";
     echo "<p>Cartas restantes: $cartas_restantes</p>";
     echo "</div>";
-}
-else {
+} else {
     echo "<h1>Error: No se recibieron datos del formulario.</h1>";
 }
 ?>
