@@ -21,12 +21,17 @@ if (isset($_SESSION['baraja']) && isset($_SESSION['jugadores'])) {
     $jugadores = unserialize($_SESSION['jugadores']);
     $jugador_actual = $_SESSION['jugador_actual'];
 
-    // Mostrar el estado actual del juego
-    echo "<h1>Estado Actual del Juego</h1>";
-    foreach ($jugadores as $jugador) {
-        echo "<h2>Jugador {$jugador->id}</h2>";
-        echo $jugador->mostrar_mano();
-    }
+   // Mostrar el estado actual del juego
+echo "<h1>Estado Actual del Juego</h1>";
+foreach ($jugadores as $key => $jugador) {
+    // Agregar una clase especial para el jugador en turno
+    $clase_jugador = ($key === $_SESSION['jugador_actual']) ? 'jugador-en-turno' : '';
+    echo "<div class='jugador $clase_jugador'>";
+    echo "<h2>Jugador {$jugador->id}</h2>";
+    echo $jugador->mostrar_mano();
+    echo "</div>";
+}
+
 
     // Mostrar la carta inicial sobre la mesa
     echo "<h2>Carta actual sobre la mesa:</h2>";
@@ -83,6 +88,8 @@ if (isset($_SESSION['baraja']) && isset($_SESSION['jugadores'])) {
     $_SESSION['baraja'] = serialize($baraja);
     $_SESSION['jugadores'] = serialize($jugadores);
     $_SESSION['jugador_actual'] = 0;
+    $_SESSION['sentido'] = 'horario'; // Iniciamos el sentido del turno en horario
+
 
     // Redirigir para evitar reenvío de formulario
     header("Location: index.php");

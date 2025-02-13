@@ -1,4 +1,7 @@
-
+body{
+    background: rgb(147,193,105);
+background: radial-gradient(circle, rgba(147,193,105,1) 0%, rgba(223,118,118,1) 55%, rgba(0,212,255,1) 100%);
+}
 
 /* Efecto hover del mazo y cartas */
 #mazo-robo img {
@@ -9,3 +12,20 @@
     transform: scale(1.1); /* Agrandar un 10% */
     cursor: pointer; /* Cambiar el cursor a una mano */
 }
+.jugador-en-turno {
+    border: 2px solid #36bef4;
+    background-color: #8dd5f1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    
+}
+
+.mano a img {
+    transition: transform 0.2s ease;
+}
+
+.mano a:hover img {
+    transform: scale(1.1);
+}
+

@@ -4,22 +4,37 @@ require_once 'baraja.class.php';
 require_once 'jugador.class.php';
 
 // Recuperar el estado actual del juego desde la sesión
-$baraja = isset($_SESSION['baraja']) ? unserialize($_SESSION['baraja']) : null;
-$jugadores = isset($_SESSION['jugadores']) ? unserialize($_SESSION['jugadores']) : [];
-$jugador_actual = $_SESSION['jugador_actual'] ?? 0;
+$baraja = unserialize($_SESSION['baraja']);
+$jugador_actual = $_SESSION['jugador_actual'];
+$jugadores = unserialize($_SESSION['jugadores']);
 
 // Verificar si hay cartas en el mazo
-if ($baraja && count($baraja->conjunto_cartas) > 0) {
+if (count($baraja->conjunto_cartas) > 0) {
     // Sacar una carta del mazo
     $nueva_carta = array_shift($baraja->conjunto_cartas);
     
-    // Añadir la carta a la mano del jugador actual
-    $jugadores[$jugador_actual]->añadir_carta($nueva_carta);
+   // Añadir la carta a la mano del jugador actual
+$jugadores[$jugador_actual]->añadir_carta($nueva_carta);
+
+// Detectar si la carta es reverse y cambiar el orden del turno
+if ($nueva_carta->numero === 'reverse') {
+    $_SESSION['sentido'] = ($_SESSION['sentido'] === 'horario') ? 'antihorario' : 'horario';
+}
+
+// Actualizar el turno según el sentido del juego
+if ($_SESSION['sentido'] === 'horario') {
+    $jugador_actual = ($jugador_actual + 1) % count($jugadores);
+} else {
+    $jugador_actual = ($jugador_actual - 1 + count($jugadores)) % count($jugadores);
+}
+
     
-    // Actualizar la sesión con los nuevos datos (serializados)
+    // Actualizar la sesión con los nuevos datos
     $_SESSION['baraja'] = serialize($baraja);
     $_SESSION['jugadores'] = serialize($jugadores);
+    $_SESSION['jugador_actual'] = $jugador_actual;
 } else {
+    // Si el mazo está vacío
     echo "<h1>El mazo está vacío, no se puede robar más cartas.</h1>";
     exit;
 }
@@ -27,6 +42,7 @@ if ($baraja && count($baraja->conjunto_cartas) > 0) {
 // Redirigir de vuelta a index.php
 header("Location: index.php");
 exit;
+
 ?>
 <!-- 
  EXPLICACION----------------------------------------------------------------

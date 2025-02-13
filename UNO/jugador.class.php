@@ -15,13 +15,19 @@ class Jugador {
 
     // Método para mostrar las cartas en la mano
     public function mostrar_mano() {
-        $misCartas = "<div class='mano' style='display:flex; gap:10px; margin-bottom:20px; align-items:center;'>";
-        foreach ($this->mano as $carta) {
-            $misCartas .= $carta->pinta_carta(); // Utiliza el método pinta_carta() de la clase Carta
-        }
-        $misCartas .= "</div>";
-        return $misCartas;
+    $misCartas = "<div class='mano' style='display:flex; gap:10px; margin-bottom:20px; align-items:center;'>";
+    foreach ($this->mano as $carta) {
+        $color = $carta->palo;
+        $numero = $carta->numero;
+        // Convertir cada carta en un enlace a jugar.php
+        $misCartas .= "<a href='jugar.php?color=$color&numero=$numero' style='text-decoration:none;'>";
+        $misCartas .= $carta->pinta_carta();
+        $misCartas .= "</a>";
     }
+    $misCartas .= "</div>";
+    return $misCartas;
+}
+
   /*
   Explicación de la funcion mostrar mano
   -Creamos la variable misCartas que va a contener una etiqueta div para agrupar las cartas
