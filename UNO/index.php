@@ -14,9 +14,38 @@ session_start();
 require_once 'baraja.class.php';
 require_once 'jugador.class.php';
 
-// Validar si se recibieron los datos del formulario
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validar y asegurar que los datos existen y son números
+// Verificar si la partida ya está en curso
+if (isset($_SESSION['baraja']) && isset($_SESSION['jugadores'])) {
+    // Deserializar la baraja y los jugadores
+    $baraja = unserialize($_SESSION['baraja']);
+    $jugadores = unserialize($_SESSION['jugadores']);
+    $jugador_actual = $_SESSION['jugador_actual'];
+
+    // Mostrar el estado actual del juego
+    echo "<h1>Estado Actual del Juego</h1>";
+    foreach ($jugadores as $jugador) {
+        echo "<h2>Jugador {$jugador->id}</h2>";
+        echo $jugador->mostrar_mano();
+    }
+
+    // Mostrar la carta inicial sobre la mesa
+    echo "<h2>Carta actual sobre la mesa:</h2>";
+    echo "<div style='margin-bottom: 20px;'>";
+    echo $baraja->conjunto_cartas[0]->pinta_carta(); // Mostrar la carta inicial sobre la mesa
+    echo "</div>";
+
+    // Mostrar el mazo de robo (cartas giradas)
+    $cartas_restantes = count($baraja->conjunto_cartas) - 1; // Restamos la carta en la mesa
+    echo "<h2>Mazo para robar:</h2>";
+    echo "<div style='margin-bottom: 20px;'>";
+    echo "<a href='robar.php' id='mazo-robo' style='text-decoration: none;'>";
+    echo "<img src='images/carta_girada.png' alt='Mazo girado' />";
+    echo "</a>";
+    echo "<p>Cartas restantes: $cartas_restantes</p>";
+    echo "</div>";
+
+} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Validar si se recibieron los datos del formulario
     if (isset($_POST['num_jugadores']) && is_numeric($_POST['num_jugadores'])) {
         $num_jugadores = (int)$_POST['num_jugadores'];
     } else {
@@ -30,12 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Validar el rango de los datos
-    if ($num_jugadores < 1 || $num_jugadores > 5) {
-        echo "<h1>Error: El número de jugadores debe estar entre 1 y 5.</h1>"; return;
-    }
-
-    if ($num_cartas < 1 || $num_cartas > 7) {
-        echo "<h1>Error: El número de cartas debe estar entre 1 y 7.</h1>"; return;
+    if ($num_jugadores < 1 || $num_jugadores > 5 || $num_cartas < 1 || $num_cartas > 7) {
+        echo "<h1>Error: Datos fuera de rango.</h1>"; return;
     }
 
     // Crear y mezclar la baraja
@@ -54,39 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $jugadores[] = $jugador;
     }
 
-    // ** Guardar el estado inicial del juego en la sesión **
-    $_SESSION['baraja'] = serialize($baraja);  // Serializamos la baraja para conservar su estado
-    $_SESSION['jugadores'] = serialize($jugadores);  // Serializamos los jugadores
+    // Guardar el estado inicial del juego en la sesión
+    $_SESSION['baraja'] = serialize($baraja);
+    $_SESSION['jugadores'] = serialize($jugadores);
     $_SESSION['jugador_actual'] = 0;
 
-    // Mostrar la mano de cada jugador
-    echo "<h1>Partida Inicializada</h1>";
-    echo "<p>Número de jugadores: $num_jugadores</p>";
-    echo "<p>Número de cartas por jugador: $num_cartas</p>";
-
-    foreach ($jugadores as $jugador) {
-        echo "<h2>Jugador {$jugador->id}</h2>";
-        echo $jugador->mostrar_mano();
-    }
-
-    // Sacar la primera carta para la mesa
-    $carta_en_mesa = array_shift($baraja->conjunto_cartas);
-
-    // Mostrar la carta inicial sobre la mesa
-    echo "<h2>Carta inicial sobre la mesa:</h2>";
-    echo "<div style='margin-bottom: 20px;'>";
-    echo $carta_en_mesa->pinta_carta();
-    echo "</div>";
-
-    // Mostrar el mazo de robo (cartas giradas)
-    $cartas_restantes = count($baraja->conjunto_cartas);
-    echo "<h2>Mazo para robar:</h2>";
-    echo "<div style='margin-bottom: 20px;'>";
-    echo "<a href='robar.php' id='mazo-robo' style='text-decoration: none;'>";
-    echo "<img src='images/carta_girada.png' alt='Mazo girado' />";
-    echo "</a>";
-    echo "<p>Cartas restantes: $cartas_restantes</p>";
-    echo "</div>";
+    // Redirigir para evitar reenvío de formulario
+    header("Location: index.php");
+    exit;
 } else {
     echo "<h1>Error: No se recibieron datos del formulario.</h1>";
 }
@@ -97,3 +97,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 </body>
 </html>
+

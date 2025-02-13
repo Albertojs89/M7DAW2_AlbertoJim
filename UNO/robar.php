@@ -5,22 +5,21 @@ require_once 'jugador.class.php';
 
 // Recuperar el estado actual del juego desde la sesión
 $baraja = isset($_SESSION['baraja']) ? unserialize($_SESSION['baraja']) : null;
-$jugador_actual = $_SESSION['jugador_actual'];
 $jugadores = isset($_SESSION['jugadores']) ? unserialize($_SESSION['jugadores']) : [];
+$jugador_actual = $_SESSION['jugador_actual'] ?? 0;
 
-// Verificar si la baraja es válida y contiene cartas
-if ($baraja !== null && count($baraja->conjunto_cartas) > 0) {
+// Verificar si hay cartas en el mazo
+if ($baraja && count($baraja->conjunto_cartas) > 0) {
     // Sacar una carta del mazo
     $nueva_carta = array_shift($baraja->conjunto_cartas);
-
+    
     // Añadir la carta a la mano del jugador actual
     $jugadores[$jugador_actual]->añadir_carta($nueva_carta);
-
-    // Actualizar la sesión con los nuevos datos
+    
+    // Actualizar la sesión con los nuevos datos (serializados)
     $_SESSION['baraja'] = serialize($baraja);
     $_SESSION['jugadores'] = serialize($jugadores);
 } else {
-    // Si el mazo está vacío
     echo "<h1>El mazo está vacío, no se puede robar más cartas.</h1>";
     exit;
 }
@@ -29,7 +28,6 @@ if ($baraja !== null && count($baraja->conjunto_cartas) > 0) {
 header("Location: index.php");
 exit;
 ?>
-
 <!-- 
  EXPLICACION----------------------------------------------------------------
  ¿Qué logramos con cada dato guardado en la sesión?
