@@ -66,6 +66,3 @@ if (isset($_GET['color']) && isset($_GET['numero'])) {
 header("Location: index.php");
 exit;
 ?>
-
-
-
