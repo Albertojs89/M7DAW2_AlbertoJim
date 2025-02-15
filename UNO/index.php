@@ -21,26 +21,38 @@ if (isset($_SESSION['baraja']) && isset($_SESSION['jugadores'])) {
     $jugadores = unserialize($_SESSION['jugadores']);
     $jugador_actual = $_SESSION['jugador_actual'];
 
-   // Mostrar el estado actual del juego
-echo "<h1>Estado Actual del Juego</h1>";
-foreach ($jugadores as $key => $jugador) {
-    // Agregar una clase especial para el jugador en turno
-    $clase_jugador = ($key === $_SESSION['jugador_actual']) ? 'jugador-en-turno' : '';
-    echo "<div class='jugador $clase_jugador'>";
-    echo "<h2>Jugador {$jugador->id}</h2>";
-    echo $jugador->mostrar_mano();
-    echo "</div>";
+    // Mostrar el estado actual del juego
+    echo "<h1>Estado Actual del Juego</h1>";
+    foreach ($jugadores as $key => $jugador) {
+        // Agregar una clase especial para el jugador en turno
+        $clase_jugador = ($key === $_SESSION['jugador_actual']) ? 'jugador-en-turno' : '';
+        echo "<div class='jugador $clase_jugador'>";
+        echo "<h2>Jugador {$jugador->id}</h2>";
+        echo $jugador->mostrar_mano();
+        echo "</div>";
+    }
+
+    // Guardar la primera carta en la mesa si aún no está definida
+    if (!isset($_SESSION['carta_en_mesa'])) {
+        $_SESSION['carta_en_mesa'] = serialize(array_shift($baraja->conjunto_cartas));
+        $_SESSION['baraja'] = serialize($baraja); // Actualizar la baraja en la sesión
+    }
+
+   // Mostrar la carta actual sobre la mesa
+echo "<h2>Carta actual sobre la mesa:</h2>";
+echo "<div style='margin-bottom: 20px;'>";
+
+if (!isset($_SESSION['carta_en_mesa'])) {
+    $_SESSION['carta_en_mesa'] = serialize(array_shift($baraja->conjunto_cartas));
 }
+$carta_en_mesa = unserialize($_SESSION['carta_en_mesa']);
+echo $carta_en_mesa->pinta_carta();
 
+echo "</div>";
 
-    // Mostrar la carta inicial sobre la mesa
-    echo "<h2>Carta actual sobre la mesa:</h2>";
-    echo "<div style='margin-bottom: 20px;'>";
-    echo $baraja->conjunto_cartas[0]->pinta_carta(); // Mostrar la carta inicial sobre la mesa
-    echo "</div>";
 
     // Mostrar el mazo de robo (cartas giradas)
-    $cartas_restantes = count($baraja->conjunto_cartas) - 1; // Restamos la carta en la mesa
+    $cartas_restantes = count($baraja->conjunto_cartas);
     echo "<h2>Mazo para robar:</h2>";
     echo "<div style='margin-bottom: 20px;'>";
     echo "<a href='robar.php' id='mazo-robo' style='text-decoration: none;'>";
@@ -88,10 +100,7 @@ foreach ($jugadores as $key => $jugador) {
     $_SESSION['baraja'] = serialize($baraja);
     $_SESSION['jugadores'] = serialize($jugadores);
     $_SESSION['jugador_actual'] = 0;
-    $_SESSION['sentido'] = 'horario'; // Iniciamos el sentido del turno en horario
-
-
-    // Redirigir para evitar reenvío de formulario
+    $_SESSION['sentido'] = 'horario';
     header("Location: index.php");
     exit;
 } else {
@@ -104,4 +113,3 @@ foreach ($jugadores as $key => $jugador) {
 </div>
 </body>
 </html>
-
