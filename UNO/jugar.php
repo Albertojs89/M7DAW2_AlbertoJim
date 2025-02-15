@@ -3,56 +3,61 @@ session_start();
 require_once 'baraja.class.php';
 require_once 'jugador.class.php';
 
-// Recuperar el estado actual del juego
+// Recuperar estado del juego
 $baraja = unserialize($_SESSION['baraja']);
-$jugadores = unserialize($_SESSION['jugadores']);
 $jugador_actual = $_SESSION['jugador_actual'];
+$jugadores = unserialize($_SESSION['jugadores']);
 $carta_en_mesa = unserialize($_SESSION['carta_en_mesa']);
 
-// Verificar si se recibieron los datos de la carta
+// Verificar si la carta es válida para jugar
 if (isset($_GET['color']) && isset($_GET['numero'])) {
     $color = $_GET['color'];
     $numero = $_GET['numero'];
+    $carta = new Carta($color, $numero);
 
-    // Verificar si la carta es válida (mismo color o número que la carta en la mesa)
-    if ($color === $carta_en_mesa->palo || $numero === $carta_en_mesa->numero) {
-        // Buscar y eliminar la carta de la mano del jugador actual
-        foreach ($jugadores[$jugador_actual]->mano as $key => $carta) {
-            if ($carta->palo === $color && $carta->numero == $numero) {
-                // Actualizar la carta en la mesa
-                $_SESSION['carta_en_mesa'] = serialize($carta);
+    if ($carta->numero === $carta_en_mesa->numero || $carta->palo === $carta_en_mesa->palo) {
+        // Actualizar la carta en la mesa
+        $_SESSION['carta_en_mesa'] = serialize($carta);
 
-                // Eliminar la carta de la mano del jugador
-                unset($jugadores[$jugador_actual]->mano[$key]);
+        // Manejar cartas especiales
+        if ($carta->numero === '+2') {
+            $siguiente_jugador = ($_SESSION['sentido'] === 'horario')
+                ? ($jugador_actual + 1) % count($jugadores)
+                : ($jugador_actual - 1 + count($jugadores)) % count($jugadores);
 
-                // Reindexar el array de la mano
-                $jugadores[$jugador_actual]->mano = array_values($jugadores[$jugador_actual]->mano);
-                break;
+            // El siguiente jugador roba 2 cartas
+            if (count($baraja->conjunto_cartas) >= 2) {
+                for ($i = 0; $i < 2; $i++) {
+                    $jugadores[$siguiente_jugador]->añadir_carta(array_shift($baraja->conjunto_cartas));
+                }
             }
-        }
-
-        // Actualizar la sesión con los nuevos datos
-        $_SESSION['jugadores'] = serialize($jugadores);
-
-        // Avanzar el turno
-        if ($_SESSION['sentido'] === 'horario') {
-            $_SESSION['jugador_actual'] = ($_SESSION['jugador_actual'] + 1) % count($jugadores);
+            $jugador_actual = $siguiente_jugador;
+        } elseif ($carta->numero === 'reverse') {
+            // Cambiar el sentido del juego
+            $_SESSION['sentido'] = ($_SESSION['sentido'] === 'horario') ? 'antihorario' : 'horario';
+        } elseif ($carta->numero === 'skip') {
+            // Saltar el turno del siguiente jugador
+            $jugador_actual = ($_SESSION['sentido'] === 'horario')
+                ? ($jugador_actual + 2) % count($jugadores)
+                : ($jugador_actual - 2 + count($jugadores)) % count($jugadores);
         } else {
-            $_SESSION['jugador_actual'] = ($_SESSION['jugador_actual'] - 1 + count($jugadores)) % count($jugadores);
+            // Turno normal
+            $jugador_actual = ($_SESSION['sentido'] === 'horario')
+                ? ($jugador_actual + 1) % count($jugadores)
+                : ($jugador_actual - 1 + count($jugadores)) % count($jugadores);
         }
 
-        // Redirigir de vuelta a index.php
-        header("Location: index.php");
-        exit;
+        // Actualizar la sesión
+        $_SESSION['jugador_actual'] = $jugador_actual;
+        $_SESSION['jugadores'] = serialize($jugadores);
+        $_SESSION['baraja'] = serialize($baraja);
     } else {
-        // Si la carta no es válida
-        echo "<h1>Error: Carta inválida. Debe coincidir el color o el número con la carta en la mesa.</h1>";
-        echo "<a href='index.php'>Volver a la partida</a>";
+        echo "<h1>Error: La carta no es válida para jugar.</h1>";
         exit;
     }
-} else {
-    echo "<h1>Error: No se recibió ninguna carta válida.</h1>";
-    echo "<a href='index.php'>Volver a la partida</a>";
-    exit;
 }
+
+// Redirigir a index.php
+header("Location: index.php");
+exit;
 ?>

@@ -38,17 +38,18 @@ if (isset($_SESSION['baraja']) && isset($_SESSION['jugadores'])) {
         $_SESSION['baraja'] = serialize($baraja); // Actualizar la baraja en la sesión
     }
 
-   // Mostrar la carta actual sobre la mesa
-echo "<h2>Carta actual sobre la mesa:</h2>";
-echo "<div style='margin-bottom: 20px;'>";
+
 
 if (!isset($_SESSION['carta_en_mesa'])) {
     $_SESSION['carta_en_mesa'] = serialize(array_shift($baraja->conjunto_cartas));
 }
+// Mostrar la carta actual sobre la mesa
 $carta_en_mesa = unserialize($_SESSION['carta_en_mesa']);
+echo "<h2>Carta actual sobre la mesa:</h2>";
+echo "<div style='margin-bottom: 20px;'>";
 echo $carta_en_mesa->pinta_carta();
-
 echo "</div>";
+
 
 
     // Mostrar el mazo de robo (cartas giradas)
