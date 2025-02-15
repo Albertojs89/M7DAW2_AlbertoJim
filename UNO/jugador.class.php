@@ -17,13 +17,11 @@ class Jugador {
     public function mostrar_mano() {
     $misCartas = "<div class='mano' style='display:flex; gap:10px; margin-bottom:20px; align-items:center;'>";
     foreach ($this->mano as $carta) {
-        $color = $carta->palo;
-        $numero = $carta->numero;
-        // Convertir cada carta en un enlace a jugar.php
-        $misCartas .= "<a href='jugar.php?color=$color&numero=$numero' style='text-decoration:none;'>";
-        $misCartas .= $carta->pinta_carta();
-        $misCartas .= "</a>";
-    }
+    $misCartas .= "<a href='jugar.php?color={$carta->palo}&numero={$carta->numero}' style='text-decoration:none;'>";
+    $misCartas .= $carta->pinta_carta();
+    $misCartas .= "</a>";
+}
+
     $misCartas .= "</div>";
     return $misCartas;
 }
