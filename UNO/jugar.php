@@ -17,14 +17,14 @@ if (isset($_GET['color']) && isset($_GET['numero'])) {
     foreach ($jugadores[$jugador_actual]->mano as $key => $carta) {
         if ($carta->palo === $color && $carta->numero == $numero) {
             $carta_encontrada = true;
-            // Remover la carta de la mano del jugador
-            unset($jugadores[$jugador_actual]->mano[$key]);
+            unset($jugadores[$jugador_actual]->mano[$key]); // Remover la carta de la mano del jugador
             break;
         }
     }
 
     if (!$carta_encontrada) {
-        echo "<h1>Error: La carta seleccionada no pertenece a la mano del jugador actual.</h1>";
+        $_SESSION['error'] = "Error: La carta seleccionada no pertenece a la mano del jugador actual.";
+        header("Location: index.php");
         exit;
     }
 
@@ -35,7 +35,7 @@ if (isset($_GET['color']) && isset($_GET['numero'])) {
 
         // Verificar si es una carta especial
         if ($numero === '+2') {
-            // El siguiente jugador roba dos cartas
+            // El siguiente jugador debe robar dos cartas
             $siguiente_jugador = ($jugador_actual + 1) % count($jugadores);
             for ($i = 0; $i < 2; $i++) {
                 if (!empty($baraja->conjunto_cartas)) {
@@ -44,7 +44,16 @@ if (isset($_GET['color']) && isset($_GET['numero'])) {
                 }
             }
             // Saltar el turno del siguiente jugador
+            $jugador_actual = ($siguiente_jugador + 1) % count($jugadores);
+        } elseif ($numero === 'skip') {
+            // Saltar el turno del siguiente jugador
             $jugador_actual = ($jugador_actual + 2) % count($jugadores);
+        } elseif ($numero === 'reverse') {
+            // Cambiar el sentido del juego
+            $_SESSION['sentido'] = ($_SESSION['sentido'] === 'horario') ? 'antihorario' : 'horario';
+            $jugador_actual = ($_SESSION['sentido'] === 'horario') 
+                ? ($jugador_actual + 1) % count($jugadores)
+                : ($jugador_actual - 1 + count($jugadores)) % count($jugadores);
         } else {
             // Avanzar al siguiente jugador según el sentido del juego
             $jugador_actual = ($_SESSION['sentido'] === 'horario') 
@@ -58,7 +67,8 @@ if (isset($_GET['color']) && isset($_GET['numero'])) {
         $_SESSION['jugador_actual'] = $jugador_actual;
 
     } else {
-        echo "<h1>Error: La carta jugada no es válida.</h1>";
+        $_SESSION['error'] = "Error: La carta jugada no es válida.";
+        header("Location: index.php");
         exit;
     }
 }

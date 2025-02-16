@@ -1,6 +1,8 @@
 body{
     background: rgb(147,193,105);
 background: radial-gradient(circle, rgba(147,193,105,1) 0%, rgba(223,118,118,1) 55%, rgba(0,212,255,1) 100%);
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color: rgb(64, 20, 104);
 }
 
 /* Efecto hover del mazo y cartas */
