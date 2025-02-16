@@ -7,12 +7,12 @@ color: rgb(64, 20, 104);
 
 /* Efecto hover del mazo y cartas */
 #mazo-robo img {
-    transition: transform 0.3s ease; /* Efecto suave */
+    transition: transform 0.3s ease;
 }
 
 #mazo-robo img:hover {
-    transform: scale(1.1); /* Agrandar un 10% */
-    cursor: pointer; /* Cambiar el cursor a una mano */
+    transform: scale(1.1); 
+    cursor: pointer; 
 }
 .jugador-en-turno {
     border: 2px solid #36bef4;
