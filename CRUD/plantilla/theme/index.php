@@ -1,3 +1,21 @@
+<?php
+require_once 'comicsSoons/config.php';
+
+
+
+
+
+
+
+
+$result=$mysqli->query("SELECT * FROM clientes ORDER BY id DESC");
+print_r($result);
+
+?>
+
+
+
+
 <!DOCTYPE html>
 
 <!--
