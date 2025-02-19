@@ -1,7 +1,7 @@
 <?php
 $host='mysql-albertojs89.alwaysdata.net';
 $dbname='albertojs89_projectuf3';
-$username='albertojs89';
+$username='398212_uf3';
 $password='jesylane89'; 
 
 $mysqli=new mysqli($host,$username,$password,$dbname);

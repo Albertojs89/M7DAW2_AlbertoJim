@@ -1,5 +1,5 @@
 <?php
-require_once 'comicsSoons/config.php';
+require_once '../theme/comicsSoons/config.php';
 
 
 
@@ -8,8 +8,20 @@ require_once 'comicsSoons/config.php';
 
 
 
-$result=$mysqli->query("SELECT * FROM clientes ORDER BY id DESC");
+$result=$mysqli->query("SELECT * FROM USERS ORDER BY id DESC");
 print_r($result);
+
+
+$usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
+echo '<pre>';
+  print_r($usuarios);
+echo '</pre>';
+
+
+
+
+
+
 
 ?>
 
@@ -61,6 +73,15 @@ print_r($result);
   </head>
 
   <body>
+    <!-- crear tabla con informacion de la bd usuarios -->
+    <div>
+      <?php foreach($usuarios as $usuario){
+        echo $usuario['name'];
+        echo $usuario['surname'];
+      }
+      ?>
+
+    </div>
     <header class="navigation fixed-top">
       <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="index.php"
