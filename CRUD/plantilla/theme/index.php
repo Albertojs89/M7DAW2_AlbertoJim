@@ -9,13 +9,11 @@ require_once '../theme/comicsSoons/config.php';
 
 
 $result=$mysqli->query("SELECT * FROM USERS ORDER BY id DESC");
-print_r($result);
-
+$projects=$mysqli->query("SELECT * FROM PROJECTS ORDER BY id DESC")->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
+$news=$mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC LIMIT 3;")->fetch_all(MYSQLI_ASSOC); 
 
 $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
-echo '<pre>';
-  print_r($usuarios);
-echo '</pre>';
+
 
 
 
@@ -76,8 +74,7 @@ echo '</pre>';
     <!-- crear tabla con informacion de la bd usuarios -->
     <div>
       <?php foreach($usuarios as $usuario){
-        echo $usuario['name'];
-        echo $usuario['surname'];
+        
       }
       ?>
 
@@ -408,71 +405,30 @@ echo '</pre>';
         </div>
 
         <div class="row no-gutters shuffle-wrapper">
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img
-                src="images/project/project-1.jpg"
-                alt="project-image"
-                class="img-fluid w-100"
-              />
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">Project title</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img
-                src="images/project/project-2.jpg"
-                alt="project-image"
-                class="img-fluid w-100"
-              />
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">Project title</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img
-                src="images/project/project-3.jpg"
-                alt="project-image"
-                class="img-fluid w-100"
-              />
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">Project title</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img
-                src="images/project/project-4.jpg"
-                alt="project-image"
-                class="img-fluid w-100"
-              />
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">Project title</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 shuffle-item">
-            <div class="project-item">
-              <img
-                src="images/project/project-5.jpg"
-                alt="project-image"
-                class="img-fluid w-100"
-              />
-              <div class="project-hover bg-secondary px-4 py-3">
-                <a href="#" class="text-white h4">Project title</a>
-                <a href="#"><i class="ti-link icon-xs text-white"></i></a>
-              </div>
-            </div>
-          </div>
+          
+            <?php foreach($projects as $project){
+              echo 
+              ' <div class="col-lg-4 col-md-6 shuffle-item">
+                <div class="project-item">
+                  <img
+                    src="/images/project/'.$project['thumbnail'].'"
+                    alt="project-image"
+                    class="img-fluid w-100"
+                  />
+                  <div class="project-hover bg-secondary px-4 py-3">
+                    <a href="#" class="text-white h4">'.$project['title'].'</a>
+                    <a href="#"><i class="ti-link icon-xs text-white"></i></a>
+                  </div>
+                </div>
+              </div>';
+
+
+
+            }?>
+          
+          
+          
+          
         </div>
       </div>
     </section>
@@ -488,6 +444,9 @@ echo '</pre>';
           </div>
         </div>
         <div class="row">
+        <?php foreach($news as $new){
+          echo'
+          
           <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
             <article class="card">
               <img
@@ -500,48 +459,16 @@ echo '</pre>';
                 <a
                   href="blog-single"
                   class="h4 card-title d-block my-3 text-dark hover-text-underline"
-                  >How These Different Book Covers Reflect the Design</a
+                  >'.$new['title'].'</a
                 >
                 <a href="#" class="btn btn-transparent">Read more</a>
               </div>
             </article>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <article class="card">
-              <img
-                src="images/blog/post-2.jpg"
-                alt="post-thumb"
-                class="card-img-top mb-2"
-              />
-              <div class="card-body p-0">
-                <time>January 15, 2018</time>
-                <a
-                  href="blog-single"
-                  class="h4 card-title d-block my-3 text-dark hover-text-underline"
-                  >How These Different Book Covers Reflect the Design</a
-                >
-                <a href="#" class="btn btn-transparent">Read more</a>
-              </div>
-            </article>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
-            <article class="card">
-              <img
-                src="images/blog/post-3.jpg"
-                alt="post-thumb"
-                class="card-img-top mb-2"
-              />
-              <div class="card-body p-0">
-                <time>January 15, 2018</time>
-                <a
-                  href="blog-single"
-                  class="h4 card-title d-block my-3 text-dark hover-text-underline"
-                  >How These Different Book Covers Reflect the Design</a
-                >
-                <a href="#" class="btn btn-transparent">Read more</a>
-              </div>
-            </article>
-          </div>
+        
+          ';
+
+        } ?>
         </div>
       </div>
     </section>
