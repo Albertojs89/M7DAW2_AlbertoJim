@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-$news=$mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC;")->fetch_all(MYSQLI_ASSOC); 
+require_once '../theme/comicsSoons/config.php';
 
 ?>
 
