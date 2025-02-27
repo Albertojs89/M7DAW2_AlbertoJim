@@ -1,23 +1,12 @@
 <?php
+session_start();
 require_once '../theme/comicsSoons/config.php';
-
-
-
-
-
-
-
 
 $result=$mysqli->query("SELECT * FROM USERS ORDER BY id DESC");
 $projects=$mysqli->query("SELECT * FROM PROJECTS ORDER BY id DESC")->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
 $news=$mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC LIMIT 3;")->fetch_all(MYSQLI_ASSOC); 
 
 $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
-
-
-
-
-
 
 
 
@@ -71,6 +60,35 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
   </head>
 
   <body>
+    <header class="bg-light py-3">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <h1 class="mb-0">Tarjetas de Datos</h1>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <nav>
+              <?php
+              
+                if (isset($_SESSION['user_id'])): ?>
+                  <img src="<?= $_SESSION['avatar'] ?>" alt="">
+                  <p><?= $_SESSION['username'] ?></p>
+                  <a href="logout.php" class="btn btn-primary"><img src="" alt=""></a>
+                  <?php if ($_SESSION['role'] == 'admin'): ?>
+                    <a href="admin.php" class="btn btn-primary"><img src="./images/rueda.png" alt=""></a>
+                  <?php endif; ?>
+                <?php endif; ?>
+            
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item"><a href="#" class="text-dark">Home</a></li>
+                <li class="list-inline-item"><a href="#" class="text-dark">About</a></li>
+                <li class="list-inline-item"><a href="#" class="text-dark">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
     <!-- crear tabla con informacion de la bd usuarios -->
     <div>
       <?php foreach($usuarios as $usuario){

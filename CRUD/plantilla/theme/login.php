@@ -1,6 +1,6 @@
 <?php
    session_start();
-   require_once 'config.php';
+   require_once './comicsSoons/config.php';
 
    //comprobar si se ha iniciado sesión
    if($_SERVER['REQUEST_METHOD']==='POST'){
@@ -9,7 +9,7 @@
       $password = $_POST['password'];
 
       //ejecutar la consulta
-      $result = $mysqli->query("SELECT * FROM USERS WHERE email = $email LIMIT 1");
+      $result = $mysqli->query("SELECT * FROM USERS WHERE email = '$email' LIMIT 1");
 
       //comprobar si hay resultados
       if($result && $result->num_rows > 0){
@@ -18,6 +18,7 @@
          //comprobar la contraseña es correcta
          if(password_verify($password, $user['password'])){
             //iniciar sesión
+            $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['name'];
             $_SESSION['surname'] = $user['surname'];
             $_SESSION['age'] = $user['age'];
