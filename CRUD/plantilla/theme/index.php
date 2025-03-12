@@ -60,40 +60,11 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
   </head>
 
   <body>
-<header class="bg-light py-3">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
-            <h1 class="mb-0">Tarjetas de Datos</h1>
-          </div>
-          <div class="col-md-6 text-md-right">
-            <nav>
-              <?php if (isset($_SESSION['user_id'])): ?>
-                <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
-                <p class="d-inline"><?= $_SESSION['username'] ?></p>
-                <br>
-                <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
-                <?php if ($_SESSION['role'] == 'admin'): ?>
-                  <a href="admin.php" class="btn btn-primary"><img src="./images/rueda.png" alt=""></a>
-                <?php else: ?>
-                  <img src="./images/user.png" alt="" class="user-icon">
-                <?php endif; ?>
-              <?php endif; ?>
-              
-          </div>
-        </div>
-      </div>
-    </header>
-    <!-- crear tabla con informacion de la bd usuarios -->
-    <div>
-      
 
-    </div>
-    <header class="navigation fixed-top">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="index.php"
-          ><img src="images/logo.png" alt="Egen"
-        /></a>
+     <header class="navigation fixed-top">
+      <nav style="border-radius: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <?php if (isset($_SESSION['user_id'])): ?>
+        <a class="navbar-brand" href="index.php">Home</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -108,6 +79,15 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
 
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <?php if ($_SESSION['role'] == 'admin'): ?>
+                  <a href="admin.php" class=""><img class="user-icon" src="https://cdn-icons-png.flaticon.com/512/4370/4370721.png" alt=""></a>
+                <?php else: ?>
+                  <img src="./images/user.png" alt="" class="user-icon">
+                <?php endif; ?>
+              <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
+                <p class="d-inline"><?= $_SESSION['username'] ?></p>
+            </li>
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home</a>
             </li>
@@ -148,11 +128,17 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
+            <li class="nav-item">
+              <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
+                
+              <?php endif; ?>
+            </li>
           </ul>
         </div>
       </nav>
     </header>
-
+    <!-- crear tabla con informacion de la bd usuarios -->
+ 
     <!-- banner -->
     <section
       class="banner bg-cover position-relative d-flex justify-content-center align-items-center"

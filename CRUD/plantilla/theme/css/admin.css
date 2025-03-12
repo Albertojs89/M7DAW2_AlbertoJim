@@ -1,0 +1,35 @@
+body {
+  background-color: #add8e6; /* Azul claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.card {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5em;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+    .card.testimonials { background-color: #ff6961; } 
+    .card.news {color: white; background-color: #1e90ff; } 
+    .card.users {color: gray; background-color: #90ee90; } 
+    .card.projects {color: gray;  background-color: #fdfd96; }
