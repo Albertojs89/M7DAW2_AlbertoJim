@@ -4,12 +4,7 @@ require_once '../../theme/comicsSoons/config.php';
 
 $result=$mysqli->query("SELECT * FROM USERS ORDER BY id DESC");
 $usuarios=$result->fetch_all(MYSQLI_ASSOC); 
-
-
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,10 +18,10 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC);
 <style>
   body{
     background-color: beige;
-
   }
 </style>
 <section class="container-fluid">
+ 
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -36,6 +31,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC);
         <th scope="col">Rol</th>
         <th scope="col">Edad</th>
         <th scope="col">Trabajo</th>
+        <th scope="col">Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -49,6 +45,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC);
             <td>' . $usuario['role'] . '</td>
             <td>' . $usuario['age'] . '</td>
             <td>' . $usuario['job'] . '</td>
+            <td><a href="../user/editUser.php?id=' . $usuario['id'] . '" class="btn btn-primary">Editar Usuario</a></td>
           </tr>
         ';
       }
