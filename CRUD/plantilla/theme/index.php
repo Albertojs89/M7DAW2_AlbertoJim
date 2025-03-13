@@ -6,6 +6,8 @@ $result=$mysqli->query("SELECT * FROM USERS ORDER BY id DESC");
 $projects=$mysqli->query("SELECT * FROM PROJECTS ORDER BY id DESC")->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
 $news=$mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC LIMIT 3;")->fetch_all(MYSQLI_ASSOC); 
 
+
+
 $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo convierta en una array asociativo
 
 
@@ -136,8 +138,11 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
             </li>
             <?php else:?>
               <li class="nav-item">
-              <a href="login.php" class="btn btn-primary mt-2">Iniciar Sesión<img src="" alt=""></a>
-            </li>
+              <a href="login.php" class="btn btn-info mt-2">Iniciar Sesión<img src="" alt=""></a>
+              </li>
+              <li class="nav-item">
+              <a href="register.php" class="btn btn-success mt-2">Registrarse<img src="" alt=""></a>
+              </li>
             <?php endif;?>
           </ul>
         </div>

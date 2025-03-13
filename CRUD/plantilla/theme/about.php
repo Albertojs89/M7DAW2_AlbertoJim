@@ -1,3 +1,18 @@
+<?php
+session_start();
+require_once '../theme/comicsSoons/config.php';
+
+$testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fetch_all(MYSQLI_ASSOC); 
+
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 
 <!--
@@ -179,31 +194,7 @@
     </section>
     <!-- /progressbar -->
 
-    <!-- video -->
-    <section class="section pb-0">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="overlay-secondary video-player">
-              <img
-                src="images/about/video-thumb.jpg"
-                alt="video-thumb"
-                class="img-fluid w-100"
-              />
-              <a class="play-icon">
-                <i
-                  class="text-center icon-sm icon-box-sm rounded-circle text-white bg-gradient-primary d-block ti-control-play content-center"
-                  data-video="https://www.youtube.com/embed/jrkvirglgaQ?autoplay=1"
-                >
-                  <div class="ripple"></div>
-                </i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /video -->
+    
 
     <!-- team -->
     <section class="section">
@@ -292,117 +283,40 @@
         </div>
         <div class="row bg-contain" data-background="images/banner/brush.png">
           <div class="col-lg-8 col-md-10 mx-auto">
-            <div id="slider" class="ui-card-slider bg-contain">
-              <div class="slide">
-                <div class="card text-center">
-                  <div class="card-body px-5 py-4">
-                    <img
-                      src="images/testimonial/user-1.jpg"
-                      alt="user-1"
-                      class="img-fluid rounded-circle mb-4"
-                    />
-                    <h4 class="text-secondary">Mellissa Christine</h4>
-                    <p>
-                      “Great work I got a lot more than what I ordered, they are
-                      very legítimas and catchy. I went for one of them for my
-                      brand but is always better to have more options.”
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="card text-center">
-                  <div class="card-body px-5 py-4">
-                    <img
-                      src="images/testimonial/user-1.jpg"
-                      alt="user-1"
-                      class="img-fluid rounded-circle mb-4"
-                    />
-                    <h4 class="text-secondary">Mellissa Christine</h4>
-                    <p>
-                      “Great work I got a lot more than what I ordered, they are
-                      very legítimas and catchy. I went for one of them for my
-                      brand but is always better to have more options.”
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="card text-center">
-                  <div class="card-body px-5 py-4">
-                    <img
-                      src="images/testimonial/user-1.jpg"
-                      alt="user-1"
-                      class="img-fluid rounded-circle mb-4"
-                    />
-                    <h4 class="text-secondary">Mellissa Christine</h4>
-                    <p>
-                      “Great work I got a lot more than what I ordered, they are
-                      very legítimas and catchy. I went for one of them for my
-                      brand but is always better to have more options.”
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="card text-center">
-                  <div class="card-body px-5 py-4">
-                    <img
-                      src="images/testimonial/user-1.jpg"
-                      alt="user-1"
-                      class="img-fluid rounded-circle mb-4"
-                    />
-                    <h4 class="text-secondary">Mellissa Christine</h4>
-                    <p>
-                      “Great work I got a lot more than what I ordered, they are
-                      very legítimas and catchy. I went for one of them for my
-                      brand but is always better to have more options.”
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="slide">
-                <div class="card text-center">
-                  <div class="card-body px-5 py-4">
-                    <img
-                      src="images/testimonial/user-1.jpg"
-                      alt="user-1"
-                      class="img-fluid rounded-circle mb-4"
-                    />
-                    <h4 class="text-secondary">Mellissa Christine</h4>
-                    <p>
-                      “Great work I got a lot more than what I ordered, they are
-                      very legítimas and catchy. I went for one of them for my
-                      brand but is always better to have more options.”
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+           
+              
+                    <?php
+                    foreach ($testimonials as $testimonial){
+                      echo'
+                       <div id="slider" class="ui-card-slider bg-contain">
+                      <div class="slide">
+                        <div class="card text-center">
+                          <div class="card-body px-5 py-4">
+                            <img
+                            src="images/testimonial/user-1.jpg"
+                            alt="user-1"
+                            class="img-fluid rounded-circle mb-4"
+                          />
+                          <h4 class="text-secondary">'.$testimonial['name'].'</h4>
+                          <p>
+                            “'.$testimonial['description'].'”
+                          </p>
+                          <p>'.$testimonial['rating'].'</p>
+                      </div>
+                      </div>
+                      </div>
+                      ';
+                    }
+                    ?>
+                    
+                  
+                
+              
+             
     </section>
     <!-- /testimonial-slider -->
 
-    <!-- call to action -->
-    <section class="section">
-      <div
-        class="container section-sm overlay-secondary-half bg-cover"
-        data-background="images/backgrounds/cta-bg.jpg"
-      >
-        <div class="row">
-          <div class="col-lg-8 offset-lg-1">
-            <h2 class="text-gradient-primary">Let's Start With Us!</h2>
-            <p class="h4 font-weight-bold text-white mb-4">
-              Lorem ipsum dolor sit amet, magna habemus ius ad
-            </p>
-            <a href="contact.php" class="btn btn-lg btn-primary">Let’s talk</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /call to action -->
+    
 
     <!-- footer -->
     <footer class="bg-secondary position-relative">

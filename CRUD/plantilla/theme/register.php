@@ -50,6 +50,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro</title>
 </head>
+<style>
+  .btn{
+    margin-top: 50px !important;
+  }
+</style>
 <body>
   <!-- formulario  -->
    <form action="" method="post">
@@ -76,5 +81,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <input type="submit" value="Registrarse">
   </form>
+
+    <!-- boton para ir a index -->
+  <div class="container mt-3">
+    <a class="btn btn-info mt-5" href="index.php">Volver al Inicio</a>
+  </div>
 </body>
 </html>
