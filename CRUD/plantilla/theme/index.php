@@ -63,7 +63,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
 
      <header class="navigation fixed-top">
       <nav style="border-radius: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <?php if (isset($_SESSION['user_id'])): ?>
+         
         <a class="navbar-brand" href="index.php">Home</a>
         <button
           class="navbar-toggler"
@@ -79,6 +79,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
 
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">
+            <?php if (isset($_SESSION['user_id'])): ?>
             <li class="nav-item active">
               <?php if ($_SESSION['role'] == 'admin'): ?>
                   <a href="admin.php" class=""><img class="user-icon" src="https://cdn-icons-png.flaticon.com/512/4370/4370721.png" alt=""></a>
@@ -88,6 +89,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
               <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
                 <p class="d-inline"><?= $_SESSION['username'] ?></p>
             </li>
+            <?php endif; ?>
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home</a>
             </li>
@@ -128,11 +130,15 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
+            <?php if (isset($_SESSION['user_id'])): ?>
             <li class="nav-item">
               <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
-                
-              <?php endif; ?>
             </li>
+            <?php else:?>
+              <li class="nav-item">
+              <a href="login.php" class="btn btn-primary mt-2">Iniciar Sesión<img src="" alt=""></a>
+            </li>
+            <?php endif;?>
           </ul>
         </div>
       </nav>
