@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   $job = $_POST['job'];
 
   $sql = "UPDATE USERS SET name=?, surname=?, email=?, role=?, age=?, job=? WHERE id=?";
-  $stmt = $mysqli->prepare($sql);
+  $stmt = $mysqli->prepare($sql); //statement
   $stmt->bind_param("ssssssi", $name, $surname, $email, $role, $age, $job, $id);
   if($stmt->execute()){
     header('Location:../adminPanel/adminUsers.php');
