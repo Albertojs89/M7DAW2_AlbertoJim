@@ -52,7 +52,7 @@
     .about-text {
       flex: 1;
       font-family: 'Press Start 2P', cursive;
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       color: #111;
       line-height: 1.8;
     }
@@ -123,7 +123,7 @@
   <footer class="footer-social">
   <a href="https://github.com/" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
   <a href="https://instagram.com/" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
-  <a href="https://linkedin.com/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
+  <a href="https://www.linkedin.com/in/alberto-jim%C3%A9nez-s%C3%A1nchez-5ab368211/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
   </footer>
 
     <a href="index.php" class="btn btn-dark back-floating-btn">
