@@ -1,0 +1,227 @@
+/* Reset + Fonts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Urbanist', sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+
+main {
+  width: 100%;
+  max-width: 1400px;
+  margin-top: 500px; /* espacio debajo del header fijo */
+  padding: 0 16px;
+}
+
+.bento-container {
+  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: masonry; /* opcional si usas Masonry para altura automática */
+  gap: 16px;
+  grid-auto-flow: dense; /* 👈 aún ayuda a rellenar huecos si hay spans */
+  padding: 16px;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Bento Item links */
+.bento-item {
+  height: 100%;
+  min-height: 200px;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  display: block;
+  background-color: #e0e0e0;
+}
+
+.bento-item:hover {
+  transform: scale(1.03); /* Leve zoom en la caja */
+}
+
+/* Imágenes dentro del bento */
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Zoom más fuerte solo en la imagen al pasar cursor */
+.bento-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive grid spans (puedes ajustar a gusto) */
+.item-1 { grid-column: span 2; grid-row: span 1; }
+.item-2 { grid-column: span 1; grid-row: span 2; }
+.item-3 { grid-column: span 1; grid-row: span 1; }
+.item-4 { grid-column: span 2; grid-row: span 1; }
+.item-5 { grid-column: span 2; grid-row: span 1; }
+.item-6 { grid-column: span 2; grid-row: span 1; }
+.item-7 { grid-column: span 1; grid-row: span 1; }
+.item-8 { grid-column: span 1; grid-row: span 1; }
+.item-9 { grid-column: span 4; grid-row: span 1; }
+
+/* Título inferior en hover */
+.bento-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 16px;
+  background-color: rgba(0, 0, 0, 0.65); /* oscuro con opacidad */
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+
+.bento-item:hover .bento-title {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* Asegura que .bento-item esté preparado para overlay */
+.bento-item {
+  position: relative;
+  overflow: hidden;
+}
+/* ========== HEADER FIXED ========== */
+.main-header {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  background-color: #222;
+  border-radius: 20px;
+  z-index: 1000;
+  padding: 12px 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* MENU ITEMS COLORFUL */
+.nav-home {
+  color: #ff4c4c; /* Rojo claro */
+}
+
+.nav-news {
+  color: #f6d743; /* Amarillo */
+}
+
+.nav-analysis {
+  color: #6cff6c; /* Verde claro */
+}
+
+.nav-rankings {
+  color: #58a6ff; /* Azul claro */
+}
+
+.nav-item {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: opacity 0.3s ease;
+}
+
+.nav-item:hover {
+  opacity: 0.8;
+}
+
+/* Register / Login */
+.nav-auth {
+  color: #ccc;
+}
+
+/* Logout button */
+.logout-btn {
+  padding: 6px 14px;
+  background-color: #444;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #666;
+}
+.nav-title {
+  font-family: 'Press Start 2P', cursive;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none; /* evita interferencias con clics en otras áreas */
+}
+
+.bento-container a:nth-last-child(4) {
+  grid-row: span 2;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-left, .nav-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-item, .logout-btn {
+    font-size: 0.9rem;
+  }
+
+  .nav-title {
+    font-size: 0.8rem;
+    margin-top: 8px;
+  }
+}
