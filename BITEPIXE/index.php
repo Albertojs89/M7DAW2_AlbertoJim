@@ -1,3 +1,14 @@
+<?php
+session_start();
+require_once 'config.php';
+
+
+$memoryCards=$mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC LIMIT 3;")->fetch_all(MYSQLI_ASSOC);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -105,26 +116,20 @@ foreach ($bentos as $bento): ?>
 
 
   <!-- SECCIÓN MEMORY CARD -->
-
+  
   <section id="memorycard" class="memory-card-section">
     <h2 class="memory-card-title">Memory Card</h2>
     <p class="memory-card-subtitle">La nostalgia en recuerdos</p>
     <div class="memory-card-slider">
-      <div class="memory-card">
-        <img src="/images/snes-console.jpg" alt="Recuerdo SNES">
-        <h3>Recuerdo SNES</h3>
-        <p>Mi primer cartucho fue Super Mario World. Recuerdo las tardes en casa con mi hermano.</p>
-      </div>
-      <div class="memory-card">
-        <img src="/images/cartucho.jpg" alt="Cartucho de Game Boy">
-        <h3>Cartucho de Game Boy</h3>
-        <p>Cómo olvidarme del Tetris en la Game Boy tocha con pilas recargables.</p>
-      </div>
-      <div class="memory-card">
-        <img src="/images/revistas.jpg" alt="Revistas de videojuegos">
-        <h3>Revistas de videojuegos</h3>
-        <p>Antes de internet, devorábamos cada número de Hobby Consolas o Superjuegos.</p>
-      </div>
+      <?php foreach ($memoryCards as $card): ?>
+        <div class="memory-card">
+          <img src="/images/<?= ($card['imagen']) ?>" alt="<?= htmlspecialchars($card['titulo']) ?>">
+          <h3><?= htmlspecialchars($card['titulo']) ?></h3>
+          <p><?= htmlspecialchars($card['texto']) ?></p>
+        </div>
+      <?php endforeach; ?>
+
+      
     </div>
   </section>
   <!-- FOOTER -->
