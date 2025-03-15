@@ -273,6 +273,7 @@ main {
   color: #ffffff;
   border-radius: 20px;
   margin-top: 40px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4); /* Sombreado más marcado */
 }
 
 .memory-card-title {
@@ -362,7 +363,9 @@ main {
   transform: scale(1.05);
 }
 
-/* footer section */
+
+
+/* footer section --------------------------------- */
 .site-footer {
   width: 100%;
   background-color: #1e1e1e;

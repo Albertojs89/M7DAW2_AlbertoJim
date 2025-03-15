@@ -1,11 +1,39 @@
 <?php
+session_start();
+require_once 'config.php';
 
-//AQUI VA LA LOGICA PHP
+// Lógica del login
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
+    // Consulta segura (usamos prepare para evitar SQL injection)
+    $stmt = $mysqli->prepare("SELECT * FROM usuarios WHERE email = ? LIMIT 1");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado && $resultado->num_rows > 0) {
+        $usuario = $resultado->fetch_assoc();
+
+        // Verificar la contraseña
+        if (password_verify($password, $usuario['password'])) {
+            // Guardar datos en la sesión
+            $_SESSION['user_id'] = $usuario['id'];
+            $_SESSION['nombre'] = $usuario['nombre'];
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['rol'] = $usuario['rol'];
+
+            header('Location: index.php');
+            exit;
+        } else {
+            $error = "⚠ Contraseña incorrecta.";
+        }
+    } else {
+        $error = "⚠ Usuario no encontrado.";
+    }
+}
 ?>
-
-
-
 
 
 <!DOCTYPE html>
@@ -13,7 +41,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - BITEPIXE</title>
+  <title>Iniciar sesión - BITEPIXE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -32,7 +60,7 @@
       padding: 40px;
       border-radius: 16px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
+      max-width: 450px;
       width: 100%;
     }
 
@@ -54,16 +82,28 @@
     .form-label {
       font-weight: 500;
     }
+
+    .error {
+      color: red;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
 
   <div class="login-card">
-    <h2>Iniciar sesión</h2>
-    <form action="procesar_login.php" method="POST">
+    <h2>Iniciar Sesión</h2>
+
+    <?php if (isset($error)): ?>
+      <div class="error"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+
+    <form method="POST" action="">
       <div class="mb-3">
-        <label for="usuario" class="form-label">Usuario</label>
-        <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Nombre de usuario" required>
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@example.com" required>
       </div>
 
       <div class="mb-4">
@@ -75,7 +115,15 @@
         <button type="submit" class="btn btn-dark btn-login">Entrar</button>
       </div>
     </form>
+
+    <div class="d-grid mt-3">
+      <a href="index.php" class="btn btn-outline-secondary btn-login">← Volver al inicio</a>
+    </div>
   </div>
 
 </body>
 </html>
+
+
+
+

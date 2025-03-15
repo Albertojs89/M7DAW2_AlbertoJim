@@ -1,5 +1,24 @@
 <?php
-// aqui va la logica php
+session_start();
+require_once 'config.php';
+
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = intval($_GET['id']);
+
+    $stmt = $mysqli->prepare("SELECT * FROM noticias WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+
+    if ($resultado->num_rows > 0) {
+        $noticia = $resultado->fetch_assoc();
+    } else {
+        $error = "La noticia no existe o ha sido eliminada.";
+    }
+    $stmt->close();
+} else {
+    $error = "ID de noticia no válido.";
+}
 
 ?>
 
@@ -91,7 +110,8 @@
   </style>
 </head>
 <body>
-    <header class="main-header">
+
+<header class="main-header">
   <nav class="nav-bar">
     <div class="nav-left">
       <a href="index.php" class="nav-item nav-home"><span class="nav-dot nav-dot-home"></span> Home</a>
@@ -108,21 +128,27 @@
   </nav>
 </header>
 
+<?php if (isset($error)): ?>
   <div class="noticia-container">
-    <h1 class="noticia-title">Skies of Arcadia podría volver</h1>
+    <h1 class="noticia-title"><?= htmlspecialchars($error) ?></h1>
+  </div>
+<?php elseif (isset($noticia)): ?>
+  <div class="noticia-container">
+    <h1 class="noticia-title"><?= htmlspecialchars($noticia['titulo']) ?></h1>
 
     <div class="noticia-content">
-      <img src="/images/SkiesofArcadia.jpg" alt="Imagen Noticia" class="noticia-img">
+      <img src="/images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="Imagen Noticia" class="noticia-img">
       <div class="noticia-text">
-        Según varios insiders, SEGA estaría trabajando en un remake o secuela de este icónico RPG de Dreamcast. Aunque no hay confirmación oficial, los rumores suenan cada vez más fuerte.
+        <?= nl2br(htmlspecialchars($noticia['texto'])) ?>
       </div>
     </div>
 
     <div class="noticia-meta">
-      <div><strong>Publicado:</strong> 14 de marzo de 2025</div>
-      <div><strong>Autor:</strong> Alberto</div>
+      <div><strong>Publicado:</strong> <?= htmlspecialchars(date("d-m-Y", strtotime($noticia['fecha']))) ?></div>
+      <div><strong>Autor:</strong> Alberto</div> <!-- o dinámico si más adelante se obtiene el autor -->
     </div>
   </div>
+<?php endif; ?>
 
 </body>
 </html>

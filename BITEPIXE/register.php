@@ -1,8 +1,36 @@
 <?php
+session_start();
+require_once 'config.php';
 
-//AQUI VA LA LOGICA PHP
+// Lógica del formulario
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $nombre = $_POST['nombre'];
+  $email = $_POST['email']; // ✔ lo correcto
+  $password = $_POST['password'];
+  $avatar = $_POST['avatar'];
+
+  $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+
+  $stmt = $mysqli->prepare("INSERT INTO usuarios (nombre, email, avatar, password, rol, fecha_registro) VALUES (?, ?, ?, ?, 'user', NOW())");
+
+  if (!$stmt) {
+    die("Error al preparar consulta: " . $mysqli->error);
+  }
+
+  $stmt->bind_param("ssss", $nombre, $email, $avatar, $passwordHashed);
+
+  if ($stmt->execute()) {
+    $mensaje = "✅ Usuario registrado correctamente.";
+  } else {
+    $mensaje = "❌ Error al registrar: " . $stmt->error;
+  }
+
+  $stmt->close();
+  $mysqli->close();
+}
 
 ?>
+
 
 
 <!DOCTYPE html>
@@ -51,32 +79,52 @@
     .form-label {
       font-weight: 500;
     }
+
+    .mensaje {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
   <div class="register-card">
     <h2>Crear cuenta</h2>
-    <form action="procesar_registro.php" method="POST">
+
+    <?php if (isset($mensaje)): ?>
+      <div class="mensaje"><?= $mensaje ?></div>
+    <?php endif; ?>
+
+    <form action="" method="POST">
       <div class="mb-3">
         <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre de usuario" required>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="avatar" class="form-label">Avatar (enlace de imagen)</label>
+        <input type="url" class="form-control" id="avatar" name="avatar" placeholder="https://tuimagen.com/avatar.jpg" required>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required>
       </div>
 
       <div class="mb-3">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="••••••••" required>
-      </div>
-
-      <div class="mb-4">
-        <label for="avatar" class="form-label">Link del avatar</label>
-        <input type="url" class="form-control" id="avatar" name="avatar" placeholder="https://tu-avatar.com/avatar.jpg" required>
+        <input type="password" class="form-control" id="password" name="password" required>
       </div>
 
       <div class="d-grid">
         <button type="submit" class="btn btn-dark btn-register">Registrarme</button>
       </div>
     </form>
+    <div class="d-grid mt-3">
+      <a href="index.php" class="btn btn-outline-secondary btn-register">← Volver al inicio</a>
+    </div>
+
   </div>
 
 </body>

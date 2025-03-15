@@ -4,6 +4,7 @@ require_once 'config.php';
 
 
 $memoryCards=$mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC LIMIT 3;")->fetch_all(MYSQLI_ASSOC);
+$noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -25,7 +26,7 @@ $memoryCards=$mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC LIMIT 3;
 
 
 <body>
-  <header class="main-header">
+<header class="main-header">
   <nav class="nav-bar">
     <div class="nav-left">
       <a href="index.php" class="nav-item nav-home"><span class="nav-dot nav-dot-home"></span> Home</a>
@@ -33,11 +34,20 @@ $memoryCards=$mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC LIMIT 3;
       <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
       <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
     </div>
+
     <div class="nav-title">BITEPIXE</div>
+
     <div class="nav-right">
-      <a href="register.php" class="nav-item nav-auth">Register</a>
-      <a href="login.php" class="nav-item nav-auth">Login</a>
-      <button class="logout-btn">Cerrar sesión</button>
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="d-flex align-items-center gap-2">
+          <img src="<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.3);">
+          <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
+          <a href="logout.php" class="btn btn-dark btn-sm logout-btn">Cerrar sesión</a>
+        </div>
+      <?php else: ?>
+        <a href="register.php" class="nav-item nav-auth">Register</a>
+        <a href="login.php" class="nav-item nav-auth">Login</a>
+      <?php endif; ?>
     </div>
   </nav>
 </header>
@@ -48,17 +58,8 @@ $memoryCards=$mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC LIMIT 3;
 
 
 
+
 <!-- al hacer la logica php tendré que hacer que los item-1 vaya aumentando
-ejemplo:
-
-foreach ($bentos as $bento): ?>
-  <a href="#" class="bento-item item-<?= $index ?>">
-    <img src="<?= $bento['imagen'] ?>" alt="<?= $bento['titulo'] ?>">
-    <div class="bento-title">
-      <span><?= $bento['titulo'] ?></span>
-    </div>
-  </a>
-
 
 -->
 
@@ -68,51 +69,23 @@ foreach ($bentos as $bento): ?>
     <div class="scroll-btn-wrapper">
       <a href="#memorycard" class="scroll-btn">↓ Memory Card</a>
     </div>
+
+
     <!-- SECCIÓN NOTICIAS -->
 
-    <div class="bento-container">
-    <a href="noticiasDetalle.php?id=1" class="bento-item item-1">
-      <img src="/images/SkiesofArcadia.jpg" alt="Bento 1">
+<div class="bento-container">
+  <?php $i = 1; ?>
+  <?php foreach ($noticias as $noticia): ?>
+    <a href="noticiasDetalle.php?id=<?= $noticia['id'] ?>" class="bento-item item-<?= $i ?>">
+      <img src="/images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="<?= htmlspecialchars($noticia['titulo']) ?>">
       <div class="bento-title">
-        <span>Skies of Arcadia podría volver</span>
+        <span><?= htmlspecialchars($noticia['titulo']) ?></span>
       </div>
     </a>
+    <?php $i++; ?>
+  <?php endforeach; ?>
+</div>
 
-    <a href="noticiasDetalle.php?id=2" class="bento-item item-2">
-      <img src="/images/avowed.jpg" alt="Bento 2">
-      <div class="bento-title">
-        <span>Avowed, lo último de Obsidian</span>
-      </div>
-    </a>
-
-    <a href="noticiasDetalle.php?id=3" class="bento-item item-3">
-      <img src="/images/switch2.jpg" alt="Bento 3">
-      <div class="bento-title">
-        <span>Todo lo que sabemos de Nintendo Switch 2</span>
-      </div>
-    </a>
-
-    <a href="noticiasDetalle.php?id=4" class="bento-item item-4">
-      <img src="/images/split.jpg" alt="Bento 4">
-      <div class="bento-title">
-        <span>Lo ha vuelto hacer, viva el cooperativo!</span>
-      </div>
-    </a>
-
-    <a href="noticiasDetalle.php?id=5" class="bento-item item-5">
-      <img src="/images/zelda.jpg" alt="Bento 5">
-      <div class="bento-title">
-        <span>Zelda, la leyenda que sigue superandose</span>
-      </div>
-    </a>
-
-    <a href="noticiasDetalle.php?id=6" class="bento-item item-6">
-      <img src="/images/GTAVI.jpg" alt="Bento 6">
-      <div class="bento-title">
-        <span>GTA VI cambiará el mundo del videojuego</span>
-      </div>
-    </a>
-  </div>
 
 
   <!-- SECCIÓN MEMORY CARD -->
