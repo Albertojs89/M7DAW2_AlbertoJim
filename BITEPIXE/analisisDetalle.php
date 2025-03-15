@@ -51,6 +51,12 @@
       margin-bottom: 20px;
       text-align: center;
     }
+     .analisis-title2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      text-align: center;
+    }
 
     .analisis-text {
       font-size: 1.05rem;
@@ -118,7 +124,7 @@
     <img src="/images/zelda.jpg" alt="Imagen del juego" class="analisis-img">
 
     <h1 class="analisis-title">Análisis de Zelda: Tears of the Kingdom</h1>
-
+    <h2 class="analisis-title2">Solo uno es Leyenda</h2>
     <p class="analisis-text">
       La nueva entrega de Zelda no solo expande el universo, sino que lo reinventa. Un juego que respira libertad, diseño magistral y momentos inolvidables. Con mecánicas pulidas y una narrativa emocional, es un referente moderno del diseño de videojuegos. Esta experiencia deja huella en cada rincón del mundo abierto y demuestra que Nintendo sigue marcando el ritmo.
     </p>

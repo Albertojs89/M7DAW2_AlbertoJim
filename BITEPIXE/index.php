@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@300;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 <body>
   <header class="main-header">
@@ -28,6 +30,13 @@
     </div>
   </nav>
 </header>
+
+
+
+
+
+
+
 <!-- al hacer la logica php tendré que hacer que los item-1 vaya aumentando
 ejemplo:
 
@@ -41,7 +50,15 @@ foreach ($bentos as $bento): ?>
 
 
 -->
+
+
   <main>
+    <!-- boton para scroll directo a seccion memory card -->
+    <div class="scroll-btn-wrapper">
+      <a href="#memorycard" class="scroll-btn">↓ Memory Card</a>
+    </div>
+    <!-- SECCIÓN NOTICIAS -->
+
     <div class="bento-container">
     <a href="noticiasDetalle.php?id=1" class="bento-item item-1">
       <img src="/images/SkiesofArcadia.jpg" alt="Bento 1">
@@ -86,7 +103,75 @@ foreach ($bentos as $bento): ?>
     </a>
   </div>
 
-  </main>
+
+  <!-- SECCIÓN MEMORY CARD -->
+
+  <section id="memorycard" class="memory-card-section">
+    <h2 class="memory-card-title">Memory Card</h2>
+    <p class="memory-card-subtitle">La nostalgia en recuerdos</p>
+    <div class="memory-card-slider">
+      <div class="memory-card">
+        <img src="/images/snes-console.jpg" alt="Recuerdo SNES">
+        <h3>Recuerdo SNES</h3>
+        <p>Mi primer cartucho fue Super Mario World. Recuerdo las tardes en casa con mi hermano.</p>
+      </div>
+      <div class="memory-card">
+        <img src="/images/cartucho.jpg" alt="Cartucho de Game Boy">
+        <h3>Cartucho de Game Boy</h3>
+        <p>Cómo olvidarme del Tetris en la Game Boy tocha con pilas recargables.</p>
+      </div>
+      <div class="memory-card">
+        <img src="/images/revistas.jpg" alt="Revistas de videojuegos">
+        <h3>Revistas de videojuegos</h3>
+        <p>Antes de internet, devorábamos cada número de Hobby Consolas o Superjuegos.</p>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-columns">
+
+      <!-- Columna 1: Info contacto -->
+      <div class="footer-column">
+        <h3 class="footer-subtitle">Contacto</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Barcelona, España</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:contacto@bitepixe.com">bertocover@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+34600123456">+34 666 942 922</a></p>
+      </div>
+
+      <!-- Columna 2: Enlaces -->
+      <div class="footer-column">
+        <h3 class="footer-subtitle">Enlaces</h3>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="#analisis">Análisis</a></li>
+          <li><a href="#rankings">Rankings</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: Redes Sociales -->
+      <div class="footer-column">
+        <h3 class="footer-subtitle">Síguenos</h3>
+        <div class="footer-social">
+          <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="footer-copy">© 2025 BITEPIXE · Desarrollado por Alberto</p>
+  </div>
+</footer>
+
+
+
+</main>
+
+ 
 
 
 
