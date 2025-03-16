@@ -64,7 +64,7 @@
 ---
 
 ## 📸 Capturas (opcional en GitHub)
-Puedes añadir capturas del header, tarjetas de análisis o formularios para mostrar la interfaz visual del proyecto.
+
 
 ---
 
