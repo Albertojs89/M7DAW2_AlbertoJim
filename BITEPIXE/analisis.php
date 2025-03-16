@@ -1,5 +1,10 @@
+<?php
+session_start();
+require_once 'config.php';
 
-
+// Obtener todos los análisis
+$analisis = $mysqli->query("SELECT * FROM analisis ORDER BY fecha DESC")->fetch_all(MYSQLI_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -10,6 +15,9 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     .analisis-grid {
       max-width: 1200px;
@@ -18,6 +26,7 @@
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       padding: 0 20px;
+      margin-top: 200px !important;
     }
 
     .analisis-card {
@@ -37,42 +46,92 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    .analisis-card img {
+    .analisis-card img.card-img {
       width: 100%;
       height: 200px;
       object-fit: cover;
     }
 
     .analisis-card-title {
-      padding: 20px;
+      padding: 20px 20px 10px;
       font-size: 1.2rem;
       font-weight: 600;
       text-align: center;
     }
+
+    .platform-icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding-bottom: 15px;
+    }
+
+    .platform-icons img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+    .pc-icon {
+  width: 28px !important;
+  height: 28px !important;
+  object-fit: contain;
+}
+
   </style>
 </head>
 <body>
+    <header class="main-header">
+  <nav class="nav-bar">
+    <div class="nav-left">
+      <a href="index.php" class="nav-item nav-home"><span class="nav-dot nav-dot-home"></span> Home</a>
+      <a href="analisis.php" class="nav-item nav-analysis"><span class="nav-dot nav-dot-analysis"></span> Análisis</a>
+      <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
+      <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
+    </div>
 
-<!-- aqui recorremos los juegos para mostrar en tarjetas y con la id lo enviamos a analisis detalle -->
+    <div class="nav-title">BITEPIXE</div>
 
+    <div class="nav-right">
+      <?php if (isset($_SESSION['user_id'])): ?>
+        <div class="d-flex align-items-center gap-2">
+          <img src="<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.3);">
+          <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
+          <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión">
+            <i class="fas fa-power-off"></i>
+          </a>
 
-  <div class="analisis-grid">
-    <a href="analisisDetalle.php?id=1" class="analisis-card">
-      <img src="/images/zelda.jpg" alt="Zelda">
-      <div class="analisis-card-title">Análisis de Zelda: Tears of the Kingdom</div>
-    </a>
+        </div>
+      <?php else: ?>
+        <a href="register.php" class="nav-item nav-auth">Register</a>
+        <a href="login.php" class="nav-item nav-auth">Login</a>
+      <?php endif; ?>
+    </div>
+  </nav>
+</header>
 
-    <a href="analisis_detalle.php?id=2" class="analisis-card">
-      <img src="/images/starfield.jpg" alt="Starfield">
-      <div class="analisis-card-title">Análisis de Starfield</div>
-    </a>
+  <div class="analisis-grid container-fluid">
+    <?php foreach ($analisis as $item): ?>
+      <a href="analisisDetalle.php?id=<?= $item['id'] ?>" class="analisis-card">
+        <img src="/images/<?= htmlspecialchars($item['imagen']) ?>" class="card-img" alt="<?= htmlspecialchars($item['titulo']) ?>">
+        <div class="analisis-card-title"><?= htmlspecialchars($item['titulo']) ?></div>
+        <div class="platform-icons">
+          <?php
+            $plataformas = explode(',', $item['plataforma']);
+            foreach ($plataformas as $plat) {
+              $plat = trim($plat);
+              $iconPath = "/images/plataformas/" . strtolower($plat) . ".png";
+              if (file_exists(__DIR__ . $iconPath)) {
+                $class = (strtolower($plat) === 'pc') ? 'pc-icon' : '';
+                echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '" class="' . $class . '">';
 
-    <a href="analisis_detalle.php?id=3" class="analisis-card">
-      <img src="/images/avowed.jpg" alt="Avowed">
-      <div class="analisis-card-title">Análisis de Avowed</div>
-    </a>
-
-    <!-- Agrega más tarjetas como desees -->
+              } else {
+                echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '">'; // Si no existe igual se muestra el path
+              }
+            }
+          ?>
+        </div>
+      </a>
+    <?php endforeach; ?>
   </div>
 
 </body>

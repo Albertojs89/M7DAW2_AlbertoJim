@@ -174,20 +174,27 @@ main {
 }
 
 /* Logout button */
-.logout-btn {
-  padding: 6px 14px;
-  background-color: #444;
-  border: none;
-  border-radius: 8px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s ease;
+.logout-icon-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #e63946; /* rojo */
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 15px;
 }
 
-.logout-btn:hover {
-  background-color: #666;
+.logout-icon-btn:hover {
+  background-color: #c62d39;
+  transform: scale(1.05);
 }
+
 .nav-title {
   font-family: 'Press Start 2P', cursive;
   color: #fff;

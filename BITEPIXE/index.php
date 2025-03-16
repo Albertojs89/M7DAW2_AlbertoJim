@@ -42,7 +42,10 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
         <div class="d-flex align-items-center gap-2">
           <img src="<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.3);">
           <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
-          <a href="logout.php" class="btn btn-dark btn-sm logout-btn">Cerrar sesión</a>
+          <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión">
+            <i class="fas fa-power-off"></i>
+          </a>
+
         </div>
       <?php else: ?>
         <a href="register.php" class="nav-item nav-auth">Register</a>
