@@ -18,7 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $mysqli->prepare("INSERT INTO MEMORY_CARD (titulo, texto, imagen) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $titulo, $texto, $imagen);
         if ($stmt->execute()) {
-            header('Location: adminMemory.php?mensaje=Memory Card añadida correctamente');
+            echo "<div class='alert alert-success text-center mx-auto mt-4 shadow' style='max-width: 600px; font-size: 1.1rem; border-radius: 12px;'>
+                    ✅ Memory Card añadida correctamente. <br><small>Serás redirigido en unos segundos...</small>
+                  </div>";
+            echo "<meta http-equiv='refresh' content='2;URL=adminMemory.php'>";
             exit;
         } else {
             $error = "Error al guardar la Memory Card.";
@@ -27,6 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "Todos los campos son obligatorios.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
