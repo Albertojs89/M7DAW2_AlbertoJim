@@ -34,6 +34,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   <title>Detalle Noticia - BITEPIXE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link rel="stylesheet" href="/styles/css/index.css">
   <style>
     body {
@@ -107,6 +110,32 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         gap: 10px;
       }
     }
+    .btn-home-return {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #2c2c2c; /* Gris oscuro */
+  color: #fff;
+  border: 2px solid #2c2c2c;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 1rem;
+}
+
+.btn-home-return i {
+  font-size: 1.1rem;
+}
+
+.btn-home-return:hover {
+  background-color: #1e1e1e;
+  transform: scale(1.10);
+}
+
   </style>
 </head>
 <body>
@@ -146,9 +175,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <div class="noticia-meta">
       <div><strong>Publicado:</strong> <?= htmlspecialchars(date("d-m-Y", strtotime($noticia['fecha']))) ?></div>
       <div><strong>Autor:</strong> Alberto</div> <!-- o dinámico si más adelante se obtiene el autor -->
+      <!-- botones acceso -->
     </div>
+        <div class="text-center mt-5 d-flex justify-content-center gap-3">
+      <a href="index.php" class="btn-home-return">
+        <i class="fas fa-home"></i>
+      </a>
+      
+    </div>
+
   </div>
 <?php endif; ?>
 
 </body>
+
 </html>

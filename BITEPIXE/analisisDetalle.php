@@ -139,36 +139,36 @@ $plataformas = explode(',', $analisis['plataforma']);
         font-size: 1.6rem;
       }
     }
+    .btn-home-return {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #2c2c2c; /* Gris oscuro */
+  color: #fff;
+  border: 2px solid #2c2c2c;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 1rem;
+}
+
+.btn-home-return i {
+  font-size: 1.1rem;
+}
+
+.btn-home-return:hover {
+  background-color: #1e1e1e;
+  transform: scale(1.05);
+}
+
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="nav-bar">
-      <div class="nav-left">
-        <a href="index.php" class="nav-item nav-home"><span class="nav-dot nav-dot-home"></span> Home</a>
-        <a href="analisis.php" class="nav-item nav-analysis"><span class="nav-dot nav-dot-analysis"></span> Análisis</a>
-        <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
-        <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
-      </div>
-
-      <div class="nav-title">BITEPIXE</div>
-
-      <div class="nav-right">
-        <?php if (isset($_SESSION['user_id'])): ?>
-          <div class="d-flex align-items-center gap-2">
-            <img src="<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.3);">
-            <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
-            <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión">
-              <i class="fas fa-power-off"></i>
-            </a>
-          </div>
-        <?php else: ?>
-          <a href="register.php" class="nav-item nav-auth">Register</a>
-          <a href="login.php" class="nav-item nav-auth">Login</a>
-        <?php endif; ?>
-      </div>
-    </nav>
-  </header>
+<?php include 'header.php'; ?>
 
   <div class="analisis-container">
     <img src="/images/<?= htmlspecialchars($analisis['imagen']) ?>" alt="Imagen del juego" class="analisis-img">
@@ -192,7 +192,18 @@ $plataformas = explode(',', $analisis['plataforma']);
       <div class="analisis-note">⭐ <?= htmlspecialchars($analisis['nota']) ?></div>
       <div class="analisis-date">Publicado: <?= htmlspecialchars($analisis['fecha']) ?></div>
     </div>
-  </div>
 
+    <!-- botones navegación -->
+    <div class="text-center mt-5 d-flex justify-content-center gap-3">
+      <a href="index.php" class="btn-home-return">
+        <i class="fas fa-home"></i> 
+      </a>
+      <a href="analisis.php" class="btn-home-return">
+        <i class="fas fa-arrow-left"></i> 
+      </a>
+    </div>
+
+  </div>
+      
 </body>
 </html>

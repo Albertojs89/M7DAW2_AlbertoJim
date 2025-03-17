@@ -1,5 +1,13 @@
+<?php
+session_start();
+require_once 'config.php';
 
-
+// Verificar si eres admin, sino redirige a index.php
+if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    header('Location: index.php');
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +27,7 @@
       justify-content: center;
       align-items: center;
       padding: 40px;
+      flex-direction: column;
     }
 
     .admin-container {
@@ -60,20 +69,20 @@
       font-weight: 600;
       margin-top: 25px;
     }
+
     .back-btn {
-  padding: 10px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
+      padding: 10px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
 
-.back-btn:hover {
-  background-color: #333;
-  transform: scale(1.03);
-}
-
+    .back-btn:hover {
+      background-color: #333;
+      transform: scale(1.03);
+    }
   </style>
 </head>
 <body>
@@ -93,11 +102,16 @@
       <i class="bi bi-gear-fill admin-icon"></i>
       <div class="admin-label">Ranking</div>
     </a>
-  </div>
-  <div class="mt-4 text-center">
-  <a href="index.php" class="btn btn-dark back-btn">← Volver al inicio</a>
-</div>
 
+    <a href="/adminPanels/adminMemory.php" class="admin-module">
+      <i class="bi bi-gear-fill admin-icon"></i>
+      <div class="admin-label">Memory Cards</div>
+    </a>
+  </div>
+
+  <div class="mt-4 text-center">
+    <a href="index.php" class="btn btn-dark back-btn">← Volver al inicio</a>
+  </div>
 
 </body>
 </html>
