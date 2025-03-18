@@ -23,7 +23,8 @@ if (session_status() === PHP_SESSION_NONE) {
               <img src="/images/admin.png" alt="Admin" style="width: 36px; height: 36px; object-fit: contain;">
             </a>
           <?php endif; ?>
-          <img src="<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 8px rgba(0,0,0,0.3);">
+         <img src="/images/avatars/<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 0 8px rgba(0,0,0,0.3);">
+
           <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
           <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión">
             <i class="fas fa-power-off"></i>

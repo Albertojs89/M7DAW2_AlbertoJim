@@ -2,45 +2,70 @@
 session_start();
 require_once '../config.php';
 
-// Verificación de admin
+// Verificar si eres admin
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
-    header("Location: ../index.php");
+    header('Location: ../index.php');
     exit();
 }
 
-// Validar ID recibido
+// Obtener la noticia
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
-    header("Location: adminNoticias.php");
+    header('Location: adminNoticias.php?error=ID no válido');
     exit();
 }
 
 $id = intval($_GET['id']);
-
-// Obtener datos actuales
 $stmt = $mysqli->prepare("SELECT * FROM noticias WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $resultado = $stmt->get_result();
-$noticia = $resultado->fetch_assoc();
 
-if (!$noticia) {
-    echo "Noticia no encontrada.";
+if ($resultado->num_rows === 0) {
+    header('Location: adminNoticias.php?error=Noticia no encontrada');
     exit();
 }
 
-// Si se envió el formulario
+$noticia = $resultado->fetch_assoc();
+$stmt->close();
+
+// Procesar formulario de actualización
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = $_POST['titulo'];
-    $texto = $_POST['texto'];
-    $imagen = $_POST['imagen'];
+    $titulo = trim($_POST['titulo']);
+    $texto = trim($_POST['texto']);
+    $imagenActual = $noticia['imagen'];
+    
+    // Verificar si se sube nueva imagen
+    if (!empty($_FILES['imagen']['name'])) {
+        $nombreImagen = basename($_FILES['imagen']['name']);
+        $rutaDestino = '../images/' . $nombreImagen;
+        $tipoArchivo = strtolower(pathinfo($rutaDestino, PATHINFO_EXTENSION));
 
-    $stmt = $mysqli->prepare("UPDATE noticias SET titulo = ?, texto = ?, imagen = ? WHERE id = ?");
-    $stmt->bind_param("sssi", $titulo, $texto, $imagen, $id);
-
-    if ($stmt->execute()) {
-        $mensaje = "✅ Noticia actualizada correctamente.";
+        // Validaciones básicas
+        $permitidos = ['jpg', 'jpeg', 'png', 'gif'];
+        if (in_array($tipoArchivo, $permitidos)) {
+            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
+                $imagen = $nombreImagen;
+            } else {
+                $error = "Error al subir la nueva imagen.";
+            }
+        } else {
+            $error = "Tipo de archivo no permitido. Usa JPG, PNG o GIF.";
+        }
     } else {
-        $error = "❌ Error al actualizar.";
+        // Mantener imagen anterior si no se sube una nueva
+        $imagen = $imagenActual;
+    }
+
+    if (!isset($error)) {
+        $stmt = $mysqli->prepare("UPDATE noticias SET titulo=?, texto=?, imagen=? WHERE id=?");
+        $stmt->bind_param("sssi", $titulo, $texto, $imagen, $id);
+        if ($stmt->execute()) {
+            header('Location: adminNoticias.php?mensaje=Noticia actualizada correctamente');
+            exit();
+        } else {
+            $error = "Error al actualizar la noticia.";
+        }
+        $stmt->close();
     }
 }
 ?>
@@ -50,66 +75,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editar Noticia</title>
+  <title>Editar Noticia - BITEPIXE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #f5f5f5;
-      padding: 50px 20px;
       font-family: 'Rubik', sans-serif;
+      min-height: 100vh;
+      padding: 40px;
+      display: flex;
+      justify-content: center;
     }
-    .form-container {
-      max-width: 700px;
-      background-color: white;
-      margin: auto;
+    .form-card {
+      background: #fff;
       padding: 40px;
       border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
     }
-    .form-title {
+    .form-card h2 {
       text-align: center;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 30px;
     }
-    .btn-back {
-      display: inline-block;
-      margin-top: 20px;
-      background-color: #2c2c2c;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 10px;
-      text-decoration: none;
+    .alert {
+      margin-bottom: 20px;
     }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <h2 class="form-title">Editar Noticia</h2>
+<div class="form-card">
+  <h2>Editar Noticia</h2>
 
-    <?php if (isset($mensaje)) echo "<div class='alert alert-success'>$mensaje</div>"; ?>
-    <?php if (isset($error)) echo "<div class='alert alert-danger'>$error</div>"; ?>
+  <?php if (isset($error)): ?>
+    <div class="alert alert-danger text-center"><?= htmlspecialchars($error) ?></div>
+  <?php endif; ?>
 
-    <form method="POST">
-      <div class="mb-3">
-        <label class="form-label">Título</label>
-        <input type="text" class="form-control" name="titulo" value="<?= htmlspecialchars($noticia['titulo']) ?>" required>
-      </div>
+  <form action="" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título</label>
+      <input type="text" name="titulo" id="titulo" class="form-control" value="<?= htmlspecialchars($noticia['titulo']) ?>" required>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">Texto</label>
-        <textarea class="form-control" name="texto" rows="6" required><?= htmlspecialchars($noticia['texto']) ?></textarea>
-      </div>
+    <div class="mb-3">
+      <label for="texto" class="form-label">Texto</label>
+      <textarea name="texto" id="texto" class="form-control" rows="5" required><?= htmlspecialchars($noticia['texto']) ?></textarea>
+    </div>
 
-      <div class="mb-3">
-        <label class="form-label">Nombre del archivo de imagen</label>
-        <input type="text" class="form-control" name="imagen" value="<?= htmlspecialchars($noticia['imagen']) ?>" required>
-      </div>
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Imagen actual:</label><br>
+      <img src="../images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="Imagen actual" style="max-width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.2); margin-bottom:15px;">
+    </div>
 
-      <button type="submit" class="btn btn-success">Actualizar Noticia</button>
-      <a href="adminNoticias.php" class="btn-back">← Volver</a>
-    </form>
-  </div>
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Cambiar imagen (opcional)</label>
+      <input type="file" name="imagen" id="imagen" class="form-control">
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-dark">Guardar cambios</button>
+      <a href="adminNoticias.php" class="btn btn-outline-secondary">← Volver</a>
+    </div>
+  </form>
+</div>
 
 </body>
 </html>
