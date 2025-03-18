@@ -2,46 +2,59 @@
 session_start();
 require_once './comicsSoons/config.php';
 
-// COMPROBAR QUE LOS DATOS NO ESTÁN VACÍOS
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $name = $_POST['name'];
   $surname = $_POST['surname'];
   $email= $_POST['email'];
-  $avatar = $_POST['avatar'];
   $password = $_POST['password'];
   $age = $_POST['age'];
   $job = $_POST['job'];
 
-  // Cifrar la contraseña con hash
+  // Cifrar contraseña
   $passwordhashed = password_hash($password, PASSWORD_DEFAULT);
 
-  // Preparar la consulta antes de insertar para evitar el SQL Injection
-  $stmt = $mysqli->prepare(
-    "INSERT INTO USERS (name, surname, email, avatar, password, role, age, job, date_register) VALUES (?, ?, ?, ?, ?, 'user', ?, ?, now())"
-  );
+  // --- Subida de imagen (AVATAR) ---
+  $nombreArchivo = $_FILES['avatar']['name'];
+  $archivoTemporal = $_FILES['avatar']['tmp_name'];
 
-  // Comprobar que la preparación tuvo éxito
-  if (!$stmt) {
-    die('Error al preparar la consulta: ' . $mysqli->error);  // Mejor usar die() para ver el error y detener el script
+  // Crear carpeta si no existe
+  $rutaCarpeta = 'uploads/avatars/';
+  if (!is_dir($rutaCarpeta)) {
+    mkdir($rutaCarpeta, 0777, true);
   }
 
-  // Bindear los parámetros
+  // Evitar sobreescritura con nombre único
+  $nombreUnico = uniqid() . '_' . $nombreArchivo;
+  $rutaDestino = $rutaCarpeta . $nombreUnico;
+
+  // Mover el archivo al destino final
+  move_uploaded_file($archivoTemporal, $rutaDestino);
+
+  // Guardar ruta en BD
+  $avatar = $rutaDestino;
+
+  // Preparar consulta
+  $stmt = $mysqli->prepare(
+    "INSERT INTO USERS (name, surname, email, avatar, password, role, age, job, date_register) 
+     VALUES (?, ?, ?, ?, ?, 'user', ?, ?, now())"
+  );
+
+  if (!$stmt) {
+    die('Error al preparar la consulta: ' . $mysqli->error);
+  }
+
   $stmt->bind_param('sssssis', $name, $surname, $email, $avatar, $passwordhashed, $age, $job);
 
-  // Ejecutar la consulta
   if ($stmt->execute()) {
-    echo 'Usuario registrado correctamente';
+    echo 'Usuario registrado correctamente. <a href="login.php">Iniciar sesión</a>';
   } else {
     echo 'Error al registrar al usuario: ' . $stmt->error;
   }
 
-  // Cerrar la conexión
   $stmt->close();
   $mysqli->close();
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -51,40 +64,42 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <title>Registro</title>
 </head>
 <style>
-  .btn{
+  .btn {
     margin-top: 50px !important;
   }
 </style>
 <body>
-  <!-- formulario  -->
-   <form action="" method="post">
+
+  <h1>Registro de Usuario</h1>
+
+  <form action="" method="post" enctype="multipart/form-data">
     <label for="name">Nombre:</label>
-    <input type="text" id="name" name="name"><br><br>
+    <input type="text" id="name" name="name" required><br><br>
 
     <label for="surname">Apellidos:</label>
-    <input type="text" id="surname" name="surname"><br><br>
+    <input type="text" id="surname" name="surname" required><br><br>
 
     <label for="age">Edad:</label>
-    <input type="number" id="age" name="age"><br><br>
+    <input type="number" id="age" name="age" required><br><br>
 
     <label for="job">Puesto:</label>
-    <input type="text" id="job" name="job"><br><br>
+    <input type="text" id="job" name="job" required><br><br>
 
     <label for="email">Email:</label>
-    <input type="text" id="email" name="email"><br><br>
+    <input type="email" id="email" name="email" required><br><br>
 
     <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password"><br><br>
+    <input type="password" id="password" name="password" required><br><br>
 
-    <label for="avatar">Avatar</label>
-    <input type="text" id="avatar" name="avatar"><br><br>
+    <label for="avatar">Avatar:</label>
+    <input type="file" id="avatar" name="avatar" accept="image/*" required><br><br>
 
     <input type="submit" value="Registrarse">
   </form>
 
-    <!-- boton para ir a index -->
   <div class="container mt-3">
     <a class="btn btn-info mt-5" href="index.php">Volver al Inicio</a>
   </div>
+
 </body>
 </html>
