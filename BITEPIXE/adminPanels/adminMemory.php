@@ -123,6 +123,13 @@ $cards = $mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC")->fetch_all
 <div class="admin-memory-container">
   <h2 class="text-center mb-4">Gestión de Memory Cards</h2>
 
+  <?php if (isset($_GET['mensaje'])): ?>
+    <div class="alert alert-success text-center">✅ <?= htmlspecialchars($_GET['mensaje']) ?> Serás redirigido en unos segundos...</div>
+    <meta http-equiv="refresh" content="2;URL=adminMemory.php">
+  <?php elseif (isset($_GET['error'])): ?>
+    <div class="alert alert-danger text-center">❌ <?= htmlspecialchars($_GET['error']) ?></div>
+  <?php endif; ?>
+
   <div class="text-center mb-4">
     <a href="añadirMemoryCard.php" class="btn-add-memory"><i class="fas fa-plus"></i> Añadir Memory</a>
   </div>
@@ -134,7 +141,7 @@ $cards = $mysqli->query("SELECT * FROM MEMORY_CARD ORDER BY id DESC")->fetch_all
         <h4><?= htmlspecialchars($card['titulo']) ?></h4>
         <div class="card-actions">
           <a href="editarMemory.php?id=<?= $card['id'] ?>" class="btn-edit"><i class="fas fa-pen"></i> Editar</a>
-          <a href="eliminarMemory.php?id=<?= $card['id'] ?>" class="btn-delete"><i class="fas fa-trash"></i></a>
+          <a href="eliminarMemory.php?id=<?= $card['id'] ?>" class="btn-delete"><i class="fas fa-trash"></i> Eliminar</a>
         </div>
       </div>
     <?php endforeach; ?>

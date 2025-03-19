@@ -12,25 +12,29 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = trim($_POST['titulo']);
     $texto = trim($_POST['texto']);
-    $imagen = trim($_POST['imagen']);
 
-    if ($titulo && $texto && $imagen) {
-        $stmt = $mysqli->prepare("INSERT INTO MEMORY_CARD (titulo, texto, imagen) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $titulo, $texto, $imagen);
-        if ($stmt->execute()) {
-            echo "<div class='alert alert-success text-center mx-auto mt-4 shadow' style='max-width: 600px; font-size: 1.1rem; border-radius: 12px;'>
-                    ✅ Memory Card añadida correctamente. <br><small>Serás redirigido en unos segundos...</small>
-                  </div>";
-            echo "<meta http-equiv='refresh' content='2;URL=adminMemory.php'>";
-            exit;
+    // Subida de imagen
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === 0) {
+        $nombreImagen = basename($_FILES['imagen']['name']);
+        $rutaDestino = '../images/memory/' . $nombreImagen;
+
+        if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
+            $stmt = $mysqli->prepare("INSERT INTO MEMORY_CARD (titulo, texto, imagen) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $titulo, $texto, $nombreImagen);
+            if ($stmt->execute()) {
+                echo "<div class='alert alert-success text-center mx-auto mt-4 shadow' style='max-width: 600px; font-size: 1.1rem; border-radius: 12px;'>✅ Memory Card añadida correctamente. <br><small>Serás redirigido en unos segundos...</small></div>";
+                echo "<meta http-equiv='refresh' content='2;URL=adminMemory.php'>";
+                exit;
+            } else {
+                $error = "Error al guardar la Memory Card.";
+            }
         } else {
-            $error = "Error al guardar la Memory Card.";
+            $error = "Error al subir la imagen.";
         }
     } else {
-        $error = "Todos los campos son obligatorios.";
+        $error = "Debes seleccionar una imagen válida.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="alert alert-danger text-center"><?= htmlspecialchars($error) ?></div>
   <?php endif; ?>
 
-  <form method="POST" action="">
+  <form method="POST" action="" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="titulo" class="form-label">Título</label>
       <input type="text" name="titulo" id="titulo" class="form-control" required>
@@ -97,8 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="mb-3">
-      <label for="imagen" class="form-label">Nombre del archivo de imagen</label>
-      <input type="text" name="imagen" id="imagen" class="form-control" placeholder="ej: psx.jpg" required>
+      <label for="imagen" class="form-label">Selecciona imagen</label>
+      <input type="file" name="imagen" id="imagen" class="form-control" accept="image/*" required>
     </div>
 
     <div class="d-grid gap-2">

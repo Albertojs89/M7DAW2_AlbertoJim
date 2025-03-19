@@ -33,13 +33,23 @@ $memory = $resultado->fetch_assoc();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = trim($_POST['titulo']);
     $texto = trim($_POST['texto']);
-    $imagen = trim($_POST['imagen']);
+    $imagen = $memory['imagen'];
 
-    if ($titulo && $texto && $imagen) {
+    if ($titulo && $texto) {
+        if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] === UPLOAD_ERR_OK) {
+            $nombreArchivo = basename($_FILES['imagen']['name']);
+            $rutaDestino = '../images/memory/' . $nombreArchivo;
+
+            if (move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino)) {
+                $imagen = $nombreArchivo;
+            }
+        }
+
         $stmt = $mysqli->prepare("UPDATE MEMORY_CARD SET titulo = ?, texto = ?, imagen = ? WHERE id = ?");
         $stmt->bind_param("sssi", $titulo, $texto, $imagen, $id);
         if ($stmt->execute()) {
-            header('Location: adminMemory.php?mensaje=Memory Card actualizada correctamente');
+            echo "<div class='alert alert-success text-center mx-auto mt-4 shadow' style='max-width: 600px; font-size: 1.1rem; border-radius: 12px;'>✅ Memory Card actualizada correctamente. <br><small>Serás redirigido en unos segundos...</small></div>";
+            echo "<meta http-equiv='refresh' content='2;URL=adminMemory.php'>";
             exit();
         } else {
             $error = "Error al actualizar la Memory Card.";
@@ -101,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="alert alert-danger text-center"> <?= htmlspecialchars($error) ?> </div>
   <?php endif; ?>
 
-  <form method="POST" action="">
+  <form method="POST" enctype="multipart/form-data" action="">
     <div class="mb-3">
       <label for="titulo" class="form-label">Título</label>
       <input type="text" name="titulo" id="titulo" class="form-control" value="<?= htmlspecialchars($memory['titulo']) ?>" required>
@@ -113,8 +123,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="mb-3">
-      <label for="imagen" class="form-label">Nombre de imagen</label>
-      <input type="text" name="imagen" id="imagen" class="form-control" value="<?= htmlspecialchars($memory['imagen']) ?>" required>
+      <label class="form-label">Imagen actual:</label><br>
+      <img src="../images/memory/<?= htmlspecialchars($memory['imagen']) ?>" alt="Imagen actual" style="max-width: 100%; height: auto; border-radius: 10px; margin-bottom: 10px;">
+    </div>
+
+    <div class="mb-3">
+      <label for="imagen" class="form-label">Subir nueva imagen (opcional)</label>
+      <input type="file" name="imagen" id="imagen" class="form-control">
     </div>
 
     <div class="d-grid gap-2">

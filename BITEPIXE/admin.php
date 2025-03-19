@@ -2,7 +2,7 @@
 session_start();
 require_once 'config.php';
 
-// Verificar si eres admin, sino redirige a index.php
+//verificar si eres admin, sino redirige a index.php
 if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     header('Location: index.php');
     exit();
@@ -27,9 +27,7 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       justify-content: center;
       align-items: center;
       padding: 40px;
-      flex-direction: column;
     }
-
     .admin-container {
       display: flex;
       flex-wrap: wrap;
@@ -38,7 +36,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       max-width: 1200px;
       width: 100%;
     }
-
     .admin-module {
       background-color: #fff;
       border-radius: 16px;
@@ -52,24 +49,20 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       text-decoration: none;
       color: #111;
     }
-
     .admin-module:hover {
       transform: scale(1.05);
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
     }
-
     .admin-icon {
       font-size: 4rem;
       color: #333;
       margin-top: 60px;
     }
-
     .admin-label {
       font-size: 1.5rem;
       font-weight: 600;
       margin-top: 25px;
     }
-
     .back-btn {
       padding: 10px 24px;
       border-radius: 12px;
@@ -78,7 +71,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: all 0.3s ease;
     }
-
     .back-btn:hover {
       background-color: #333;
       transform: scale(1.03);
@@ -86,7 +78,6 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
   </style>
 </head>
 <body>
-
   <div class="admin-container">
     <a href="/adminPanels/adminNoticias.php" class="admin-module">
       <i class="bi bi-gear-fill admin-icon"></i>
@@ -98,20 +89,18 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
       <div class="admin-label">Análisis</div>
     </a>
 
-    <a href="/adminPanels/adminRankings.php" class="admin-module">
-      <i class="bi bi-gear-fill admin-icon"></i>
-      <div class="admin-label">Ranking</div>
-    </a>
-
     <a href="/adminPanels/adminMemory.php" class="admin-module">
       <i class="bi bi-gear-fill admin-icon"></i>
       <div class="admin-label">Memory Cards</div>
     </a>
-  </div>
 
+    <a href="/adminPanels/adminUsuarios.php" class="admin-module">
+      <i class="bi bi-person-circle admin-icon"></i>
+      <div class="admin-label">Usuarios</div>
+    </a>
+  </div>
   <div class="mt-4 text-center">
     <a href="index.php" class="btn btn-dark back-btn">← Volver al inicio</a>
   </div>
-
 </body>
 </html>
