@@ -169,7 +169,7 @@ require_once 'config.php';
       </a>
     </div>
   <footer class="footer-social">
-  <a href="https://github.com/" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
+  <a href="https://github.com/Bitepixe" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
   <a href="https://instagram.com/" target="_blank" class="social-icon"><i class="bi bi-instagram"></i></a>
   <a href="https://www.linkedin.com/in/alberto-jim%C3%A9nez-s%C3%A1nchez-5ab368211/" target="_blank" class="social-icon"><i class="bi bi-linkedin"></i></a>
   </footer>
