@@ -11,7 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Subida de imagen
     $thumbnail_path = '';
     if (!empty($_FILES['thumbnail']['name'])) {
-        $upload_dir = '../../uploads/news/';
+        $upload_dir = '../uploads/news/';
+
         if (!file_exists($upload_dir)) mkdir($upload_dir, 0777, true);
 
         $file_name = time() . '_' . basename($_FILES['thumbnail']['name']);
