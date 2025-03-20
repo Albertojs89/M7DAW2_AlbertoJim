@@ -33,7 +33,7 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-    
+
     <!-- ** Plugins Needed for the Project ** -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
@@ -45,6 +45,7 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     <link rel="stylesheet" href="plugins/venobox/venobox.css" />
     <!-- card slider -->
     <link rel="stylesheet" href="plugins/card-slider/css/style.css" />
+    <script src="https://kit.fontawesome.com/c5ee713d6d.js" crossorigin="anonymous"></script>
 
     <!-- Main Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
@@ -53,7 +54,6 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   </head>
-  <script src="https://kit.fontawesome.com/c5ee713d6d.js" crossorigin="anonymous"></script>
 
   <body>
 <header class="navigation fixed-top">
@@ -219,43 +219,51 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
 
      
 
-    <!-- testimonial-slider -->
-    <section class="section bg-light">
+<!-- testimonial-slider -->
+<section class="section bg-secondary">
   <div class="container">
-    <div class="row justify-content-center text-center mb-5">
-      <div class="col-lg-8">
-        <h2 class="section-title">Qué opinan nuestros usuarios</h2>
-        <div class="section-border"></div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <h2 class="text-white mb-5">Our Client Testimonials</h2>
       </div>
     </div>
-
-    <div class="row">
-      <?php foreach ($testimonials as $t): ?>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card shadow p-4 h-100">
-            <div class="text-center mb-3">
-              <img src="<?= $t['photo'] ?>" alt="<?= $t['name'] ?>" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
-            </div>
-            <div class="text-center">
-              <h5 class="mb-1"><?= $t['name'] . ' ' . $t['surname'] ?></h5>
-              <div class="mb-2">
-                <?php for ($i = 1; $i <= 5; $i++): ?>
-                  <?php if ($i <= $t['rating']): ?>
-                    <i class="fas fa-star text-warning"></i>
-                  <?php else: ?>
-                    <i class="far fa-star text-muted"></i>
-                  <?php endif; ?>
-                <?php endfor; ?>
-              </div>
-              <p class="text-muted">"<?= $t['description'] ?>"</p>
-            </div>
-          </div>
+    <div class="row bg-contain" data-background="images/banner/brush.png">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div id="slider" class="ui-card-slider bg-contain">
+          <?php
+          foreach ($testimonials as $testimonial){
+            echo '
+              <div class="slide">
+                <div class="card text-center">
+                  <div class="card-body px-5 py-4">
+                    <img
+                      src="'.$testimonial['photo'].'"
+                      alt="user-1"
+                      class="img-fluid rounded-circle mb-4"
+                    />
+                    <h4 class="text-secondary">'.$testimonial['name'].'</h4>
+                    <p>“'.$testimonial['description'].'”</p>
+                    <p>';
+                      for ($i = 1; $i <= 5; $i++) {
+                        if ($i <= $testimonial['rating']) {
+                          echo '<i class="fas fa-star text-warning"></i>';
+                        } else {
+                          echo '<i class="far fa-star text-light"></i>';
+                        }
+                      }
+            echo    '</p>
+                  </div>
+                </div>
+              </div>';
+          }
+          ?>
         </div>
-      <?php endforeach; ?>
+      </div>
     </div>
   </div>
 </section>
-    <!-- /testimonial-slider -->
+<!-- /testimonial-slider -->
+
 
     
 
