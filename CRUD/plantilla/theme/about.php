@@ -33,7 +33,7 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1"
     />
-
+    
     <!-- ** Plugins Needed for the Project ** -->
     <!-- Bootstrap -->
     <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css" />
@@ -53,13 +53,13 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
   </head>
+  <script src="https://kit.fontawesome.com/c5ee713d6d.js" crossorigin="anonymous"></script>
 
   <body>
-    <header class="navigation fixed-top">
-      <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="index.php"
-          ><img src="images/logo.png" alt="Egen"
-        /></a>
+<header class="navigation fixed-top">
+      <nav style="border-radius: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
+         
+        <a class="navbar-brand" href="index.php">Home</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -74,6 +74,17 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
 
         <div class="collapse navbar-collapse text-center" id="navigation">
           <ul class="navbar-nav ml-auto">
+            <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="nav-item active">
+              <?php if ($_SESSION['role'] == 'admin'): ?>
+                  <a href="admin.php" class=""><img class="user-icon" src="https://cdn-icons-png.flaticon.com/512/4370/4370721.png" alt=""></a>
+                <?php else: ?>
+                  <img src="./images/user.png" alt="" class="user-icon">
+                <?php endif; ?>
+              <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
+                <p class="d-inline"><?= $_SESSION['username'] ?></p>
+            </li>
+            <?php endif; ?>
             <li class="nav-item active">
               <a class="nav-link" href="index.php">Home</a>
             </li>
@@ -114,6 +125,18 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>
+            <?php if (isset($_SESSION['user_id'])): ?>
+            <li class="nav-item">
+              <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
+            </li>
+            <?php else:?>
+              <li class="nav-item">
+              <a href="login.php" class="btn btn-info mt-2">Iniciar Sesión<img src="" alt=""></a>
+              </li>
+              <li class="nav-item">
+              <a href="register.php" class="btn btn-success mt-2">Registrarse<img src="" alt=""></a>
+              </li>
+            <?php endif;?>
           </ul>
         </div>
       </nav>
@@ -194,126 +217,44 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     </section>
     <!-- /progressbar -->
 
-    
-
-    <!-- team -->
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
-            <h2>Our Team</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor
-            </p>
-            <div class="section-border"></div>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-1.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Sara Adams</a>
-                </h4>
-                <i>Designer</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-2.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Tom Bills</a>
-                </h4>
-                <i>Developer</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-3.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Anna Walle</a>
-                </h4>
-                <i>Manager</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-4.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center">
-                <h4>Devid Json</h4>
-                <i>CEO</i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /team -->
+     
 
     <!-- testimonial-slider -->
-    <section class="section bg-secondary">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center">
-            <h2 class="text-white mb-5">Our Client Testimonails</h2>
+    <section class="section bg-light">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-8">
+        <h2 class="section-title">Qué opinan nuestros usuarios</h2>
+        <div class="section-border"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <?php foreach ($testimonials as $t): ?>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card shadow p-4 h-100">
+            <div class="text-center mb-3">
+              <img src="<?= $t['photo'] ?>" alt="<?= $t['name'] ?>" class="rounded-circle" width="100" height="100" style="object-fit: cover;">
+            </div>
+            <div class="text-center">
+              <h5 class="mb-1"><?= $t['name'] . ' ' . $t['surname'] ?></h5>
+              <div class="mb-2">
+                <?php for ($i = 1; $i <= 5; $i++): ?>
+                  <?php if ($i <= $t['rating']): ?>
+                    <i class="fas fa-star text-warning"></i>
+                  <?php else: ?>
+                    <i class="far fa-star text-muted"></i>
+                  <?php endif; ?>
+                <?php endfor; ?>
+              </div>
+              <p class="text-muted">"<?= $t['description'] ?>"</p>
+            </div>
           </div>
         </div>
-        <div class="row bg-contain" data-background="images/banner/brush.png">
-          <div class="col-lg-8 col-md-10 mx-auto">
-           
-              
-                    <?php
-                    foreach ($testimonials as $testimonial){
-                      echo'
-                       <div id="slider" class="ui-card-slider bg-contain">
-                      <div class="slide">
-                        <div class="card text-center">
-                          <div class="card-body px-5 py-4">
-                            <img
-                            src="images/testimonial/user-1.jpg"
-                            alt="user-1"
-                            class="img-fluid rounded-circle mb-4"
-                          />
-                          <h4 class="text-secondary">'.$testimonial['name'].'</h4>
-                          <p>
-                            “'.$testimonial['description'].'”
-                          </p>
-                          <p>'.$testimonial['rating'].'</p>
-                      </div>
-                      </div>
-                      </div>
-                      ';
-                    }
-                    ?>
-                    
-                  
-                
-              
-             
-    </section>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
     <!-- /testimonial-slider -->
 
     

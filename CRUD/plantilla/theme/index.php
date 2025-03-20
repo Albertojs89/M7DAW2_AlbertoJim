@@ -324,82 +324,7 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
     </section>
     <!-- /feature -->
 
-    <!-- team -->
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
-            <h2>Our Team</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor
-            </p>
-            <div class="section-border"></div>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-1.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Sara Adams</a>
-                </h4>
-                <i>Designer</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-2.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Tom Bills</a>
-                </h4>
-                <i>Developer</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-3.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center position-relative zindex-1">
-                <h4>
-                  <a class="text-dark" href="team-single.php">Anna Walle</a>
-                </h4>
-                <i>Manager</i>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6">
-            <div class="card hover-shadow">
-              <img
-                src="images/team/member-4.jpg"
-                alt="team-member"
-                class="card-img-top"
-              />
-              <div class="card-body text-center">
-                <h4>Devid Json</h4>
-                <i>CEO</i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /team -->
+   
 
 <!-- project -->
       <section class="section">
@@ -442,39 +367,38 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
 
 
     <!-- blog -->
-    <section class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
-            <h2>Latest News</h2>
-            <div class="section-border"></div>
-          </div>
-        </div>
-        <div class="row">
-        <?php foreach($news as $new){
-         echo '
-          <div class="col-lg-4 col-md-6 mb-4">
-            <article class="card">
-              <img
-                src="/'.$new['thumbnail'].'"
-                alt="post-thumb"
-                class="card-img-top mb-2"
-              />
-              <div class="card-body p-0">
-                <time>'.$new['new_date'].'</time>
-                <a href="blog-single.php"
-                  class="h4 card-title d-block my-3 text-dark hover-text-underline"
-                >'.$new['title'].'</a>
-                <a href="blog-single.php" class="btn btn-transparent">Read more</a>
-              </div>
-            </article>
-          </div>';
-
-
-        } ?>
-        </div>
+<section class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 mx-auto text-center">
+        <h2>Latest News</h2>
+        <div class="section-border"></div>
       </div>
-    </section>
+    </div>
+    <div class="row">
+    <?php foreach($news as $new){
+      echo '
+        <div class="col-lg-4 col-md-6 mb-4">
+          <article class="card">
+            <img
+              src="'.$new['thumbnail'].'"
+              alt="post-thumb"
+              class="card-img-top mb-2"
+            />
+            <div class="card-body p-0">
+              <time>'.$new['new_date'].'</time>
+              <a href="blog-single.php?id='.$new['id'].'"
+                class="h4 card-title d-block my-3 text-dark hover-text-underline"
+              >'.$new['title'].'</a>
+              <a href="blog-single.php?id='.$new['id'].'" class="btn btn-transparent">Read more</a>
+            </div>
+          </article>
+        </div>';
+    } ?>
+    </div>
+  </div>
+</section>
+
     <!-- /blog -->
 
     <!-- footer -->
