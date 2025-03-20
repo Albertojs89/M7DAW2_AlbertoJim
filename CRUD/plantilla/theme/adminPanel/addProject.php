@@ -61,8 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <input type="text" class="form-control" name="title" required>
     </div>
     <div class="mb-3">
-      <label for="url" class="form-label">URL</label>
-      <input type="text" class="form-control" name="url" required>
+      <label for="url">URL del proyecto (opcional):</label>
+      <input type="text" name="url" id="url" class="form-control">
+
     </div>
     <div class="mb-3">
       <label for="thumbnail" class="form-label">Subir imagen (thumbnail)</label>

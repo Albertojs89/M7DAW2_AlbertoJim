@@ -401,45 +401,45 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
     </section>
     <!-- /team -->
 
-    <!-- project -->
-    <section class="section">
-      <div class="container-fluid px-0">
-        <div class="row">
-          <div class="col-lg-10 mx-auto text-center">
-            <h2>Our Feature Works</h2>
-            <div class="section-border"></div>
+<!-- project -->
+      <section class="section">
+        <div class="container-fluid px-0">
+          <div class="row">
+            <div class="col-lg-10 mx-auto text-center">
+              <h2>Our Feature Works</h2>
+              <div class="section-border"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="row no-gutters shuffle-wrapper">
-          
-            <?php foreach($projects as $project){
-              echo 
-              ' <div class="col-lg-4 col-md-6 shuffle-item">
+          <div class="row no-gutters shuffle-wrapper">
+            <?php foreach($projects as $project): ?>
+              <?php
+                // Comprobamos si el thumbnail ya contiene una ruta o si es solo el nombre del archivo
+                $thumbnailPath = (strpos($project['thumbnail'], 'uploads/') !== false || strpos($project['thumbnail'], 'images/') !== false)
+                  ? $project['thumbnail']
+                  : 'uploads/projects/' . $project['thumbnail'];
+              ?>
+              <div class="col-lg-4 col-md-6 shuffle-item">
                 <div class="project-item">
                   <img
-                    src="/images/project/'.$project['thumbnail'].'"
+                    src="<?= $thumbnailPath ?>"
                     alt="project-image"
                     class="img-fluid w-100"
                   />
                   <div class="project-hover bg-secondary px-4 py-3">
-                    <a href="#" class="text-white h4">'.$project['title'].'</a>
-                    <a href="#"><i class="ti-link icon-xs text-white"></i></a>
+                    <a href="#" class="text-white h4"><?= $project['title'] ?></a>
+                    <?php if (!empty($project['url'])): ?>
+                      <a href="<?= $project['url'] ?>" target="_blank"><i class="ti-link icon-xs text-white"></i></a>
+                    <?php endif; ?>
                   </div>
                 </div>
-              </div>';
-
-
-
-            }?>
-          
-          
-          
-          
+              </div>
+            <?php endforeach; ?>
+          </div>
         </div>
-      </div>
-    </section>
-    <!-- /project -->
+      </section>
+<!-- /project -->
+
 
     <!-- blog -->
     <section class="section">
@@ -452,28 +452,24 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
         </div>
         <div class="row">
         <?php foreach($news as $new){
-          echo'
-          
-          <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+         echo '
+          <div class="col-lg-4 col-md-6 mb-4">
             <article class="card">
               <img
-                src="images/blog/post-1.jpg"
+                src="/'.$new['thumbnail'].'"
                 alt="post-thumb"
                 class="card-img-top mb-2"
               />
               <div class="card-body p-0">
-                <time>January 15, 2018</time>
-                <a
-                  href="blog-single"
+                <time>'.$new['new_date'].'</time>
+                <a href="blog-single.php"
                   class="h4 card-title d-block my-3 text-dark hover-text-underline"
-                  >'.$new['title'].'</a
-                >
-                <a href="#" class="btn btn-transparent">Read more</a>
+                >'.$new['title'].'</a>
+                <a href="blog-single.php" class="btn btn-transparent">Read more</a>
               </div>
             </article>
-          </div>
-        
-          ';
+          </div>';
+
 
         } ?>
         </div>

@@ -140,11 +140,8 @@ $news=$mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC;")->fetch_all(MY
             echo '
             <div class="col-lg-4 col-md-6 mb-4">
             <article class="card">
-              <img
-                src="images/blog/post-1.jpg"
-                alt="post-thumb"
-                class="card-img-top mb-2"
-              />
+              <img src="/'.$new['thumbnail'].'" alt="post-thumb" class="card-img-top mb-2" />
+
               <div class="card-body p-0">
                 <time>January 15, 2018</time>
                 <a
