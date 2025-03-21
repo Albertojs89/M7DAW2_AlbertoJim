@@ -11,9 +11,10 @@ if (session_status() === PHP_SESSION_NONE) {
       <a href="analisis.php" class="nav-item nav-analysis"><span class="nav-dot nav-dot-analysis"></span> Análisis</a>
       <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
       <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
+      <a href="#memorycard" class="nav-item nav-memory">
+        <span class="nav-dot nav-dot-memory-pill"></span> <span class="memory-label">Memory Cards</span>
+      </a>
     </div>
-
-    <div class="nav-title">BITEPIXE</div>
 
     <div class="nav-right">
       <?php if (isset($_SESSION['user_id'])): ?>
@@ -23,12 +24,9 @@ if (session_status() === PHP_SESSION_NONE) {
               <img src="images/admin.png" alt="Admin" style="width: 36px; height: 36px; object-fit: contain;">
             </a>
           <?php endif; ?>
-         <img src="images/avatars/<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 0 8px rgba(0,0,0,0.3);">
-
+          <img src="images/avatars/<?= htmlspecialchars($_SESSION['avatar']) ?>" alt="Avatar" style="width:42px; height:42px; border-radius:50%; object-fit:cover; box-shadow:0 0 8px rgba(0,0,0,0.3);">
           <span style="color: #ccc; font-weight: 600;"><?= htmlspecialchars($_SESSION['nombre']) ?></span>
-          <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión">
-            <i class="fas fa-power-off"></i>
-          </a>
+          <a href="logout.php" class="logout-icon-btn" title="Cerrar sesión"><i class="fas fa-power-off"></i></a>
         </div>
       <?php else: ?>
         <a href="register.php" class="nav-item nav-auth">Register</a>
@@ -37,3 +35,34 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
   </nav>
 </header>
+
+<style>
+  .nav-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  .nav-dot-home { background-color: #ff4d4d; }
+  .nav-dot-analysis { background-color: #66ff66; }
+  .nav-dot-rankings { background-color: #3399ff; }
+  .nav-dot-about { background-color: #ffcc33; }
+
+  /* Memory Card - estilo botón "Start" tipo pill horizontal */
+  .nav-dot-memory-pill {
+    display: inline-block;
+    background-color: #ccc;
+    width: 28px;
+    height: 12px;
+    border-radius: 999px;
+    margin-right: 8px;
+  }
+
+  /* Texto Memory Cards */
+  .nav-item.nav-memory .memory-label {
+    color: #ccc;
+    font-weight: 600;
+  }
+</style>

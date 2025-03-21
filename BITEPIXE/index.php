@@ -28,14 +28,20 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
 <body>
 <?php include 'header.php'; ?>
 
-  <main>
-    <!-- boton para scroll directo a seccion memory card -->
-    <div class="scroll-btn-wrapper">
-      <a href="#memorycard" class="scroll-btn">↓ Memory Card</a>
+
+
+<main>
+  <!-- HERO BLOCK -->
+<section class="hero-bitepixe">
+  <div class="container-hero">
+  
+    <div class="hero-center">
+      <h1 class="hero-title">BITEPIXE</h1>
+      <p class="hero-subtitle">Otra manera de enterarte sobre las noticias de videojuegos</p>
     </div>
-
-
-    <!-- SECCIÓN NOTICIAS -->
+  </div>
+</section>
+ <!-- SECCIÓN NOTICIAS -->
 
 <div class="bento-container">
   <?php $i = 1; ?>
