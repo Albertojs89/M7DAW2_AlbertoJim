@@ -36,7 +36,10 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+ <link rel="stylesheet" href="styles/css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/styles/css/index.css">
   <style>
     body {
@@ -140,22 +143,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 </head>
 <body>
 
-<header class="main-header">
-  <nav class="nav-bar">
-    <div class="nav-left">
-      <a href="index.php" class="nav-item nav-home"><span class="nav-dot nav-dot-home"></span> Home</a>
-      <a href="analisis.php" class="nav-item nav-analysis"><span class="nav-dot nav-dot-analysis"></span> Análisis</a>
-      <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
-      <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
-    </div>
-    <div class="nav-title">BITEPIXE</div>
-    <div class="nav-right">
-      <a href="register.php" class="nav-item nav-auth">Register</a>
-      <a href="login.php" class="nav-item nav-auth">Login</a>
-      <button class="logout-btn">Cerrar sesión</button>
-    </div>
-  </nav>
-</header>
+<?php include 'header.php'; ?>
+
 
 <?php if (isset($error)): ?>
   <div class="noticia-container">
@@ -166,7 +155,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     <h1 class="noticia-title"><?= htmlspecialchars($noticia['titulo']) ?></h1>
 
     <div class="noticia-content">
-      <img src="/images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="Imagen Noticia" class="noticia-img">
+      <img src="images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="Imagen Noticia" class="noticia-img">
       <div class="noticia-text">
         <?= nl2br(htmlspecialchars($noticia['texto'])) ?>
       </div>

@@ -85,14 +85,14 @@ $analisis = $mysqli->query("SELECT * FROM analisis ORDER BY fecha DESC")->fetch_
   <div class="analisis-grid container-fluid">
     <?php foreach ($analisis as $item): ?>
       <a href="analisisDetalle.php?id=<?= $item['id'] ?>" class="analisis-card">
-        <img src="/images/<?= htmlspecialchars($item['imagen']) ?>" class="card-img" alt="<?= htmlspecialchars($item['titulo']) ?>">
+        <img src="images/<?= htmlspecialchars($item['imagen']) ?>" class="card-img" alt="<?= htmlspecialchars($item['titulo']) ?>">
         <div class="analisis-card-title"><?= htmlspecialchars($item['titulo']) ?></div>
         <div class="platform-icons">
           <?php
             $plataformas = explode(',', $item['plataforma']);
             foreach ($plataformas as $plat) {
               $plat = trim($plat);
-              $iconPath = "/images/plataformas/" . strtolower($plat) . ".png";
+              $iconPath = "images/plataformas/" . strtolower($plat) . ".png";
               if (file_exists(__DIR__ . $iconPath)) {
                 $class = (strtolower($plat) === 'pc') ? 'pc-icon' : '';
                 echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '" class="' . $class . '">';

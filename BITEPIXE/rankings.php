@@ -24,6 +24,7 @@ $analisis = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rankings - BITEPIXE</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="styles/css/index.css">
   <style>
     body {
       background-color: #f5f5f5;
@@ -73,6 +74,7 @@ $analisis = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
   </style>
 </head>
 <body>
+<?php include 'header.php'; ?>
 
   <div class="ranking-container">
     <h2 class="ranking-title">📈 Rankings de Juegos</h2>

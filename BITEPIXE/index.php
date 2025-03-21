@@ -41,7 +41,7 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
   <?php $i = 1; ?>
   <?php foreach ($noticias as $noticia): ?>
     <a href="noticiasDetalle.php?id=<?= $noticia['id'] ?>" class="bento-item item-<?= $i ?>">
-      <img src="/images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="<?= htmlspecialchars($noticia['titulo']) ?>">
+      <img src="images/<?= htmlspecialchars($noticia['imagen']) ?>" alt="<?= htmlspecialchars($noticia['titulo']) ?>">
       <div class="bento-title">
         <span><?= htmlspecialchars($noticia['titulo']) ?></span>
       </div>
@@ -60,7 +60,7 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
     <div class="memory-card-slider">
       <?php foreach ($memoryCards as $card): ?>
         <div class="memory-card">
-          <img src="/images/<?= ($card['imagen']) ?>" alt="<?= htmlspecialchars($card['titulo']) ?>">
+          <img src="images/<?= ($card['imagen']) ?>" alt="<?= htmlspecialchars($card['titulo']) ?>">
           <h3><?= htmlspecialchars($card['titulo']) ?></h3>
           <p><?= htmlspecialchars($card['texto']) ?></p>
         </div>

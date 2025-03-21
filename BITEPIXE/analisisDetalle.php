@@ -36,7 +36,8 @@ $plataformas = explode(',', $analisis['plataforma']);
   <link rel="stylesheet" href="/styles/css/index.css">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="stylesheet" href="styles/css/index.css">
+	
   <style>
     body {
       background-color: #f5f5f5;
@@ -170,8 +171,9 @@ $plataformas = explode(',', $analisis['plataforma']);
 <body>
 <?php include 'header.php'; ?>
 
+
   <div class="analisis-container">
-    <img src="/images/<?= htmlspecialchars($analisis['imagen']) ?>" alt="Imagen del juego" class="analisis-img">
+    <img src="images/<?= htmlspecialchars($analisis['imagen']) ?>" alt="Imagen del juego" class="analisis-img">
 
     <h1 class="analisis-title"><?= htmlspecialchars($analisis['titulo']) ?></h1>
     <h2 class="analisis-subtitle"><?= htmlspecialchars($analisis['subtitulo']) ?></h2>
@@ -181,7 +183,7 @@ $plataformas = explode(',', $analisis['plataforma']);
     <div class="platform-icons">
       <?php foreach ($plataformas as $plat): 
         $plat = trim($plat);
-        $iconPath = "/images/plataformas/" . strtolower($plat) . ".png";
+        $iconPath = "images/plataformas/" . strtolower($plat) . ".png";
         $class = (strtolower($plat) === 'pc') ? 'pc-icon' : '';
       ?>
         <img style="object-fit: contain; width: 80px;" src="<?= $iconPath ?>" class="<?= $class ?>" alt="<?= htmlspecialchars($plat) ?>">

@@ -151,7 +151,7 @@ require_once 'config.php';
 
   <div class="about-container">
     <div class="about-image">
-      <img src="/images/avatar.jpg" alt="Alberto Jiménez">
+      <img src="images/avatar.jpg" alt="Alberto Jiménez">
     </div>
     <div class="about-text">
       ¡Hola! Soy <strong>Alberto Jiménez</strong>, Desarrollador Frontend y UX/UI Designer con alma de gamer. <br><br>

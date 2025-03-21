@@ -108,7 +108,7 @@ $usuarios = $mysqli->query("SELECT * FROM usuarios ORDER BY fecha_registro DESC"
         <?php foreach ($usuarios as $u): ?>
           <tr>
             <td><?= $u['id'] ?></td>
-            <td><img src="/images/avatars/<?= htmlspecialchars($u['avatar']) ?>" alt="Avatar" class="avatar-mini"></td>
+            <td><img src="../images/avatars/<?= htmlspecialchars($u['avatar']) ?>" alt="Avatar" class="avatar-mini"></td>
             <td><?= htmlspecialchars($u['nombre']) ?></td>
             <td><?= htmlspecialchars($u['email']) ?></td>
             <td><?= htmlspecialchars($u['rol']) ?></td>
