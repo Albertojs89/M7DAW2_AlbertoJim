@@ -11,9 +11,10 @@ if (session_status() === PHP_SESSION_NONE) {
       <a href="analisis.php" class="nav-item nav-analysis"><span class="nav-dot nav-dot-analysis"></span> Análisis</a>
       <a href="rankings.php" class="nav-item nav-rankings"><span class="nav-dot nav-dot-rankings"></span> Rankings</a>
       <a href="about.php" class="nav-item nav-about"><span class="nav-dot nav-dot-about"></span> About</a>
-      <a href="#memorycard" class="nav-item nav-memory">
-        <span class="nav-dot nav-dot-memory-pill"></span> <span class="memory-label">Memory Cards</span>
-      </a>
+      <a href="<?= basename($_SERVER['PHP_SELF']) === 'index.php' ? '#memorycard' : 'index.php#memorycard'; ?>" class="nav-item nav-memory">
+  <span class="nav-dot nav-dot-memory-pill"></span> <span class="memory-label">Memory Cards</span>
+</a>
+       
     </div>
 
     <div class="nav-right">
@@ -54,8 +55,8 @@ if (session_status() === PHP_SESSION_NONE) {
   .nav-dot-memory-pill {
     display: inline-block;
     background-color: #ccc;
-    width: 28px;
-    height: 12px;
+    width: 24px;
+    height: 10px;
     border-radius: 999px;
     margin-right: 8px;
   }
@@ -63,6 +64,6 @@ if (session_status() === PHP_SESSION_NONE) {
   /* Texto Memory Cards */
   .nav-item.nav-memory .memory-label {
     color: #ccc;
-    font-weight: 600;
+    font-weight: 500;
   }
 </style>

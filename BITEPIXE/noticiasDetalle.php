@@ -43,14 +43,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
   <link rel="stylesheet" href="/styles/css/index.css">
   <style>
     body {
-      background-color: #f5f5f5;
       font-family: 'Rubik', sans-serif;
       padding: 40px 20px;
       min-height: 100vh;
+     
+      color: #1e1e1e; /* Texto oscuro para contraste */
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
     }
 
     .noticia-container {
-      background-color: #fff;
+      background-color: #fafafa; /* Blanco roto */
       max-width: 1200px;
       margin: 100px auto;
       padding: 40px;

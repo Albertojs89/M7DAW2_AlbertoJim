@@ -23,12 +23,7 @@ $analisis = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
   <link rel="stylesheet" href="styles/css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      background-color: #f5f5f5;
-      font-family: 'Rubik', sans-serif;
-      padding: 20px;
-      margin: 0;
-    }
+  
 
     .ranking-container {
       max-width: 1000px;
@@ -44,6 +39,7 @@ $analisis = $mysqli->query($sql)->fetch_all(MYSQLI_ASSOC);
       font-weight: 700;
       font-size: 2rem;
       margin-bottom: 30px;
+      color: #222 !important;
     }
 
     .ranking-table th {

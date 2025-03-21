@@ -48,7 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #f5f5f5;
+      background-color: #f5f5f5; /* Gris claro */
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 2px, transparent 1px); /* Patrón sutil */
+  background-size: 20px 20px; /* Tamaño del patrón */
       font-family: 'Urbanist', sans-serif;
       min-height: 100vh;
       display: flex;

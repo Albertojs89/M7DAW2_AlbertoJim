@@ -6,14 +6,16 @@
 }
 
 body {
-  height: 100vh;
-  width: 100vw;
-  font-family: 'Rubik', sans-serif;
-  background-color: #f5f5f5;
+  background-color: #f5f5f5; /* Gris claro */
+  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 2px, transparent 1px); /* Patrón sutil */
+  background-size: 20px 20px; /* Tamaño del patrón */
+  font-family: 'Urbanist', sans-serif;
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
   padding: 20px;
+  color: #1e1e1e; /* Texto oscuro */
 }
 
 
@@ -35,7 +37,9 @@ main {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #ffffff; /* Blanco puro */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más marcada */
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -85,6 +89,12 @@ main {
 .item-8 { grid-column: span 1; grid-row: span 1; }
 .item-9 { grid-column: span 4; grid-row: span 1; }
 
+@media screen and (max-width: 768px) {
+  .item-3 {
+    grid-column: span 2; /* Ocupa dos columnas en pantallas pequeñas */
+    grid-row: span 1; /* Mantiene una fila */
+  }
+}
 /* Título inferior en hover */
 .bento-title {
   position: absolute;
@@ -127,6 +137,7 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
 
+
 .nav-bar {
   display: flex;
   justify-content: space-between;
@@ -159,8 +170,8 @@ main {
 
 .nav-item {
   text-decoration: none;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 500;
+  font-size: 1.3rem;
   transition: opacity 0.3s ease;
 }
 
@@ -170,7 +181,7 @@ main {
 
 /* Register / Login */
 .nav-auth {
-  color: #ccc;
+  color: #ccd4ae;
 }
 
 /* Logout button */
@@ -510,10 +521,29 @@ main {
   font-family: 'Press Start 2P', sans-serif;
   font-size: 2rem;
   margin-bottom: 12px;
-  color: #111;
+  color: #c9d8bc;
   letter-spacing: 2px;
   display: inline-block;
   transition: all 0.4s ease-in-out;
+  animation: colorChange 6s infinite alternate; /* Animación suave */
+}
+
+@keyframes colorChange {
+  0% {
+    color: #341b4b; /* Color inicial */
+  }
+  25% {
+    color: #6870db; /* Azul */
+  }
+  50% {
+    color: #f8d85f; /* Amarillo */
+  }
+  75% {
+    color: #ff4c4c; /* Rojo */
+  }
+  100% {
+    color: #6cff6c; /* Verde */
+  }
 }
 .hero-title:hover {
   letter-spacing: 8px;
@@ -523,7 +553,7 @@ main {
 
   .hero-subtitle {
     font-size: 1.1rem;
-    color: rgb(104, 107, 158);
+    color: rgb(73, 75, 146);
     font-weight: 550;
   }
 
@@ -557,4 +587,3 @@ main {
   }
 }
 
-  
