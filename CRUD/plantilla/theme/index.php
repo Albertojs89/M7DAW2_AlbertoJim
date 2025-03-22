@@ -59,106 +59,27 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
     <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fjalla+One&family=Karla+Tamil+Inclined:wght@400;700&family=Noto+Sans+Elbasan&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fjalla+One&family=Karla+Tamil+Inclined:wght@400;700&family=Noto+Sans+Elbasan&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
 
-     <header class="navigation fixed-top">
-      <nav style="border-radius: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-         
-        <a class="navbar-brand" href="index.php">Home</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navigation"
-          aria-controls="navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+     <?php include 'header.php'; ?>
 
-        <div class="collapse navbar-collapse text-center" id="navigation">
-          <ul class="navbar-nav ml-auto">
-            <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav-item active">
-              <?php if ($_SESSION['role'] == 'admin'): ?>
-                  <a href="admin.php" class=""><img class="user-icon" src="https://cdn-icons-png.flaticon.com/512/4370/4370721.png" alt=""></a>
-                <?php else: ?>
-                  <img src="./images/user.png" alt="" class="user-icon">
-                <?php endif; ?>
-              <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
-                <p class="d-inline"><?= $_SESSION['username'] ?></p>
-            </li>
-            <?php endif; ?>
-            <li class="nav-item active">
-              <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.php">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.php">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blog.php">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="portfolio.php">Portfolio</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Pages</a
-              >
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="team.php">Team</a>
-                <a class="dropdown-item" href="team-single.php">Team Details</a>
-                <a class="dropdown-item" href="career.php">Career</a>
-                <a class="dropdown-item" href="career-single.php"
-                  >Career Details</a
-                >
-                <a class="dropdown-item" href="blog-single.php">Blog Details</a>
-
-                <a class="dropdown-item" href="faqs.php">FAQ's</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact</a>
-            </li>
-            <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav-item">
-              <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
-            </li>
-            <?php else:?>
-              <li class="nav-item">
-              <a href="login.php" class="btn btn-info mt-2">Iniciar Sesión<img src="" alt=""></a>
-              </li>
-              <li class="nav-item">
-              <a href="register.php" class="btn btn-success mt-2">Registrarse<img src="" alt=""></a>
-              </li>
-            <?php endif;?>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <!-- crear tabla con informacion de la bd usuarios -->
+    
  
     <!-- banner -->
     <section
       class="banner bg-cover position-relative d-flex justify-content-center align-items-center"
-      data-background="images/banner/banner.jpg"
+      data-background="images/banner/fondoBanner.jpg"
     >
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <h1 class="display-1 text-white font-weight-bold font-primary">
+            <h1 class="display-1 text-outline h1-comic">
               Comics Soons
             </h1>
           </div>
@@ -182,152 +103,14 @@ $usuarios=$result->fetch_all(MYSQLI_ASSOC); //hacemos que result coja todo y lo 
             <div class="section-border"></div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4 mb-lg-0">
-            <div class="card hover-bg-secondary shadow py-4 active">
-              <div class="card-body text-center">
-                <div class="position-relative">
-                  <i
-                    class="icon-lg icon-box bg-gradient-primary rounded-circle ti-palette mb-5 d-inline-block text-white"
-                  ></i>
-                  <i class="icon-lg icon-watermark text-white ti-palette"></i>
-                </div>
-                <h4 class="mb-4">Design</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmo
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 mb-lg-0">
-            <div class="card hover-bg-secondary shadow py-4">
-              <div class="card-body text-center">
-                <div class="position-relative">
-                  <i
-                    class="icon-lg icon-box bg-gradient-primary rounded-circle ti-dashboard mb-5 d-inline-block text-white"
-                  ></i>
-                  <i class="icon-lg icon-watermark text-white ti-dashboard"></i>
-                </div>
-                <h4 class="mb-4">Development</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmo
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 mb-lg-0">
-            <div class="card hover-bg-secondary shadow py-4">
-              <div class="card-body text-center">
-                <div class="position-relative">
-                  <i
-                    class="icon-lg icon-box bg-gradient-primary rounded-circle ti-announcement mb-5 d-inline-block text-white"
-                  ></i>
-                  <i
-                    class="icon-lg icon-watermark text-white ti-announcement"
-                  ></i>
-                </div>
-                <h4 class="mb-4">Marketing</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmo
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </section>
     <!-- /service -->
 
-    <!-- feature -->
-    <section class="section bg-secondary position-relative">
-      <div class="bg-image overlay-secondary">
-        <img src="images/feature.jpg" alt="bg-image" />
-      </div>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <div class="row align-items-center">
-              <div class="col-lg-4 mb-4 mb-lg-0">
-                <img
-                  src="images/feature.jpg"
-                  alt="feature-image"
-                  class="img-fluid"
-                />
-              </div>
-              <div class="col-lg-7 offset-lg-1">
-                <div class="row">
-                  <div class="col-12">
-                    <h2 class="text-white">We know What Bait to Use</h2>
-                    <div class="section-border ml-0"></div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="media">
-                      <i class="icon text-gradient-primary ti-vector mr-3"></i>
-                      <div class="media-body">
-                        <h4 class="text-white">User Experience</h4>
-                        <p class="text-light">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmo
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="media">
-                      <i class="icon text-gradient-primary ti-layout mr-3"></i>
-                      <div class="media-body">
-                        <h4 class="text-white">Responsive Layout</h4>
-                        <p class="text-light">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmo
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="media">
-                      <i
-                        class="icon text-gradient-primary ti-headphone-alt mr-3"
-                      ></i>
-                      <div class="media-body">
-                        <h4 class="text-white">Digital Solutions</h4>
-                        <p class="text-light">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmo
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="media">
-                      <i
-                        class="icon text-gradient-primary ti-ruler-pencil mr-3"
-                      ></i>
-                      <div class="media-body">
-                        <h4 class="text-white">Bootstrap 4x</h4>
-                        <p class="text-light">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmo
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /feature -->
-
-   
-
+  
 <!-- project -->
-      <section class="section">
+      <section id="portfolio" class="section">
         <div class="container-fluid px-0">
           <div class="row">
             <div class="col-lg-10 mx-auto text-center">

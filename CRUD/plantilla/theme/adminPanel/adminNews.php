@@ -19,10 +19,10 @@ $news = $result->fetch_all(MYSQLI_ASSOC);
     body {
       background-color: #f9f9f9;
     }
-    img.thumbnail {
-      width: 100px;
+    img {
+      width: 140px;
       height: auto;
-      object-fit: contain;
+      object-fit: cover;
     }
   </style>
 </head>
@@ -55,7 +55,7 @@ $news = $result->fetch_all(MYSQLI_ASSOC);
           <td><?= $new['new_date'] ?></td>
           <td><?= $new['title'] ?></td>
           <td>
-           <img src="../<?= $new['thumbnail'] ?>" alt="post-thumb" class="card-img-top mb-2" />
+           <img class="img" src="../<?= $new['thumbnail'] ?>" alt="post-thumb" class="card-img-top mb-2" />
 
 
 

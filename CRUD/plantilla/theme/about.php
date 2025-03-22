@@ -53,105 +53,25 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     <!--Favicon-->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fjalla+One&family=Karla+Tamil+Inclined:wght@400;700&family=Noto+Sans+Elbasan&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   </head>
 
   <body>
-<header class="navigation fixed-top">
-      <nav style="border-radius: 20px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-         
-        <a class="navbar-brand" href="index.php">Home</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navigation"
-          aria-controls="navigation"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+<?php include 'header.php'; ?>
 
-        <div class="collapse navbar-collapse text-center" id="navigation">
-          <ul class="navbar-nav ml-auto">
-            <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav-item active">
-              <?php if ($_SESSION['role'] == 'admin'): ?>
-                  <a href="admin.php" class=""><img class="user-icon" src="https://cdn-icons-png.flaticon.com/512/4370/4370721.png" alt=""></a>
-                <?php else: ?>
-                  <img src="./images/user.png" alt="" class="user-icon">
-                <?php endif; ?>
-              <img src="<?= $_SESSION['avatar'] ?>" alt="" class="avatar">
-                <p class="d-inline"><?= $_SESSION['username'] ?></p>
-            </li>
-            <?php endif; ?>
-            <li class="nav-item active">
-              <a class="nav-link" href="index.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.php">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="services.php">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="blog.php">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="portfolio.php">Portfolio</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Pages</a
-              >
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="team.php">Team</a>
-                <a class="dropdown-item" href="team-single.php">Team Details</a>
-                <a class="dropdown-item" href="career.php">Career</a>
-                <a class="dropdown-item" href="career-single.php"
-                  >Career Details</a
-                >
-                <a class="dropdown-item" href="blog-single.php">Blog Details</a>
-
-                <a class="dropdown-item" href="faqs.php">FAQ's</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="contact.php">Contact</a>
-            </li>
-            <?php if (isset($_SESSION['user_id'])): ?>
-            <li class="nav-item">
-              <a href="logout.php" class="btn btn-primary mt-2">Cerrar sesión<img src="" alt=""></a>
-            </li>
-            <?php else:?>
-              <li class="nav-item">
-              <a href="login.php" class="btn btn-info mt-2">Iniciar Sesión<img src="" alt=""></a>
-              </li>
-              <li class="nav-item">
-              <a href="register.php" class="btn btn-success mt-2">Registrarse<img src="" alt=""></a>
-              </li>
-            <?php endif;?>
-          </ul>
-        </div>
-      </nav>
-    </header>
+      
 
     <!-- page-title -->
     <section
-      class="page-title bg-cover"
-      data-background="images/backgrounds/page-title.jpg"
+      class="page-title2 bg-cover"
+      data-background="images/backgrounds/db.png"
     >
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
             <h1 class="display-1 text-white font-weight-bold font-primary">
-              About Agen
+              About
             </h1>
           </div>
         </div>
@@ -160,59 +80,12 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
     <!-- /page-title -->
 
     <!-- progressbar -->
-    <section class="section pb-0">
+    <section class="section pb-0 mb-5">
       <div class="container">
-        <div class="row">
-          <div class="col-md-6 mb-4 mb-lg-0">
-            <img
-              src="images/about/about-us.png"
-              alt="about"
-              class="img-fluid"
-            />
-          </div>
-          <div class="col-md-6 col-lg-5">
-            <div class="progress-block">
-              <h6 class="text-uppercase">HTML5 Expertise</h6>
-              <div class="progress">
-                <div class="progress-bar" data-percent="85">
-                  <span class="skill-number text-dark font-weight-bold"
-                    ><span class="count">85</span>%</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="progress-block">
-              <h6 class="text-uppercase">jQuery Expertise</h6>
-              <div class="progress">
-                <div class="progress-bar" data-percent="95">
-                  <span class="skill-number text-dark font-weight-bold"
-                    ><span class="count">95</span>%</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="progress-block">
-              <h6 class="text-uppercase">PHP Expertise</h6>
-              <div class="progress">
-                <div class="progress-bar" data-percent="79">
-                  <span class="skill-number text-dark font-weight-bold"
-                    ><span class="count">79</span>%</span
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="progress-block">
-              <h6 class="text-uppercase">User Interface Expertise</h6>
-              <div class="progress">
-                <div class="progress-bar" data-percent="90">
-                  <span class="skill-number text-dark font-weight-bold"
-                    ><span class="count">90</span>%</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <h2>
+          Somos unos aficionados al comic, y aquí es nuestro templo donde mostramos nuestras
+          creaciones como novedades del mundo. Coge tu papel y bolí y adentrate!
+        </h2>
       </div>
     </section>
     <!-- /progressbar -->
@@ -220,7 +93,7 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
      
 
 <!-- testimonial-slider -->
-<section class="section bg-secondary">
+<section class="section bg-secondary mt-5">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
@@ -269,111 +142,9 @@ $testimonials=$mysqli->query("SELECT * FROM TESTIMONIALS ORDER BY id DESC;")->fe
 
     <!-- footer -->
     <footer class="bg-secondary position-relative">
-      <img
-        src="images/backgrounds/map.png"
-        class="img-fluid overlay-image"
-        alt=""
-      />
-      <div class="section">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-3 col-6">
-              <h4 class="text-white mb-5">About</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-light d-block mb-3">Service</a></li>
-                <li>
-                  <a href="#" class="text-light d-block mb-3">Conatact</a>
-                </li>
-                <li>
-                  <a href="#" class="text-light d-block mb-3">About us</a>
-                </li>
-                <li><a href="#" class="text-light d-block mb-3">Blog</a></li>
-                <li><a href="#" class="text-light d-block mb-3">Support</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3 col-6">
-              <h4 class="text-white mb-5">Company</h4>
-              <ul class="list-unstyled">
-                <li><a href="#" class="text-light d-block mb-3">Service</a></li>
-                <li>
-                  <a href="#" class="text-light d-block mb-3">Conatact</a>
-                </li>
-                <li>
-                  <a href="#" class="text-light d-block mb-3">About us</a>
-                </li>
-                <li><a href="#" class="text-light d-block mb-3">Blog</a></li>
-                <li><a href="#" class="text-light d-block mb-3">Support</a></li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <div class="bg-white p-4">
-                <h3>Contact us</h3>
-                <form action="#">
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="form-control mb-4 px-0"
-                    placeholder="Full name"
-                  />
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    class="form-control mb-4 px-0"
-                    placeholder="Email address"
-                  />
-                  <textarea
-                    name="message"
-                    id="message"
-                    class="form-control mb-4 px-0"
-                    placeholder="Message"
-                  ></textarea>
-                  <button class="btn btn-primary" type="submit">Send</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pb-4">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-md-6 text-center text-md-left">
-              <p class="text-light mb-0">
-                Copyright &copy; 2019 a theme by
-                <a class="text-gradient-primary" href="https://themefisher.com"
-                  >themefisher.com</a
-                >
-              </p>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-inline text-md-right text-center">
-                <li class="list-inline-item">
-                  <a class="d-block p-3 text-white" href="#"
-                    ><i class="ti-facebook"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="d-block p-3 text-white" href="#"
-                    ><i class="ti-twitter-alt"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="d-block p-3 text-white" href="#"
-                    ><i class="ti-instagram"></i
-                  ></a>
-                </li>
-                <li class="list-inline-item">
-                  <a class="d-block p-3 text-white" href="#"
-                    ><i class="ti-github"></i
-                  ></a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      
+      
+      
     </footer>
     <!-- /footer -->
 

@@ -17,13 +17,19 @@ VERSION:	Versoin Number
 /*  typography */
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Poppins:300,400,500,600,700&display=swap");
 body {
+  background-color: #f0f0f0; /* Gris claro */
+  background-image: url('../images/comic-texture.png'); /* Textura de hoja de cómic */
+  background-size: 300px 300px; /* Tamaño del patrón */
+  background-repeat: repeat; /* Repetir el patrón */
   line-height: 1.2;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
   color: #6c6c86;
 }
-
+h2{
+  font-family: "Patrick Hand"!important;
+}
 p {
   font-weight: 400;
   color: #6c6c86;
@@ -501,6 +507,10 @@ textarea.form-control {
   padding: 170px 0 190px;
 }
 
+.page-title2 {
+  padding: 170px 0 190px;
+}
+
 /* /page-title */
 /* list style */
 .list-styled {
@@ -590,6 +600,7 @@ textarea.form-control {
 
 .navbar-dark .navbar-nav .nav-link {
   color: #fff;
+  margin-top: 10px !important;
 }
 
 .banner {
@@ -984,4 +995,29 @@ header.navigation {
   object-fit: cover;
   vertical-align: middle;
   margin-right: 10px;
+}
+
+
+.h1-comic {
+  background-color: #f5f5dc; /* Blanco hueso */
+  font-family: "Bangers", system-ui !important;
+  border: 5px solid #000; /* Borde negro grueso */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 20px 40px; /* Espaciado interno */
+  display: inline-block; /* Ajusta el tamaño al contenido */
+  position: relative; /* Para el efecto de bocadillo */
+  text-align: center;
+}
+
+.h1-comic::after {
+  content: ''; /* Bocadillo de viñeta */
+  position: absolute;
+  bottom: -20px; /* Ajusta la posición vertical */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #f5f5dc; /* Mismo color que el fondo */
+  border: 5px solid #000; /* Borde negro grueso */
+  border-radius: 50%; /* Forma circular */
 }

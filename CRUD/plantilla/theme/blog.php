@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../theme/comicsSoons/config.php';
 
 $news = $mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC;")->fetch_all(MYSQLI_ASSOC);
@@ -12,33 +13,21 @@ $news = $mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC;")->fetch_all(
   <title>Blog | Comics Soons</title>
   <link rel="stylesheet" href="plugins/bootstrap/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fjalla+One&family=Karla+Tamil+Inclined:wght@400;700&family=Noto+Sans+Elbasan&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<header class="navigation fixed-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.php">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navigation">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a class="nav-link" href="index.php">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="blog.php">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="portfolio.php">Portfolio</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-</header>
+<?php include 'header.php'; ?>
 
-<section class="page-title bg-cover" data-background="images/backgrounds/page-title.jpg">
+
+<section class="page-title bg-cover" data-background="images/backgrounds/fondoNews.jpg">
   <div class="container">
     <div class="row">
       <div class="col-12 text-center">
-        <h1 class="display-1 text-white font-weight-bold font-primary">Noticias</h1>
+        <h1 class="display-1  font-weight-bold font-primary h1-comic">Noticias</h1>
       </div>
     </div>
   </div>

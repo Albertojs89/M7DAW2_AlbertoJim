@@ -18,16 +18,6 @@ if (!$news) {
     echo "<h2>Noticia no encontrada.</h2>";
     exit();
 }
-
-// Obtener comentarios de la noticia
-$stmtComentarios = $mysqli->prepare("SELECT COMMENTS.description, COMMENTS.date, USERS.name 
-                                     FROM COMMENTS 
-                                     INNER JOIN USERS ON COMMENTS.user_id = USERS.id 
-                                     WHERE COMMENTS.new_id = ? 
-                                     ORDER BY COMMENTS.date DESC");
-$stmtComentarios->bind_param("i", $id);
-$stmtComentarios->execute();
-$comentarios = $stmtComentarios->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +31,8 @@ $comentarios = $stmtComentarios->get_result()->fetch_all(MYSQLI_ASSOC);
   <script src="https://kit.fontawesome.com/c5ee713d6d.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <?php include 'header.php'; ?>
+
   <section class="section">
     <div class="container">
       <div class="row">
@@ -56,37 +48,76 @@ $comentarios = $stmtComentarios->get_result()->fetch_all(MYSQLI_ASSOC);
     </div>
   </section>
 
-  <!-- SECCIÓN DE COMENTARIOS -->
+  <!-- Comentarios -->
   <section class="section bg-light mt-5">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-10 mx-auto">
-          <h3 class="mb-4">Comentarios</h3>
+      <h3 class="mb-4">Comentarios</h3>
 
-          <?php if (isset($_SESSION['user_id'])): ?>
-            <form action="procesar_comentario.php" method="POST" class="mb-5">
-              <input type="hidden" name="new_id" value="<?= $id ?>">
-              <div class="form-group">
-                <textarea name="description" class="form-control" rows="3" placeholder="Escribe tu comentario..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Enviar comentario</button>
-            </form>
-          <?php else: ?>
-            <p class="text-muted">Inicia sesión para dejar un comentario.</p>
-          <?php endif; ?>
+      <?php
+      // Mostrar comentarios principales
+      $stmt = $mysqli->prepare("SELECT COMMENTS.*, USERS.name FROM COMMENTS 
+                                JOIN USERS ON COMMENTS.user_id = USERS.id 
+                                WHERE new_id = ? AND comment_id IS NULL 
+                                ORDER BY date DESC");
+      $stmt->bind_param("i", $id);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-          <!-- Lista de comentarios -->
-          <?php foreach ($comentarios as $comentario): ?>
-            <div class="mb-4 p-3 border rounded bg-white">
-              <strong><i class="fas fa-user"></i> <?= htmlspecialchars($comentario['name']) ?></strong>
-              <small class="text-muted"> | <?= date("d/m/Y", strtotime($comentario['date'])) ?></small>
-              <p class="mt-2"><?= nl2br(htmlspecialchars($comentario['description'])) ?></p>
-            </div>
-          <?php endforeach; ?>
-        </div>
-      </div>
+      while ($comment = $result->fetch_assoc()) {
+          echo '<div class="mb-4 border rounded p-3 bg-white">';
+          echo '<strong>' . htmlspecialchars($comment['name']) . '</strong> ';
+          echo '<small class="text-muted">(' . $comment['date'] . ')</small>';
+          echo '<p>' . nl2br(htmlspecialchars($comment['description'])) . '</p>';
+
+          // Respuestas
+          $reply_stmt = $mysqli->prepare("SELECT COMMENTS.*, USERS.name FROM COMMENTS 
+                                          JOIN USERS ON COMMENTS.user_id = USERS.id 
+                                          WHERE comment_id = ? ORDER BY date ASC");
+          $reply_stmt->bind_param("i", $comment['id']);
+          $reply_stmt->execute();
+          $replies = $reply_stmt->get_result();
+
+          while ($reply = $replies->fetch_assoc()) {
+              echo '<div class="ml-4 border-left pl-3 mb-2">';
+              echo '<strong>' . htmlspecialchars($reply['name']) . '</strong> ';
+              echo '<small class="text-muted">(' . $reply['date'] . ')</small>';
+              echo '<p>' . nl2br(htmlspecialchars($reply['description'])) . '</p>';
+              echo '</div>';
+          }
+
+          // Formulario de respuesta si el usuario está logueado
+          if (isset($_SESSION['user_id'])) {
+              echo '<form action="add_comment.php" method="POST" class="ml-4 mt-2">';
+              echo '<input type="hidden" name="new_id" value="'.$id.'">';
+              echo '<input type="hidden" name="comment_id" value="'.$comment['id'].'">';
+              echo '<textarea name="description" class="form-control mb-2" rows="2" placeholder="Responder al comentario..." required></textarea>';
+              echo '<button type="submit" class="btn btn-sm btn-outline-primary">Responder</button>';
+              echo '</form>';
+          }
+
+          echo '</div>';
+      }
+      ?>
     </div>
   </section>
+
+  <!-- Formulario nuevo comentario -->
+  <?php if (isset($_SESSION['user_id'])): ?>
+    <section class="section">
+      <div class="container">
+        <h4>Deja tu comentario</h4>
+        <form action="add_comment.php" method="POST">
+          <input type="hidden" name="new_id" value="<?= $id ?>">
+          <textarea name="description" class="form-control mb-3" rows="4" placeholder="Escribe tu comentario..." required></textarea>
+          <button type="submit" class="btn btn-primary">Enviar comentario</button>
+        </form>
+      </div>
+    </section>
+  <?php else: ?>
+    <div class="container mb-5">
+      <p><a href="login.php">Inicia sesión</a> para dejar un comentario.</p>
+    </div>
+  <?php endif; ?>
 
   <script src="plugins/bootstrap/bootstrap.min.js"></script>
 </body>
