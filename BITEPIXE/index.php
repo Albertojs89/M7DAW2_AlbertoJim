@@ -61,6 +61,9 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
   <!-- SECCIÓN MEMORY CARD -->
   
   <section id="memorycard" class="memory-card-section">
+    <div class="memory-scroll-indicator left-indicator"><i class="fas fa-chevron-left"></i></div>
+<div class="memory-scroll-indicator right-indicator"><i class="fas fa-chevron-right"></i></div>
+
     <h2 class="memory-card-title">Memory Card</h2>
     <p class="memory-card-subtitle">La nostalgia en recuerdos</p>
     <div class="memory-card-slider">
@@ -75,6 +78,11 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
       
     </div>
   </section>
+
+  <!-- /MEMORY CARD -->
+
+
+
   <!-- FOOTER -->
   <footer class="site-footer">
   <div class="footer-container">

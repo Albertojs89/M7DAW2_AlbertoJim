@@ -587,3 +587,35 @@ main {
   }
 }
 
+.memory-card-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-scroll-indicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28px;
+  color: rgba(100, 100, 100, 0.4);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.left-indicator {
+  left: 10px;
+}
+
+.right-indicator {
+  right: 10px;
+}
+
+.memory-scroll-indicator i {
+  animation: pulseScroll 1.6s infinite ease-in-out;
+}
+
+@keyframes pulseScroll {
+  0% { opacity: 0.3; transform: translateY(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateY(-50%) scale(1.15); }
+  100% { opacity: 0.3; transform: translateY(-50%) scale(1); }
+}
