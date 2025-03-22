@@ -22,7 +22,7 @@ body {
 main {
   width: 100%;
   max-width: 1400px;
-  margin-top: 150px; /* espacio debajo del header fijo */
+  margin-top: 250px; /* espacio debajo del header fijo */
   padding: 0 16px;
 }
 
