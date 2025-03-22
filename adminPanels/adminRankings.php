@@ -1,5 +1,0 @@
-<!-- panel para administrar ranking -->
-
-
-
-
