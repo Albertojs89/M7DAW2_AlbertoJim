@@ -39,7 +39,7 @@ $news = $mysqli->query("SELECT * FROM NEWS ORDER BY new_date DESC;")->fetch_all(
       <?php foreach ($news as $new): ?>
         <div class="col-lg-4 col-md-6 mb-4">
           <article class="card">
-            <img src="/<?= $new['thumbnail'] ?>" alt="post-thumb" class="card-img-top mb-2" />
+            <img src="<?= $new['thumbnail'] ?>" alt="post-thumb" class="card-img-top mb-2" />
             <div class="card-body p-0">
               <time><?= $new['new_date'] ?></time>
               <a href="blog-single.php?id=<?= $new['id'] ?>" class="h4 card-title d-block my-3 text-dark hover-text-underline">
