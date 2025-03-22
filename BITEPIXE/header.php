@@ -6,7 +6,12 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <header class="main-header">
   <nav class="nav-bar">
-    <div class="nav-left">
+    <!-- Botón hamburguesa visible solo en móviles -->
+    <button class="menu-toggle" onclick="toggleMobileMenu(this)">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="nav-left transition-menu" id="mobileMenu">
       <a href="index.php" class="nav-item nav-home">
         <i class="fas fa-house nav-icon nav-home-icon"></i>
         <span class="nav-label">Home</span>
@@ -62,8 +67,8 @@ if (session_status() === PHP_SESSION_NONE) {
 
   .nav-icon {
     font-size: 28px;
-    margin-bottom: 3px;
-    transition: transform 0.3s ease, color 0.3s ease;
+    margin-bottom: 4px;
+    transition: filter 0.3s ease, color 0.3s ease;
   }
 
   .nav-label {
@@ -72,26 +77,71 @@ if (session_status() === PHP_SESSION_NONE) {
     font-weight: 500;
   }
 
- .nav-icon {
-  font-size: 28px;
-  margin-bottom: 4px;
-  transition: filter 0.3s ease, color 0.3s ease;
-}
+  .nav-home i   { color: #ff4d4d; }
+  .nav-analysis i { color: #66ff66; }
+  .nav-rankings i { color: #3399ff; }
+  .nav-about i  { color: #ffcc33; }
+  .nav-memory i { color: #ccc; }
 
-/* Colores por icono */
-.nav-home i   { color: #ff4d4d; }
-.nav-analysis i { color: #66ff66; }
-.nav-rankings i { color: #3399ff; }
-.nav-about i  { color: #ffcc33; }
-.nav-memory i { color: #ccc; }
+  .nav-home:hover i,
+  .nav-analysis:hover i,
+  .nav-rankings:hover i,
+  .nav-about:hover i,
+  .nav-memory:hover i {
+    filter: brightness(1.5);
+  }
 
-/* Efecto hover */
-.nav-home:hover i,
-.nav-analysis:hover i,
-.nav-rankings:hover i,
-.nav-about:hover i,
-.nav-memory:hover i {
-  filter: brightness(1.5);
-}
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    padding: 8px;
+  }
 
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    .nav-left {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+      background-color: #1c1c1c;
+      padding: 15px 10px;
+      border-bottom: 2px solid #333;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: all 0.4s ease;
+    }
+
+    .nav-left.show {
+      display: flex;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .nav-item {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    .nav-label {
+      margin-left: 10px;
+    }
+  }
 </style>
+
+<script>
+  function toggleMobileMenu(button) {
+    const menu = document.getElementById("mobileMenu");
+    menu.classList.toggle("show");
+    const icon = button.querySelector('i');
+    icon.classList.toggle('fa-bars');
+    icon.classList.toggle('fa-times');
+  }
+</script>
