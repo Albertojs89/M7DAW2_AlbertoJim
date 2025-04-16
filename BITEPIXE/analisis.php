@@ -15,7 +15,6 @@ $analisis = $mysqli->query("SELECT * FROM analisis ORDER BY fecha DESC")->fetch_
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/css/index.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -66,46 +65,50 @@ $analisis = $mysqli->query("SELECT * FROM analisis ORDER BY fecha DESC")->fetch_
       padding-bottom: 15px;
     }
 
-    .platform-icons img {
-      width: 35px;
-      height: 35px;
+    .platform-logo {
+      height: 28px;
+      max-width: 40px;
       object-fit: contain;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.2));
+      transition: transform 0.3s ease;
     }
-    .pc-icon {
-  width: 28px !important;
-  height: 28px !important;
-  object-fit: contain;
-}
 
+    .platform-logo.switch {
+      transform: scale(1.3);
+    }
+
+    .platform-logo.steam {
+      transform: scale(0.9);
+    }
   </style>
 </head>
 <body>
 <?php include 'header.php'; ?>
 
-  <div class="analisis-grid container-fluid">
-    <?php foreach ($analisis as $item): ?>
-      <a href="analisisDetalle.php?id=<?= $item['id'] ?>" class="analisis-card">
-        <img src="images/<?= htmlspecialchars($item['imagen']) ?>" class="card-img" alt="<?= htmlspecialchars($item['titulo']) ?>">
-        <div class="analisis-card-title"><?= htmlspecialchars($item['titulo']) ?></div>
-        <div class="platform-icons">
-          <?php
-            $plataformas = explode(',', $item['plataforma']);
-            foreach ($plataformas as $plat) {
-              $plat = trim($plat);
-              $iconPath = "images/plataformas/" . strtolower($plat) . ".png";
-              if (file_exists(__DIR__ . $iconPath)) {
-                $class = (strtolower($plat) === 'pc') ? 'pc-icon' : '';
-                echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '" class="' . $class . '">';
+<div class="analisis-grid container-fluid">
+  <?php foreach ($analisis as $item): ?>
+    <a href="analisisDetalle.php?id=<?= $item['id'] ?>" class="analisis-card">
+      <img src="images/<?= htmlspecialchars($item['imagen']) ?>" class="card-img" alt="<?= htmlspecialchars($item['titulo']) ?>">
+      <div class="analisis-card-title"><?= htmlspecialchars($item['titulo']) ?></div>
+      <div class="platform-icons">
+        <?php
+          $plataformas = explode(',', $item['plataforma']);
+          foreach ($plataformas as $plat) {
+            $plat = trim($plat);
+            $iconPath = "images/plataformas/" . strtolower($plat) . ".png";
+            $class = "platform-logo";
 
-              } else {
-                echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '">'; // Si no existe igual se muestra el path
-              }
-            }
-          ?>
-        </div>
-      </a>
-    <?php endforeach; ?>
-  </div>
+            // Añadir clase especial según plataforma
+            if (strtolower($plat) === 'switch') $class .= " switch";
+            if (strtolower($plat) === 'steam') $class .= " steam";
+
+            echo '<img src="' . $iconPath . '" alt="' . htmlspecialchars($plat) . '" class="' . $class . '">';
+          }
+        ?>
+      </div>
+    </a>
+  <?php endforeach; ?>
+</div>
 
 </body>
 </html>

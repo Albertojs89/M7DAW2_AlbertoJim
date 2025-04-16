@@ -41,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($titulo && $subtitulo && $texto && $nota && $plataformas) {
         if (!empty($_FILES['imagen']['name'])) {
             $nombreImagen = basename($_FILES['imagen']['name']);
-            $rutaDestino = "../images/analisis/" . $nombreImagen;
+            $rutaDestino = "../images/" . $nombreImagen;
+
             move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaDestino);
         } else {
             $nombreImagen = $analisis['imagen']; // mantiene imagen anterior

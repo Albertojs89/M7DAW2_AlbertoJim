@@ -385,104 +385,86 @@ main {
 
 /* footer section --------------------------------- */
 .site-footer {
-  width: 100%;
-  background-color: #1e1e1e;
-  color: #ffffff;
-  padding: 40px 20px 20px 20px;
-  margin-top: 60px;
-  border-radius: 20px 20px 0 0;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.4);
+  background-color: #111;
+  color: #ccc;
+  padding: 40px 20px 20px;
+  font-family: 'Rubik', sans-serif;
+  font-size: 0.95rem;
+  margin-top: 40px;
+  border-radius: 20px;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
 }
 
 .footer-columns {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 40px;
-  margin-bottom: 30px;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .footer-column {
   flex: 1 1 250px;
-  max-width: 300px;
   text-align: center;
 }
 
 .footer-subtitle {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #f8d85f;
-  margin-bottom: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
 }
 
 .footer-column p,
 .footer-column a {
-  font-size: 0.95rem;
   color: #ccc;
   text-decoration: none;
-  margin-bottom: 10px;
+  margin: 6px 0;
   display: block;
-}
-
-.footer-column a:hover {
-  color: #f8d85f;
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 8px;
-}
-
-.footer-links a {
-  color: #ccc;
-  text-decoration: none;
-  font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
-  color: #f8d85f;
+.footer-column a:hover {
+  color: #ffeaa7;
+}
+
+.footer-column i {
+  margin-right: 8px;
+  color: #999;
 }
 
 .footer-social {
   display: flex;
   justify-content: center;
-  gap: 25px;
-  font-size: 2rem;
+  gap: 24px;
+  margin-top: 10px;
 }
 
 .footer-social a {
-  color: #f8d85f;
-  transition: transform 0.3s ease;
+  color: #ccc;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
 }
-.footer-column i {
-  font-size: 2rem; /* Aumentamos el tamaño del icono */
-  margin-right: 8px;
-  color: #f8d85f;
-  vertical-align: middle;
+.footer-social a i {
+  margin: 0 10px;
+  transition: 0.2s;
 }
 
-
-.footer-social a:hover {
-  transform: scale(1.1);
+.footer-social a i:hover {
+  transition: 0.2s;
+  color: #ffeaa7;
 }
 
 .footer-copy {
-  font-size: 0.9rem;
-  color: #aaaaaa;
-  margin-top: 20px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 10px;
 }
+
 
 
 
@@ -604,10 +586,12 @@ main {
 
 .left-indicator {
   left: 10px;
+  color: whitesmoke;
 }
 
 .right-indicator {
   right: 10px;
+  color: whitesmoke;
 }
 
 .memory-scroll-indicator i {

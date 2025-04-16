@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Consulta segura (usamos prepare para evitar SQL injection)
     $stmt = $mysqli->prepare("SELECT * FROM usuarios WHERE email = ? LIMIT 1");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -16,15 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($resultado && $resultado->num_rows > 0) {
         $usuario = $resultado->fetch_assoc();
 
-        // Verificar la contraseña
         if (password_verify($password, $usuario['password'])) {
-            // Guardar datos en la sesión
             $_SESSION['user_id'] = $usuario['id'];
             $_SESSION['nombre'] = $usuario['nombre'];
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['rol'] = $usuario['rol'];
             $_SESSION['avatar'] = $usuario['avatar'];
-
 
             header('Location: index.php');
             exit;
@@ -37,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -48,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #f5f5f5; /* Gris claro */
-  background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 2px, transparent 1px); /* Patrón sutil */
-  background-size: 20px 20px; /* Tamaño del patrón */
+      background-color: #f5f5f5;
+      background-image: radial-gradient(circle, rgba(0, 0, 0, 0.05) 2px, transparent 1px);
+      background-size: 20px 20px;
       font-family: 'Urbanist', sans-serif;
       min-height: 100vh;
       display: flex;
@@ -72,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       font-weight: 700;
       margin-bottom: 25px;
       text-align: center;
+      font-size: 1.8rem;
     }
 
     .form-control {
@@ -92,6 +88,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       text-align: center;
       font-weight: 600;
       margin-bottom: 15px;
+    }
+
+    @media (max-width: 768px) {
+      .login-card {
+        padding: 25px;
+        border-radius: 12px;
+      }
+
+      .login-card h2 {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 20px;
+        box-shadow: none;
+        background-color: #fff;
+        border: 1px solid #ddd;
+      }
+
+      .login-card h2 {
+        font-size: 1.4rem;
+      }
+
+      .btn-login {
+        font-size: 0.95rem;
+        padding: 10px 16px;
+      }
     }
   </style>
 </head>
@@ -127,7 +152,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </body>
 </html>
-
-
-
-

@@ -84,44 +84,7 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
 
 
   <!-- FOOTER -->
-  <footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-columns">
 
-      <!-- Columna 1: Info contacto -->
-      <div class="footer-column">
-        <h3 class="footer-subtitle">Contacto</h3>
-        <p><i class="fas fa-map-marker-alt"></i> Barcelona, España</p>
-        <p><i class="fas fa-envelope"></i> <a href="mailto:contacto@bitepixe.com">bertocover@gmail.com</a></p>
-        <p><i class="fas fa-phone"></i> <a href="tel:+34600123456">+34 666 942 922</a></p>
-      </div>
-
-      <!-- Columna 2: Enlaces -->
-      <div class="footer-column">
-        <h3 class="footer-subtitle">Enlaces</h3>
-        <ul class="footer-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="#analisis">Análisis</a></li>
-          <li><a href="#rankings">Rankings</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </div>
-
-      <!-- Columna 3: Redes Sociales -->
-      <div class="footer-column">
-        <h3 class="footer-subtitle">Síguenos</h3>
-        <div class="footer-social">
-          <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-
-    </div>
-
-    <p class="footer-copy">© 2025 BITEPIXE · Desarrollado por Alberto</p>
-  </div>
-</footer>
 
 
 
