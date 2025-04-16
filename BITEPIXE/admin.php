@@ -85,18 +85,22 @@ if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
     </a>
 
     <a href="adminPanels/adminAnalisis.php" class="admin-module">
-      <i class="bi bi-gear-fill admin-icon"></i>
+      <i class="bi-journal-text admin-icon"></i>
       <div class="admin-label">Análisis</div>
     </a>
 
     <a href="adminPanels/adminMemory.php" class="admin-module">
-      <i class="bi bi-gear-fill admin-icon"></i>
+      <i class="bi-card-text admin-icon"></i>
       <div class="admin-label">Memory Cards</div>
     </a>
 
     <a href="adminPanels/adminUsuarios.php" class="admin-module">
       <i class="bi bi-person-circle admin-icon"></i>
       <div class="admin-label">Usuarios</div>
+    </a>
+    <a href="adminPanels/adminSavePost.php" class="admin-module">
+      <i class="bi-pencil-fill admin-icon"></i>
+      <div class="admin-label">Save Post</div>
     </a>
   </div>
   <div class="mt-4 text-center">
