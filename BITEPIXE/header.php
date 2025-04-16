@@ -32,6 +32,10 @@ if (session_status() === PHP_SESSION_NONE) {
         <i class="fas fa-gamepad nav-icon nav-memory-icon"></i>
         <span class="nav-label">Memory Cards</span>
       </a>
+      <a href="savepost.php" class="nav-item nav-savepost">
+        <i class="fas fa-thumbtack nav-icon nav-savepost-icon"></i>
+        <span class="nav-label">Save Post</span>
+      </a>
     </div>
 
     <div class="nav-right">
@@ -77,17 +81,21 @@ if (session_status() === PHP_SESSION_NONE) {
     font-weight: 500;
   }
 
-  .nav-home i   { color: #ff4d4d; }
+  /* Colores por icono */
+  .nav-home i     { color: #ff4d4d; }
   .nav-analysis i { color: #66ff66; }
   .nav-rankings i { color: #3399ff; }
-  .nav-about i  { color: #ffcc33; }
-  .nav-memory i { color: #ccc; }
+  .nav-about i    { color: #ffcc33; }
+  .nav-memory i   { color: #ccc; }
+  .nav-savepost i { color: #ff99cc; }
 
+  /* Hover */
   .nav-home:hover i,
   .nav-analysis:hover i,
   .nav-rankings:hover i,
   .nav-about:hover i,
-  .nav-memory:hover i {
+  .nav-memory:hover i,
+  .nav-savepost:hover i {
     filter: brightness(1.5);
   }
 
