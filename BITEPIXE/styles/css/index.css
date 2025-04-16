@@ -33,13 +33,13 @@ main {
   grid-template-rows: masonry; /* opcional si usas Masonry para altura automática */
   gap: 16px;
   grid-auto-flow: dense; /* 👈 aún ayuda a rellenar huecos si hay spans */
-  padding: 16px;
+  padding: 0px;
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  background-color: #ffffff; /* Blanco puro */
+  background-color: transparent; 
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra más marcada */
+  box-shadow: none;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
@@ -93,8 +93,49 @@ main {
   .item-3 {
     grid-column: span 2; /* Ocupa dos columnas en pantallas pequeñas */
     grid-row: span 1; /* Mantiene una fila */
+    
   }
 }
+@media screen and (max-width: 1024px) {
+  .bento-title {
+    transform: translateY(0%) !important;
+    opacity: 1 !important;
+  }
+
+  .bento-item:hover .bento-title {
+    transform: translateY(0%) !important;
+    opacity: 1 !important;
+  }
+}
+/* opacidad titulos en pantalla pequeña */
+@media screen and (max-width: 768px) {
+  .bento-title {
+    background-color: rgba(0, 0, 0, 0.45) !important; /* antes estaba en 0.65 */
+  }
+}
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0; /* Elimina padding lateral */
+  }
+
+  .bento-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 8px; /* pequeño margen interno si quieres respiración */
+    grid-template-columns: 1fr; /* ✅ Una columna */
+  }
+
+  .bento-item {
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 16px; /* espacio entre noticias */
+  }
+
+  .bento-item img {
+    border-radius: 0;
+  }
+}
+
 /* Título inferior en hover */
 .bento-title {
   position: absolute;
