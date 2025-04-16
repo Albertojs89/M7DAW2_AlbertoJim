@@ -1,0 +1,11 @@
+# Ignorar carpetas con contenido subido por usuarios
+images/avatars/
+images/analisis/
+images/savepost/
+
+# Ignorar cualquier archivo temporal o caché
+*.log
+*.tmp
+.DS_Store
+node_modules/
+.env
