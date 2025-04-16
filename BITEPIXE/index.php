@@ -85,6 +85,32 @@ $noticias = $mysqli->query("SELECT * FROM noticias ORDER BY fecha DESC LIMIT 6")
 
   <!-- FOOTER -->
 
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-columns">
+
+      <!-- Columna 1: Contacto -->
+      <div class="footer-column">
+        <h3 class="footer-subtitle">📍 Contacto</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Barcelona, España</p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:bertocover@gmail.com">bertocover@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> <a href="tel:+34666942922">+34 666 942 922</a></p>
+      </div>
+
+      <!-- Columna 2: Redes Sociales -->
+      <div class="footer-column">
+        <h3 class="footer-subtitle">📣 Síguenos</h3>
+        <div class="footer-social">
+          <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <p class="footer-copy">© 2025 BITEPIXE · Desarrollado por Alberto</p>
+  </div>
+</footer>
 
 
 
