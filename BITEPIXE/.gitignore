@@ -9,3 +9,4 @@ images/savepost/
 .DS_Store
 node_modules/
 .env
+config.php
